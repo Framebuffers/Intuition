@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8aolptgi6jrj"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
+[ext_resource type="PackedScene" uid="uid://b2mf0blfos800" path="res://UserInterface/Reticle.tscn" id="2_jtwl3"]
+[ext_resource type="PackedScene" uid="uid://d1rcod6nig2gj" path="res://UserInterface/GUIPanel2D.tscn" id="2_thtg6"]
+[ext_resource type="PackedScene" uid="uid://c8q8pw4pbvj80" path="res://Cameras/ExteriorLighting.tscn" id="6_ligor"]
+[ext_resource type="PackedScene" uid="uid://uy77m4fc6fdo" path="res://Scenarios/TestHouseScene.tscn" id="6_luucv"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_dksua")
+
+[node name="GUIPanel2D" parent="." instance=ExtResource("2_thtg6")]
+mouse_filter = 2
+
+[node name="Player" parent="." instance=ExtResource("2_3t204")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -6)
+visible = false
+floor_stop_on_slope = false
+platform_floor_layers = 4294967044
+platform_wall_layers = 2
+
+[node name="Lighting2" parent="." instance=ExtResource("6_ligor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Reticle" parent="." instance=ExtResource("2_jtwl3")]
+
+[node name="TestHouseScene" parent="." instance=ExtResource("6_luucv")]

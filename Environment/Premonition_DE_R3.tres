@@ -1,0 +1,53 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://ckwf7u0hkahet"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c7gcr"]
+sky_top_color = Color(0.85098, 0.533333, 0.34902, 1)
+sky_horizon_color = Color(0.94902, 0.682353, 0.447059, 1)
+sky_curve = 4.79999
+sky_energy_multiplier = 19.2
+ground_bottom_color = Color(0.578803, 0.512148, 0.435159, 1)
+ground_horizon_color = Color(0.711497, 0.71995, 0.733299, 1)
+ground_curve = 0.134544
+ground_energy_multiplier = 3.38
+sun_angle_max = 220.48
+sun_curve = 0.0891906
+
+[sub_resource type="Sky" id="Sky_hwjs5"]
+sky_material = SubResource("ProceduralSkyMaterial_c7gcr")
+radiance_size = 0
+
+[resource]
+background_mode = 2
+background_color = Color(0.202723, 0.202723, 0.202723, 1)
+background_energy_multiplier = 0.22
+sky = SubResource("Sky_hwjs5")
+ambient_light_source = 3
+ambient_light_color = Color(0.550293, 0.550293, 0.550293, 0.121569)
+ambient_light_sky_contribution = 0.11
+ambient_light_energy = 0.7
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_exposure = 2.0
+tonemap_white = 2.0
+ssr_fade_in = 2.75687
+ssr_fade_out = 1.86607
+ssao_enabled = true
+ssao_power = 1.13679
+ssao_detail = 2.33
+glow_bloom = 0.15
+fog_light_energy = 0.05
+fog_aerial_perspective = 0.746
+fog_height = 1.6
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.94902, 0.921569, 0.87451, 1)
+volumetric_fog_emission_energy = 255.39
+volumetric_fog_gi_inject = 1.8
+volumetric_fog_anisotropy = -0.57
+volumetric_fog_length = 78.9
+volumetric_fog_detail_spread = 0.707107
+volumetric_fog_ambient_inject = 2.36
+volumetric_fog_sky_affect = 0.62
+volumetric_fog_temporal_reprojection_enabled = false
+adjustment_enabled = true
+adjustment_brightness = 0.85

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6mr86b87urxw"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
+[ext_resource type="PackedScene" uid="uid://bi8fhougt287h" path="res://Meshes/NewMeshes/OBJ/House_Complete_R5.glb" id="2_i7luy"]
+
+[node name="Meshes" type="Node3D"]
+script = ExtResource("1_dksua")
+
+[node name="House_Complete_R5" parent="." instance=ExtResource("2_i7luy")]
