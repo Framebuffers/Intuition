@@ -1,0 +1,399 @@
+[gd_scene load_steps=54 format=3 uid="uid://c6q5tucmpnnvc"]
+
+[ext_resource type="PackedScene" uid="uid://uvyw7c6yarkv" path="res://Meshes/Terrain/Terrain.glb" id="1_xq2wf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01vqn"]
+albedo_color = Color(0.611765, 0.607843, 0.478431, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67lak"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.141515, 0.165405, 0.225135, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddrey"]
+albedo_color = Color(0.25098, 0.34902, 0.321569, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6wak"]
+size = Vector3(263.348, 1.90074, 280.956)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vlh5o"]
+size = Vector3(317.84, 14.5505, 264.575)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s38ge"]
+size = Vector3(22.9268, 5.68506, 19.2408)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jp47p"]
+size = Vector3(20.1651, 8.896, 8.63704)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q2n5b"]
+size = Vector3(10.7727, 14.0356, 43.9162)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1u1m"]
+size = Vector3(7.74374, 3.78711, 20.4202)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ig04a"]
+size = Vector3(9.26128, 4.85791, 5.38708)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_np6m7"]
+size = Vector3(8.09811, 5.67749, 7.8958)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7oq4e"]
+size = Vector3(5.90165, 1.06958, 4.9214)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_36r7n"]
+size = Vector3(20.3072, 1, 30.9012)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bg03r"]
+size = Vector3(16.3586, 10.2572, 161.658)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_np4tk"]
+size = Vector3(25.7899, 3.39088, 146.24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jleu"]
+size = Vector3(23, 24, 68)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8g5nt"]
+size = Vector3(91.7935, 11.5092, 48.4429)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bejjv"]
+size = Vector3(74.0422, 4.32346, 7.35498)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e055m"]
+size = Vector3(69.4609, 5.74341, 12.4448)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w8abf"]
+size = Vector3(49.2404, 12.4305, 11.9175)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xqya"]
+size = Vector3(45.5162, 9.46521, 43.4421)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvg5l"]
+size = Vector3(61.9858, 2.052, 15.5148)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jeg07"]
+size = Vector3(118.237, 29.1671, 26.7516)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ts6mx"]
+size = Vector3(107.282, 15.5075, 12.4318)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ttxpy"]
+size = Vector3(44.1294, 14.5012, 70.7298)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ixfwh"]
+size = Vector3(21.3435, 8.06567, 46.8662)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cuakr"]
+size = Vector3(11.1529, 5.99121, 40.6324)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ponoe"]
+size = Vector3(64.3961, 16.1228, 144.357)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dnmqw"]
+size = Vector3(61.8792, 17.5582, 73.7284)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tytci"]
+size = Vector3(30.1629, 20.6514, 40.0756)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ncaqv"]
+size = Vector3(28.4577, 11.5318, 31.4414)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gi1wj"]
+size = Vector3(22.5868, 11.8156, 28.4618)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6nuxi"]
+size = Vector3(18.8884, 10.2798, 19.6153)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4ku0"]
+size = Vector3(14.3416, 3.57953, 34.2614)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41uje"]
+size = Vector3(9.69417, 18.8716, 32.5682)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y26ux"]
+size = Vector3(145.527, 11.49, 118.117)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6xr2"]
+size = Vector3(19.8634, 13.0752, 11.6529)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4vhtk"]
+size = Vector3(90.5984, 13.0498, 15.0598)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rahgw"]
+size = Vector3(22.3069, 14.2794, 20.8341)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_482rj"]
+size = Vector3(21.9592, 4.3486, 15.6741)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iuvkn"]
+size = Vector3(37.1412, 4.25146, 5.31042)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efq4n"]
+size = Vector3(139.639, 19.7558, 115.741)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vt43g"]
+size = Vector3(28.3039, 7.29111, 98.9615)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qtvo"]
+size = Vector3(55.5827, 10.7947, 52.2334)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qg0rt"]
+size = Vector3(40.9334, 7.29773, 33.3201)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wk034"]
+size = Vector3(138.784, 7.03394, 45.2752)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gg0pn"]
+size = Vector3(53.0715, 7.35107, 85.9102)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4vv8j"]
+size = Vector3(69.8559, 19.3705, 62.5714)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf0ey"]
+size = Vector3(39.0471, 7.13407, 19.457)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dw3n7"]
+size = Vector3(39.972, 7.05304, 52.462)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ng6f2"]
+size = Vector3(90.3203, 9.06732, 32.971)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fmsc"]
+size = Vector3(97.9906, 7.03467, 48.1819)
+
+[node name="Terrain" instance=ExtResource("1_xq2wf")]
+
+[node name="Node" parent="." index="0"]
+metadata/_edit_lock_ = true
+
+[node name="Active View" parent="Node" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="Node2" parent="Node" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="3DGeom-1" parent="Node/Node2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_01vqn")
+
+[node name="3DGeom-2" parent="Node/Node2" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_67lak")
+
+[node name="3DGeom-3" parent="Node/Node2" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ddrey")
+
+[node name="Layer1_Seabed" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layer1_Seabed" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.6741, -6.20757, -0.35379)
+shape = SubResource("BoxShape3D_u6wak")
+
+[node name="Layer2_Sea" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layer2_Sea" index="0"]
+transform = Transform3D(0.907836, 0, -0.419325, 0, 1, 0, 0.419325, 0, 0.907836, -81.936, -8.91906, 13.0707)
+shape = SubResource("BoxShape3D_vlh5o")
+
+[node name="Layer3_Island" type="StaticBody3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.221442, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layer3_Island" index="0"]
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, -7.62916, -2.34253, -16.3803)
+shape = SubResource("BoxShape3D_s38ge")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer3_Island" index="1"]
+transform = Transform3D(0.85569, 0, 0.51749, 0, 1, 0, -0.51749, 0, 0.85569, -0.352347, -3.948, -5.71218)
+shape = SubResource("BoxShape3D_jp47p")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer3_Island" index="2"]
+transform = Transform3D(0.870725, 0, 0.49177, 0, 1, 0, -0.49177, 0, 0.870725, 2.04061, -6.51782, 6.1937)
+shape = SubResource("BoxShape3D_q2n5b")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer3_Island" index="3"]
+transform = Transform3D(0.994542, 0, 0.104338, 0, 1, 0, -0.104338, 0, 0.994542, 7.15981, -1.39355, 2.77363)
+shape = SubResource("BoxShape3D_w1u1m")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer3_Island" index="4"]
+transform = Transform3D(0.909838, 0, 0.414963, 0, 1, 0, -0.414963, 0, 0.909838, 13.3299, -1.92896, 26.8825)
+shape = SubResource("BoxShape3D_ig04a")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer3_Island" index="5"]
+transform = Transform3D(0.960876, 0, 0.276979, 0, 1, 0, -0.276979, 0, 0.960876, 14.2169, -2.33875, 28.8475)
+shape = SubResource("BoxShape3D_np6m7")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer3_Island" index="6"]
+transform = Transform3D(0.786741, 0, 0.617283, 0, 1, 0, -0.617283, 0, 0.786741, 15.5682, -0.193237, 33.318)
+shape = SubResource("BoxShape3D_7oq4e")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Layer3_Island" index="7"]
+transform = Transform3D(0.991146, 0, -0.132775, 0, 1, 0, 0.132775, 0, 0.991146, -10.7669, 0, -34.2194)
+shape = SubResource("BoxShape3D_36r7n")
+
+[node name="Layer3_Hill" type="StaticBody3D" parent="." index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layer3_Hill" index="0"]
+transform = Transform3D(0.920525, 0, 0.390683, 0, 1, 0, -0.390683, 0, 0.920525, -32.5328, -5.07323, 9.7593)
+shape = SubResource("BoxShape3D_bg03r")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer3_Hill" index="1"]
+transform = Transform3D(0.856456, 0, 0.516219, 0, 1, 0, -0.516219, 0, 0.856456, -34.6147, -2.441, 14.6689)
+shape = SubResource("BoxShape3D_np4tk")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer3_Hill" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, -12.5, -33.5)
+shape = SubResource("BoxShape3D_5jleu")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer3_Hill" index="3"]
+transform = Transform3D(0.998993, 0, -0.0448574, 0, 1, 0, 0.0448574, 0, 0.998993, -64.6505, -6.62154, 71.415)
+shape = SubResource("BoxShape3D_8g5nt")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer3_Hill" index="4"]
+transform = Transform3D(0.989935, 0, -0.141523, 0, 1, 0, 0.141523, 0, 0.989935, -67.1341, -2.86519, 97.3807)
+shape = SubResource("BoxShape3D_bejjv")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer3_Hill" index="5"]
+transform = Transform3D(0.99883, 0, -0.0483617, 0, 1, 0, 0.0483617, 0, 0.99883, -65.365, -3.75232, 99.7022)
+shape = SubResource("BoxShape3D_e055m")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer3_Hill" index="6"]
+transform = Transform3D(0.770157, 0, 0.637854, 0, 1, 0, -0.637854, 0, 0.770157, -20.7584, -7.04115, 89.4314)
+shape = SubResource("BoxShape3D_w8abf")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Layer3_Hill" index="7"]
+transform = Transform3D(0.917865, 0, 0.396892, 0, 1, 0, -0.396892, 0, 0.917865, -14.0435, -5.59528, 71.6502)
+shape = SubResource("BoxShape3D_6xqya")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Layer3_Hill" index="8"]
+transform = Transform3D(0.977131, 0, -0.212638, 0, 1, 0, 0.212638, 0, 0.977131, -68.0412, -1.93152, 98.644)
+shape = SubResource("BoxShape3D_bvg5l")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Layer3_Hill" index="9"]
+transform = Transform3D(0.993896, 0, -0.110324, 0, 1, 0, 0.110324, 0, 0.993896, -144.935, -15.263, 74.0994)
+shape = SubResource("BoxShape3D_jeg07")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Layer3_Hill" index="10"]
+transform = Transform3D(0.999165, 0, -0.0408642, 0, 1, 0, 0.0408642, 0, 0.999165, -150.627, -8.63143, 86.7834)
+shape = SubResource("BoxShape3D_ts6mx")
+
+[node name="Layer4_Island" type="StaticBody3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.42074, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D_1" type="CollisionShape3D" parent="Layer4_Island" index="0"]
+transform = Transform3D(0.931189, 0, 0.364536, 0, 1, 0, -0.364536, 0, 0.931189, -4.68825, -6.75061, -20.6245)
+shape = SubResource("BoxShape3D_ttxpy")
+
+[node name="CollisionShape3D_2" type="CollisionShape3D" parent="Layer4_Island" index="1"]
+transform = Transform3D(0.859469, 0, 0.511188, 0, 1, 0, -0.511188, 0, 0.859469, 13.4413, -3.53284, 30.833)
+shape = SubResource("BoxShape3D_ixfwh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layer4_Island" index="2"]
+transform = Transform3D(0.984344, 0, 0.17626, 0, 1, 0, -0.17626, 0, 0.984344, 20.3451, -2.49561, 16.3302)
+shape = SubResource("BoxShape3D_cuakr")
+
+[node name="Layer4_Hill" type="StaticBody3D" parent="." index="6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layer4_Hill" index="0"]
+transform = Transform3D(0.871787, 0, 0.489885, 0, 1, 0, -0.489885, 0, 0.871787, -61.5722, -4.78938, 21.4909)
+shape = SubResource("BoxShape3D_ponoe")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer4_Hill" index="1"]
+transform = Transform3D(0.979297, 0, -0.202428, 0, 1, 0, 0.202428, 0, 0.979297, -73.8639, -5.65591, 58.9341)
+shape = SubResource("BoxShape3D_dnmqw")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer4_Hill" index="2"]
+transform = Transform3D(0.75276, 0, 0.658295, 0, 1, 0, -0.658295, 0, 0.75276, -45.8333, -6.60791, 80.9355)
+shape = SubResource("BoxShape3D_tytci")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer4_Hill" index="3"]
+transform = Transform3D(0.550991, 0, -0.834511, 0, 1, 0, 0.834511, 0, 0.550991, -19.4044, -2.57539, 68.4808)
+shape = SubResource("BoxShape3D_ncaqv")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer4_Hill" index="4"]
+transform = Transform3D(0.967334, 0, 0.253505, 0, 1, 0, -0.253505, 0, 0.967334, -22.3637, -2.61638, 74.0912)
+shape = SubResource("BoxShape3D_gi1wj")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer4_Hill" index="5"]
+transform = Transform3D(0.684343, 0, 0.72916, 0, 1, 0, -0.72916, 0, 0.684343, -9.2738, -1.81125, 71.214)
+shape = SubResource("BoxShape3D_6nuxi")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer4_Hill" index="6"]
+transform = Transform3D(0.969458, 0, 0.245257, 0, 1, 0, -0.245257, 0, 0.969458, -60.291, 1.28976, -42.8014)
+shape = SubResource("BoxShape3D_s4ku0")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Layer4_Hill" index="7"]
+transform = Transform3D(0.998368, 0, 0.057111, 0, 1, 0, -0.057111, 0, 0.998368, -54.8413, -6.31856, -43.8282)
+shape = SubResource("BoxShape3D_41uje")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Layer4_Hill" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.14, -2.66438, -0.0515518)
+shape = SubResource("BoxShape3D_y26ux")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Layer4_Hill" index="9"]
+transform = Transform3D(0.861142, 0, -0.508365, 0, 1, 0, 0.508365, 0, 0.861142, -197.405, -3.48877, 64.2064)
+shape = SubResource("BoxShape3D_f6xr2")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Layer4_Hill" index="10"]
+transform = Transform3D(0.99061, 0, -0.136718, 0, 1, 0, 0.136718, 0, 0.99061, -146.562, -2.9077, 71.1806)
+shape = SubResource("BoxShape3D_4vhtk")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Layer4_Hill" index="11"]
+transform = Transform3D(0.970296, 0, -0.241922, 0, 1, 0, 0.241922, 0, 0.970296, -181.835, -4.00127, 67.4458)
+shape = SubResource("BoxShape3D_rahgw")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Layer4_Hill" index="12"]
+transform = Transform3D(0.993664, 0, -0.112388, 0, 1, 0, 0.112388, 0, 0.993664, -163.187, 1.14204, 73.2864)
+shape = SubResource("BoxShape3D_482rj")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Layer4_Hill" index="13"]
+transform = Transform3D(0.998532, 0.0016093, 0.0541342, -0.000648862, 0.999842, -0.0177547, -0.0541543, 0.0176935, 0.998376, -137.615, 1.63137, 78.672)
+shape = SubResource("BoxShape3D_iuvkn")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Layer4_Hill" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.844, -6.87357, -1.44906)
+shape = SubResource("BoxShape3D_efq4n")
+
+[node name="Layer5_Hill" type="StaticBody3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.96, 0, 29.5304)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layer5_Hill" index="0"]
+transform = Transform3D(0.87759, 0, 0.479412, 0, 1, 0, -0.479412, 0, 0.87759, 62.2509, 3.14555, 0.121475)
+shape = SubResource("BoxShape3D_vt43g")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer5_Hill" index="1"]
+transform = Transform3D(0.985076, 0, -0.172118, 0, 1, 0, 0.172118, 0, 0.985076, 27.2314, 1.31995, 24.1928)
+shape = SubResource("BoxShape3D_3qtvo")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer5_Hill" index="2"]
+transform = Transform3D(0.953228, 0, 0.302253, 0, 1, 0, -0.302253, 0, 0.953228, 63.3619, 3.14886, 32.8604)
+shape = SubResource("BoxShape3D_qg0rt")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer5_Hill" index="3"]
+transform = Transform3D(0.98907, 0, -0.147447, 0, 1, 0, 0.147447, 0, 0.98907, -14.9893, 3.01697, 21.4482)
+shape = SubResource("BoxShape3D_wk034")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer5_Hill" index="4"]
+transform = Transform3D(0.999991, 0, 0.00420623, 0, 1, 0, -0.00420623, 0, 0.999991, -52.1862, 3.17554, 0.28841)
+shape = SubResource("BoxShape3D_gg0pn")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer5_Hill" index="5"]
+transform = Transform3D(0.993455, 0, 0.114226, 0, 1, 0, -0.114226, 0, 0.993455, -4.8179, -3.08938, -31.173)
+shape = SubResource("BoxShape3D_4vv8j")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer5_Hill" index="6"]
+transform = Transform3D(0.822601, 0, -0.568619, 0, 1, 0, 0.568619, 0, 0.822601, 29.756, 3.34552, -52.4666)
+shape = SubResource("BoxShape3D_yf0ey")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Layer5_Hill" index="7"]
+transform = Transform3D(0.991273, 0, 0.131824, 0, 1, 0, -0.131824, 0, 0.991273, 2.7768, 3.02652, -44.6245)
+shape = SubResource("BoxShape3D_dw3n7")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Layer5_Hill" index="8"]
+transform = Transform3D(0.933261, 0, 0.359199, 0, 1, 0, -0.359199, 0, 0.933261, -50.2297, 2.17422, -38.242)
+shape = SubResource("BoxShape3D_ng6f2")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Layer5_Hill" index="9"]
+transform = Transform3D(0.999754, -0.0161261, 0.0152342, 0.0161243, 0.99987, 0.0002457, -0.0152361, 0, 0.999884, -43.2047, 3.64924, 3.40399)
+shape = SubResource("BoxShape3D_0fmsc")
+
+[node name="Layer6_Hill" type="StaticBody3D" parent="." index="8"]

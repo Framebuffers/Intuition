@@ -1,28 +1,116 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8aolptgi6jrj"]
+[gd_scene load_steps=13 format=3 uid="uid://c8aolptgi6jrj"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
+[ext_resource type="PackedScene" uid="uid://c6q5tucmpnnvc" path="res://Scenarios/terrain_textured.tscn" id="2_imfiy"]
 [ext_resource type="PackedScene" uid="uid://b2mf0blfos800" path="res://UserInterface/Reticle.tscn" id="2_jtwl3"]
 [ext_resource type="PackedScene" uid="uid://d1rcod6nig2gj" path="res://UserInterface/GUIPanel2D.tscn" id="2_thtg6"]
+[ext_resource type="Shader" path="res://Shader/absorption_water.gdshader" id="3_f2jab"]
+[ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
+[ext_resource type="Environment" uid="uid://dp6s2mqmdxa14" path="res://Scenarios/Intuition.tres" id="5_pvwm4"]
 [ext_resource type="PackedScene" uid="uid://c8q8pw4pbvj80" path="res://Cameras/ExteriorLighting.tscn" id="6_ligor"]
-[ext_resource type="PackedScene" uid="uid://uy77m4fc6fdo" path="res://Scenarios/TestHouseScene.tscn" id="6_luucv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uiswn"]
+size = Vector3(85.0774, 1, 107.225)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxkp2"]
+render_priority = 0
+shader = ExtResource("3_f2jab")
+shader_parameter/absorption_color = Color(1, 0.35, 0, 1)
+shader_parameter/fresnel_radius = 0.14
+shader_parameter/fresnel_color = Color(0, 0.57, 0.72, 1)
+shader_parameter/roughness = 0.15
+shader_parameter/specular = 0.25
+shader_parameter/depth_distance = 25.0
+shader_parameter/beers_law = 1.6
+shader_parameter/displacement_strength = 0.3
+shader_parameter/displacement_scroll_speed = 0.1
+shader_parameter/displacement_scroll_offset = Vector2(-0.2, 0.3)
+shader_parameter/displacement_scale_offset = 0.5
+shader_parameter/displacement_scale = Vector2(0.04, 0.04)
+shader_parameter/edge_thickness = 0.711
+shader_parameter/edge_speed = 0.703
+shader_parameter/edge_noise_scale = Vector2(0.4, 0.4)
+shader_parameter/influence_size = 1.4
+shader_parameter/player_wave_frequenzy = 10.0
+shader_parameter/player_wave_speed = 5.0
+shader_parameter/caustic_size = 5.45
+shader_parameter/caustic_range = 47.5
+shader_parameter/caustic_strength = 0.08
+shader_parameter/ssr_mix_strength = 0.61
+shader_parameter/ssr_travel = 47.0
+shader_parameter/ssr_resolution_near = 1.0
+shader_parameter/ssr_resolution_far = 5.0
+shader_parameter/ssr_tolerance = 1.0
+shader_parameter/refraction_strength = 2.84
+shader_parameter/normal_map_strength = 1.65
+shader_parameter/scroll_speed = 0.7
+shader_parameter/scroll_offset = Vector2(0.1, -0.3)
+shader_parameter/scale_offset = 0.5
+shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_31saq"]
+material = SubResource("ShaderMaterial_dxkp2")
+flip_faces = true
+size = Vector2(1500, 1500)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_dksua")
 
-[node name="GUIPanel2D" parent="." instance=ExtResource("2_thtg6")]
+[node name="PlayerManager" type="Node3D" parent="."]
+
+[node name="ScreenManager" type="Node" parent="."]
+
+[node name="SceneManager" type="Node3D" parent="ScreenManager"]
+
+[node name="Terrain" parent="ScreenManager/SceneManager" instance=ExtResource("2_imfiy")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ScreenManager/SceneManager"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/SceneManager/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.210037, -0.634662, 5.13342)
+shape = SubResource("BoxShape3D_uiswn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/SceneManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.111848, 0)
+mesh = SubResource("PlaneMesh_31saq")
+
+[node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
+
+[node name="Lighting2" parent="ScreenManager/EnvironmentManager" instance=ExtResource("6_ligor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ScreenManager/EnvironmentManager"]
+environment = ExtResource("5_pvwm4")
+
+[node name="UIManager" type="Control" parent="ScreenManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Reticle" parent="ScreenManager/UIManager" instance=ExtResource("2_jtwl3")]
+layout_mode = 1
+
+[node name="GUIPanel2D" parent="ScreenManager/UIManager" instance=ExtResource("2_thtg6")]
+layout_mode = 1
 mouse_filter = 2
 
 [node name="Player" parent="." instance=ExtResource("2_3t204")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -6)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.134662, -6)
 floor_stop_on_slope = false
 platform_floor_layers = 4294967044
 platform_wall_layers = 2
 
-[node name="Lighting2" parent="." instance=ExtResource("6_ligor")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+[node name="Camera" parent="Player/Head" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999391, -0.0348995, 0, 0.0348995, 0.999391, 0, 0, 0)
 
-[node name="Reticle" parent="." instance=ExtResource("2_jtwl3")]
+[node name="PictureFrame" parent="." instance=ExtResource("5_pu7cx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
 
-[node name="TestHouseScene" parent="." instance=ExtResource("6_luucv")]
+[connection signal="HideItem" from="Player" to="PictureFrame" method="HideMesh"]
+[connection signal="ShowItem" from="Player" to="PictureFrame" method="ShowMesh"]
+
+[editable path="Player"]
+[editable path="PictureFrame"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=74 format=3 uid="uid://uy77m4fc6fdo"]
+[gd_scene load_steps=73 format=3 uid="uid://uy77m4fc6fdo"]
 
 [ext_resource type="PackedScene" uid="uid://b6mr86b87urxw" path="res://Scenarios/House.tscn" id="1_myire"]
-[ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="2_lp3go"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_thk1s"]
 size = Vector3(4.97424, 6.42242, 0.502533)
@@ -226,9 +225,6 @@ size = Vector3(1.01367, 0.224609, 0.596802)
 [node name="Meshes" parent="." instance=ExtResource("1_myire")]
 
 [node name="Items" type="Node3D" parent="."]
-
-[node name="PictureFrame" parent="Items" instance=ExtResource("2_lp3go")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
 
 [node name="Walls" type="StaticBody3D" parent="."]
 collision_layer = 2

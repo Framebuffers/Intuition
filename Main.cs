@@ -11,10 +11,10 @@ public partial class Main : Node3D
   // Called when the node enters the scene tree for the first time.
   public override void _Ready()
   {
-    ViewportConfiguration.ConfigureScale(
-        GetWindow(),
-        1.0f,
-        Viewport.Scaling3DModeEnum.Nearest);
+    // ViewportConfiguration.ConfigureScale(
+    //     GetWindow(),
+    //     1.0f,
+    //     Viewport.Scaling3DModeEnum.Nearest);
 
     //  TextPanel = GetNode<PanelContainer>("/root/Main/GUIPanel2D/UserInterface/DebugPanel") as TextPanel;
   }
