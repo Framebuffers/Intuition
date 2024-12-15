@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8aolptgi6jrj"]
+[gd_scene load_steps=15 format=3 uid="uid://c8aolptgi6jrj"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
@@ -54,6 +54,12 @@ material = SubResource("ShaderMaterial_dxkp2")
 flip_faces = true
 size = Vector2(1500, 1500)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ugjq0"]
+size = Vector3(1, 0.33, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6gmmg"]
+size = Vector3(1, 0.33, 1)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_dksua")
 
@@ -66,15 +72,17 @@ script = ExtResource("1_dksua")
 [node name="Terrain" parent="ScreenManager/SceneManager" instance=ExtResource("2_imfiy")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ScreenManager/SceneManager"]
+visible = false
 collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/SceneManager/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.210037, -0.634662, 5.13342)
 shape = SubResource("BoxShape3D_uiswn")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/SceneManager"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/SceneManager/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.111848, 0)
 mesh = SubResource("PlaneMesh_31saq")
+skeleton = NodePath("../..")
 
 [node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
 
@@ -97,14 +105,37 @@ layout_mode = 1
 layout_mode = 1
 mouse_filter = 2
 
+[node name="StaticBody3D" type="StaticBody3D" parent="ScreenManager"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/StaticBody3D"]
+shape = SubResource("BoxShape3D_ugjq0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/StaticBody3D"]
+mesh = SubResource("BoxMesh_6gmmg")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="ScreenManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.812043, 0.360053, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/StaticBody3D2"]
+shape = SubResource("BoxShape3D_ugjq0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/StaticBody3D2"]
+mesh = SubResource("BoxMesh_6gmmg")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="ScreenManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71204, 0.660053, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/StaticBody3D3"]
+shape = SubResource("BoxShape3D_ugjq0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/StaticBody3D3"]
+mesh = SubResource("BoxMesh_6gmmg")
+
 [node name="Player" parent="." instance=ExtResource("2_3t204")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.134662, -6)
 floor_stop_on_slope = false
 platform_floor_layers = 4294967044
 platform_wall_layers = 2
-
-[node name="Camera" parent="Player/Head" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999391, -0.0348995, 0, 0.0348995, 0.999391, 0, 0, 0)
 
 [node name="PictureFrame" parent="." instance=ExtResource("5_pu7cx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
@@ -112,5 +143,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
 [connection signal="HideItem" from="Player" to="PictureFrame" method="HideMesh"]
 [connection signal="ShowItem" from="Player" to="PictureFrame" method="ShowMesh"]
 
-[editable path="Player"]
 [editable path="PictureFrame"]
