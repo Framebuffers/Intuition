@@ -108,13 +108,29 @@ test={
 3d_physics/layer_6="DialogueBoxes"
 3d_physics/layer_7="Stairs"
 3d_physics/layer_8="Lighting"
+3d_physics/layer_9="Trees"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
 textures/canvas_textures/default_texture_repeat=1
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
 scaling_3d/mode=3
+scaling_3d/scale=0.666
+scaling_3d/fsr_sharpness=0.0
+
+[shader_globals]
+
+wind_intensity={
+"type": "float",
+"value": 0.0
+}
+wind_direction={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+player_position={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}

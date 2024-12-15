@@ -1,4 +1,4 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://ckwf7u0hkahet"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://dp6s2mqmdxa14"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c7gcr"]
 sky_top_color = Color(0.85098, 0.533333, 0.137255, 1)
@@ -19,7 +19,7 @@ radiance_size = 0
 [resource]
 background_mode = 2
 background_color = Color(0.202723, 0.202723, 0.202723, 1)
-background_energy_multiplier = 0.33
+background_energy_multiplier = 0.12
 sky = SubResource("Sky_hwjs5")
 ambient_light_source = 3
 ambient_light_color = Color(0.550293, 0.550293, 0.550293, 0.121569)

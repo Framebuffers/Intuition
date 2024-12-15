@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=21 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://Players/Player.cs" id="1_5petg"]
 [ext_resource type="Shader" path="res://Shader/psx_camera_shader.gdshader" id="2_n6d4a"]
@@ -150,9 +150,6 @@ _data = {
 "RESET": SubResource("Animation_j8cx7"),
 "crouch": SubResource("Animation_5ec5e")
 }
-
-[sub_resource type="Resource" id="Resource_2sgdr"]
-metadata/__load_path__ = "res://Environment/Intuition_DE_R3.tres"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkv3f"]
 render_priority = 1
@@ -428,7 +425,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 0.999391, -0.0348995, 0, 0.0348995, 0.999391, 0, 0, 0)
-environment = SubResource("Resource_2sgdr")
 current = true
 
 [node name="ShaderSurface" type="MeshInstance3D" parent="Head/Camera"]
@@ -440,7 +436,7 @@ mesh = SubResource("QuadMesh_tbiar")
 libraries = {
 "": SubResource("AnimationLibrary_o0unb")
 }
-blend_times = [&"RESET", &"RESET", 0.5, &"RESET", &"walk", 0.5, &"walk", &"RESET", 0.5]
+blend_times = [&"walk", &"RESET", 0.5, &"RESET", &"walk", 0.5, &"RESET", &"RESET", 0.5]
 
 [node name="JumpAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {
