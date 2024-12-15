@@ -1,63 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8aolptgi6jrj"]
+[gd_scene load_steps=10 format=3 uid="uid://c8aolptgi6jrj"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
 [ext_resource type="PackedScene" uid="uid://c6q5tucmpnnvc" path="res://Scenarios/terrain_textured.tscn" id="2_imfiy"]
 [ext_resource type="PackedScene" uid="uid://b2mf0blfos800" path="res://UserInterface/Reticle.tscn" id="2_jtwl3"]
 [ext_resource type="PackedScene" uid="uid://d1rcod6nig2gj" path="res://UserInterface/GUIPanel2D.tscn" id="2_thtg6"]
-[ext_resource type="Shader" path="res://Shader/absorption_water.gdshader" id="3_f2jab"]
 [ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
 [ext_resource type="Environment" uid="uid://dp6s2mqmdxa14" path="res://Scenarios/Intuition.tres" id="5_pvwm4"]
 [ext_resource type="PackedScene" uid="uid://c8q8pw4pbvj80" path="res://Cameras/ExteriorLighting.tscn" id="6_ligor"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uiswn"]
-size = Vector3(85.0774, 1, 107.225)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxkp2"]
-render_priority = 0
-shader = ExtResource("3_f2jab")
-shader_parameter/absorption_color = Color(1, 0.35, 0, 1)
-shader_parameter/fresnel_radius = 0.14
-shader_parameter/fresnel_color = Color(0, 0.57, 0.72, 1)
-shader_parameter/roughness = 0.15
-shader_parameter/specular = 0.25
-shader_parameter/depth_distance = 25.0
-shader_parameter/beers_law = 1.6
-shader_parameter/displacement_strength = 0.3
-shader_parameter/displacement_scroll_speed = 0.1
-shader_parameter/displacement_scroll_offset = Vector2(-0.2, 0.3)
-shader_parameter/displacement_scale_offset = 0.5
-shader_parameter/displacement_scale = Vector2(0.04, 0.04)
-shader_parameter/edge_thickness = 0.711
-shader_parameter/edge_speed = 0.703
-shader_parameter/edge_noise_scale = Vector2(0.4, 0.4)
-shader_parameter/influence_size = 1.4
-shader_parameter/player_wave_frequenzy = 10.0
-shader_parameter/player_wave_speed = 5.0
-shader_parameter/caustic_size = 5.45
-shader_parameter/caustic_range = 47.5
-shader_parameter/caustic_strength = 0.08
-shader_parameter/ssr_mix_strength = 0.61
-shader_parameter/ssr_travel = 47.0
-shader_parameter/ssr_resolution_near = 1.0
-shader_parameter/ssr_resolution_far = 5.0
-shader_parameter/ssr_tolerance = 1.0
-shader_parameter/refraction_strength = 2.84
-shader_parameter/normal_map_strength = 1.65
-shader_parameter/scroll_speed = 0.7
-shader_parameter/scroll_offset = Vector2(0.1, -0.3)
-shader_parameter/scale_offset = 0.5
-shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_31saq"]
-material = SubResource("ShaderMaterial_dxkp2")
-flip_faces = true
-size = Vector2(1500, 1500)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ugjq0"]
-size = Vector3(1, 0.33, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6gmmg"]
 size = Vector3(1, 0.33, 1)
 
 [node name="Main" type="Node3D"]
@@ -70,19 +22,6 @@ script = ExtResource("1_dksua")
 [node name="SceneManager" type="Node3D" parent="ScreenManager"]
 
 [node name="Terrain" parent="ScreenManager/SceneManager" instance=ExtResource("2_imfiy")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ScreenManager/SceneManager"]
-visible = false
-collision_layer = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/SceneManager/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.210037, -0.634662, 5.13342)
-shape = SubResource("BoxShape3D_uiswn")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/SceneManager/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.111848, 0)
-mesh = SubResource("PlaneMesh_31saq")
-skeleton = NodePath("../..")
 
 [node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
 
@@ -110,26 +49,17 @@ mouse_filter = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/StaticBody3D"]
 shape = SubResource("BoxShape3D_ugjq0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/StaticBody3D"]
-mesh = SubResource("BoxMesh_6gmmg")
-
 [node name="StaticBody3D2" type="StaticBody3D" parent="ScreenManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.812043, 0.360053, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/StaticBody3D2"]
 shape = SubResource("BoxShape3D_ugjq0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/StaticBody3D2"]
-mesh = SubResource("BoxMesh_6gmmg")
-
 [node name="StaticBody3D3" type="StaticBody3D" parent="ScreenManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71204, 0.660053, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/StaticBody3D3"]
 shape = SubResource("BoxShape3D_ugjq0")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/StaticBody3D3"]
-mesh = SubResource("BoxMesh_6gmmg")
 
 [node name="Player" parent="." instance=ExtResource("2_3t204")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.134662, -6)
