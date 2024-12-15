@@ -108,6 +108,7 @@ test={
 3d_physics/layer_6="DialogueBoxes"
 3d_physics/layer_7="Stairs"
 3d_physics/layer_8="Lighting"
+3d_physics/layer_9="Trees"
 
 [rendering]
 
@@ -116,6 +117,7 @@ textures/canvas_textures/default_texture_repeat=1
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
 scaling_3d/mode=3
+scaling_3d/scale=0.666
 scaling_3d/fsr_sharpness=0.0
 
 [shader_globals]
