@@ -1,14 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8aolptgi6jrj"]
+[gd_scene load_steps=16 format=3 uid="uid://c8aolptgi6jrj"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
 [ext_resource type="PackedScene" uid="uid://c6q5tucmpnnvc" path="res://Scenarios/terrain_textured.tscn" id="2_imfiy"]
 [ext_resource type="PackedScene" uid="uid://b2mf0blfos800" path="res://UserInterface/Reticle.tscn" id="2_jtwl3"]
 [ext_resource type="PackedScene" uid="uid://d1rcod6nig2gj" path="res://UserInterface/GUIPanel2D.tscn" id="2_thtg6"]
+[ext_resource type="PackedScene" uid="uid://baxodtnr2hrms" path="res://Players/NPC/NPC.tscn" id="3_5xvgt"]
+[ext_resource type="Script" path="res://Gameplay/GameplayMainLoop.cs" id="3_kklcd"]
+[ext_resource type="Script" path="res://Gameplay/RigidBodyBehavior.cs" id="4_nqbc4"]
 [ext_resource type="PackedScene" uid="uid://er1d52s1ogds" path="res://Meshes/Rocks/Rocks_BG.tscn" id="5_0asay"]
 [ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
 [ext_resource type="Environment" uid="uid://dp6s2mqmdxa14" path="res://Scenarios/Intuition.tres" id="5_pvwm4"]
 [ext_resource type="PackedScene" uid="uid://c8q8pw4pbvj80" path="res://Cameras/ExteriorLighting.tscn" id="6_ligor"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f2dgg"]
+friction = 0.59
+bounce = 0.2
+absorbent = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_cgtch"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dpfpq"]
+radius = 0.758998
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_dksua")
@@ -20,8 +33,31 @@ script = ExtResource("1_dksua")
 [node name="SceneManager" type="Node3D" parent="ScreenManager"]
 
 [node name="Terrain" parent="ScreenManager/SceneManager" instance=ExtResource("2_imfiy")]
+script = ExtResource("3_kklcd")
 
 [node name="BackgroundItems" type="Node3D" parent="ScreenManager/SceneManager"]
+
+[node name="NPC" type="Node3D" parent="ScreenManager/SceneManager"]
+
+[node name="NPC" parent="ScreenManager/SceneManager/NPC" instance=ExtResource("3_5xvgt")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 4.12487, -0.00925672, 8.78291)
+collision_mask = 494
+
+[node name="RigidBody3D" type="RigidBody3D" parent="ScreenManager/SceneManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30046, -20.9323)
+collision_layer = 16
+collision_mask = 510
+physics_material_override = SubResource("PhysicsMaterial_f2dgg")
+script = ExtResource("4_nqbc4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/SceneManager/RigidBody3D"]
+mesh = SubResource("SphereMesh_cgtch")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/SceneManager/RigidBody3D"]
+shape = SubResource("CapsuleShape3D_dpfpq")
+
+[node name="MyTargetNode3DNode" type="Node3D" parent="ScreenManager/SceneManager/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.30046, 8.38599)
 
 [node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
 
