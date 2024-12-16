@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8g4lwgxuusch"]
 
 [ext_resource type="Script" path="res://Gameplay/Shooter.cs" id="1_uloeb"]
-[ext_resource type="PackedScene" uid="uid://dkvkuq6hhntl3" path="res://Items/projectile.tscn" id="2_14gjl"]
+[ext_resource type="PackedScene" uid="uid://dkvkuq6hhntl3" path="res://Items/ProjectileBase.tscn" id="2_14gjl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aiiph"]
 radius = 0.59822

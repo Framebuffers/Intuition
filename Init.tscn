@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://baxodtnr2hrms" path="res://Players/NPC/NPC.tscn" id="3_5xvgt"]
 [ext_resource type="Script" path="res://Gameplay/GameplayMainLoop.cs" id="3_kklcd"]
 [ext_resource type="PackedScene" uid="uid://er1d52s1ogds" path="res://Meshes/Rocks/Rocks_BG.tscn" id="5_0asay"]
-[ext_resource type="PackedScene" uid="uid://dkvkuq6hhntl3" path="res://Items/projectile.tscn" id="5_e8uu2"]
+[ext_resource type="PackedScene" uid="uid://dkvkuq6hhntl3" path="res://Items/ProjectileBase.tscn" id="5_e8uu2"]
 [ext_resource type="Script" path="res://OriginPoints/Spawner.cs" id="5_nb23g"]
 [ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
 [ext_resource type="Environment" uid="uid://dp6s2mqmdxa14" path="res://Scenarios/Intuition.tres" id="5_pvwm4"]
