@@ -14,7 +14,7 @@ public partial class GameplayMainLoop : Node3D
 	// 5. Calculate physics for objects being thrown.
 
 
-	private RigidBody3D ThrowableBody => GetNode<RigidBody3D>("/root/Main/ScreenManager/SceneManager/RigidBody3D");
+	// private RigidBody3D ThrowableBody => GetNode<RigidBody3D>("/root/Main/ScreenManager/SceneManager/RigidBody3D");
 	private Node3D Target => GetNode<Node3D>("/root/Main/Player/Head");
 	private Vector3 TargetPosition => Target.GlobalTransform.Origin;
 
@@ -41,19 +41,18 @@ public partial class GameplayMainLoop : Node3D
 	{
 	}
 
-
 	public override void _PhysicsProcess(double delta)
 	{
-		if (IsThrowable)
-		{
-			ThrowableBody.MoveRigidBodyTowardsObject(Target, (int)GD.RandRange(3.0, 10.0));
-			IsThrowable = false;
-		}
-		else
-		{
-			ThrowableBody.GravityScale = 1;
-			IsThrowable = true;
-		}
+		// if (IsThrowable)
+		// {
+		// 	ThrowableBody.MoveRigidBodyTowardsObject(Target, (int)GD.RandRange(3.0, 10.0));
+		// 	IsThrowable = false;
+		// }
+		// else
+		// {
+		// 	ThrowableBody.GravityScale = 1;
+		// 	IsThrowable = true;
+		// }
 	}
 
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8aolptgi6jrj"]
+[gd_scene load_steps=18 format=3 uid="uid://c8aolptgi6jrj"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
@@ -7,21 +7,28 @@
 [ext_resource type="PackedScene" uid="uid://d1rcod6nig2gj" path="res://UserInterface/GUIPanel2D.tscn" id="2_thtg6"]
 [ext_resource type="PackedScene" uid="uid://baxodtnr2hrms" path="res://Players/NPC/NPC.tscn" id="3_5xvgt"]
 [ext_resource type="Script" path="res://Gameplay/GameplayMainLoop.cs" id="3_kklcd"]
-[ext_resource type="Script" path="res://Gameplay/RigidBodyBehavior.cs" id="4_nqbc4"]
 [ext_resource type="PackedScene" uid="uid://er1d52s1ogds" path="res://Meshes/Rocks/Rocks_BG.tscn" id="5_0asay"]
+[ext_resource type="PackedScene" uid="uid://dkvkuq6hhntl3" path="res://Items/projectile.tscn" id="5_e8uu2"]
+[ext_resource type="Script" path="res://OriginPoints/Spawner.cs" id="5_nb23g"]
 [ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
 [ext_resource type="Environment" uid="uid://dp6s2mqmdxa14" path="res://Scenarios/Intuition.tres" id="5_pvwm4"]
 [ext_resource type="PackedScene" uid="uid://c8q8pw4pbvj80" path="res://Cameras/ExteriorLighting.tscn" id="6_ligor"]
+[ext_resource type="Script" path="res://Scenarios/WorldLimits.cs" id="7_7ihqv"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f2dgg"]
-friction = 0.59
-bounce = 0.2
-absorbent = true
+[sub_resource type="CylinderMesh" id="CylinderMesh_nb88w"]
+top_radius = 0.0
+bottom_radius = 0.095
+height = 0.3
 
-[sub_resource type="SphereMesh" id="SphereMesh_cgtch"]
+[sub_resource type="Curve3D" id="Curve3D_dw1dp"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -249.954, 0, -105.059, 0, 0, 0, 0, 0, 0, 35.1516, 0, -105.089, 0, 0, 0, 0, 0, 0, 35.1313, 0, 149.947, 0, 0, 0, 0, 0, 0, -249.959, 0, 149.905, 0, 0, 0, 0, 0, 0, -249.954, 0, -105.059),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dpfpq"]
-radius = 0.758998
+[sub_resource type="BoxShape3D" id="BoxShape3D_dyjsr"]
+size = Vector3(626, 162, 362)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_dksua")
@@ -43,26 +50,36 @@ script = ExtResource("3_kklcd")
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 4.12487, -0.00925672, 8.78291)
 collision_mask = 494
 
-[node name="RigidBody3D" type="RigidBody3D" parent="ScreenManager/SceneManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30046, -20.9323)
-collision_layer = 16
-collision_mask = 510
-physics_material_override = SubResource("PhysicsMaterial_f2dgg")
-script = ExtResource("4_nqbc4")
+[node name="OriginPoints" type="Node3D" parent="ScreenManager/SceneManager"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/SceneManager/RigidBody3D"]
-mesh = SubResource("SphereMesh_cgtch")
+[node name="Rock1" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints"]
+transform = Transform3D(-0.22325, 0, 0.974761, 0, 1, 0, -0.974761, 0, -0.22325, 0, 1.11903, -10.8698)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("5_e8uu2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/SceneManager/RigidBody3D"]
-shape = SubResource("CapsuleShape3D_dpfpq")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Rock1"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
 
-[node name="MyTargetNode3DNode" type="Node3D" parent="ScreenManager/SceneManager/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.30046, 8.38599)
+[node name="WorldLimits" type="Node3D" parent="ScreenManager/SceneManager"]
+
+[node name="Path3D" type="Path3D" parent="ScreenManager/SceneManager/WorldLimits"]
+curve = SubResource("Curve3D_dw1dp")
+
+[node name="BoundaryBox" type="Area3D" parent="ScreenManager/SceneManager/WorldLimits"]
+collision_layer = 512
+collision_mask = 17
+script = ExtResource("7_7ihqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/SceneManager/WorldLimits/BoundaryBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278, 38, 82)
+shape = SubResource("BoxShape3D_dyjsr")
 
 [node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
 
 [node name="Lighting2" parent="ScreenManager/EnvironmentManager" instance=ExtResource("6_ligor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+visible = false
 
 [node name="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/Lighting2" index="0"]
 transform = Transform3D(-0.351598, 0.652837, 0.670957, -0.568413, 0.420603, -0.707107, -0.743832, -0.629997, 0.223198, -3.573, 100, 0.653)
@@ -115,6 +132,7 @@ platform_wall_layers = 2
 [node name="PictureFrame" parent="." instance=ExtResource("5_pu7cx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
 
+[connection signal="body_exited" from="ScreenManager/SceneManager/WorldLimits/BoundaryBox" to="ScreenManager/SceneManager/WorldLimits/BoundaryBox" method="OnBodyExited"]
 [connection signal="HideItem" from="Player" to="PictureFrame" method="HideMesh"]
 [connection signal="ShowItem" from="Player" to="PictureFrame" method="ShowMesh"]
 

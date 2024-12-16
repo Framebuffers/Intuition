@@ -109,6 +109,7 @@ test={
 3d_physics/layer_7="Stairs"
 3d_physics/layer_8="Lighting"
 3d_physics/layer_9="Trees"
+3d_physics/layer_10="WorldBoundary"
 
 [rendering]
 
