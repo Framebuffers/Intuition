@@ -1,14 +1,34 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8aolptgi6jrj"]
+[gd_scene load_steps=18 format=3 uid="uid://c8aolptgi6jrj"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
 [ext_resource type="PackedScene" uid="uid://c6q5tucmpnnvc" path="res://Scenarios/terrain_textured.tscn" id="2_imfiy"]
 [ext_resource type="PackedScene" uid="uid://b2mf0blfos800" path="res://UserInterface/Reticle.tscn" id="2_jtwl3"]
 [ext_resource type="PackedScene" uid="uid://d1rcod6nig2gj" path="res://UserInterface/GUIPanel2D.tscn" id="2_thtg6"]
+[ext_resource type="PackedScene" uid="uid://baxodtnr2hrms" path="res://Players/NPC/NPC.tscn" id="3_5xvgt"]
 [ext_resource type="PackedScene" uid="uid://er1d52s1ogds" path="res://Meshes/Rocks/Rocks_BG.tscn" id="5_0asay"]
+[ext_resource type="PackedScene" uid="uid://dkvkuq6hhntl3" path="res://Items/ProjectileBase.tscn" id="5_e8uu2"]
+[ext_resource type="Script" path="res://OriginPoints/Spawner.cs" id="5_nb23g"]
 [ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
-[ext_resource type="Environment" uid="uid://dp6s2mqmdxa14" path="res://Scenarios/Intuition.tres" id="5_pvwm4"]
-[ext_resource type="PackedScene" uid="uid://c8q8pw4pbvj80" path="res://Cameras/ExteriorLighting.tscn" id="6_ligor"]
+[ext_resource type="PackedScene" uid="uid://bbo4etd3k77xt" path="res://Gameplay/Spawner_Player.tscn" id="6_tp7cu"]
+[ext_resource type="Script" path="res://Scenarios/WorldLimits.cs" id="7_7ihqv"]
+[ext_resource type="Script" path="res://Environment/EnvironmentManager.cs" id="8_tybcl"]
+[ext_resource type="Environment" uid="uid://dp6s2mqmdxa14" path="res://Environment/Intuition_Day_3.tres" id="9_gv18e"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nb88w"]
+top_radius = 0.0
+bottom_radius = 0.095
+height = 0.3
+
+[sub_resource type="Curve3D" id="Curve3D_dw1dp"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -249.954, 0, -105.059, 0, 0, 0, 0, 0, 0, 35.1516, 0, -105.089, 0, 0, 0, 0, 0, 0, 35.1313, 0, 149.947, 0, 0, 0, 0, 0, 0, -249.959, 0, 149.905, 0, 0, 0, 0, 0, 0, -249.954, 0, -105.059),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dyjsr"]
+size = Vector3(626, 162, 362)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_dksua")
@@ -23,37 +43,143 @@ script = ExtResource("1_dksua")
 
 [node name="BackgroundItems" type="Node3D" parent="ScreenManager/SceneManager"]
 
-[node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
+[node name="NPC" type="Node3D" parent="ScreenManager/SceneManager"]
 
-[node name="Lighting2" parent="ScreenManager/EnvironmentManager" instance=ExtResource("6_ligor")]
+[node name="NPC" parent="ScreenManager/SceneManager/NPC" groups=["NPC"] instance=ExtResource("3_5xvgt")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 3.12487, -0.00925672, -7.21709)
+collision_mask = 494
+
+[node name="OriginPoints" type="Node3D" parent="ScreenManager/SceneManager"]
+
+[node name="Spawner_Rocks" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.22325, 0, 0.974761, 0, 1, 0, -0.974761, 0, -0.22325, 0, 1.11903, -10.8698)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("5_e8uu2")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
+[node name="Spawner_Player" parent="ScreenManager/SceneManager/OriginPoints" instance=ExtResource("6_tp7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Spawner_Player2" parent="ScreenManager/SceneManager/OriginPoints" instance=ExtResource("6_tp7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 5.77145, 52)
+
+[node name="Spawner_Player3" parent="ScreenManager/SceneManager/OriginPoints" instance=ExtResource("6_tp7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 19.0358, 26)
+
+[node name="WorldLimits" type="Node3D" parent="ScreenManager/SceneManager"]
+
+[node name="Path3D" type="Path3D" parent="ScreenManager/SceneManager/WorldLimits"]
+curve = SubResource("Curve3D_dw1dp")
+
+[node name="BoundaryBox" type="Area3D" parent="ScreenManager/SceneManager/WorldLimits"]
+collision_layer = 512
+collision_mask = 17
+script = ExtResource("7_7ihqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/SceneManager/WorldLimits/BoundaryBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278, 38, 82)
+shape = SubResource("BoxShape3D_dyjsr")
+
+[node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
+script = ExtResource("8_tybcl")
+
+[node name="Editor" type="Node3D" parent="ScreenManager/EnvironmentManager"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/Editor"]
+transform = Transform3D(1, 0, 0, 0, 0.492424, 0.870356, 0, -0.870356, 0.492424, -55, 87, 0)
+visible = false
+light_energy = 0.782
+light_indirect_energy = 1.205
+light_volumetric_fog_energy = 11.822
+light_angular_distance = 23.63
+
+[node name="AlertLighting" type="Node3D" parent="ScreenManager/EnvironmentManager"]
+
+[node name="Red1" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/AlertLighting"]
+transform = Transform3D(1, 3.0571e-14, 1.74846e-07, 0, 1, -1.74846e-07, -1.74846e-07, 1.74846e-07, 1, -2.042, 100, -8.527)
+visible = false
+light_color = Color(0.857036, 0, 0.0940544, 1)
+light_energy = 5.0
+light_indirect_energy = 10.341
+light_volumetric_fog_energy = 7.433
+light_angular_distance = 86.71
+shadow_enabled = true
+shadow_normal_bias = 7.641
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 7.024
+shadow_blur = 2.231
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.669
+directional_shadow_split_2 = 0.433
+directional_shadow_split_3 = 0.247
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.205
+directional_shadow_max_distance = 317.5
+directional_shadow_pancake_size = 34.1
+
+[node name="Red2" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/AlertLighting"]
+transform = Transform3D(1, 3.0571e-14, 1.74846e-07, 0, 1, -1.74846e-07, -1.74846e-07, 1.74846e-07, 1, 0, 11, 0)
+visible = false
+light_color = Color(0.542239, 0, 0.0649838, 1)
+light_energy = 5.0
+
+[node name="DayLighting" type="Node3D" parent="ScreenManager/EnvironmentManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
-[node name="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/Lighting2" index="0"]
-transform = Transform3D(-0.351598, 0.652837, 0.670957, -0.568413, 0.420603, -0.707107, -0.743832, -0.629997, 0.223198, -3.573, 100, 0.653)
+[node name="Daylight_Orange" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/DayLighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.573, 100, 0.653)
+light_color = Color(0.85098, 0.533333, 0.113725, 1)
 light_energy = 7.153
 light_indirect_energy = 6.334
 light_volumetric_fog_energy = 1.025
 light_angular_distance = 29.99
 light_bake_mode = 1
+shadow_enabled = true
 shadow_bias = 5.357
 shadow_normal_bias = 5.718
+shadow_reverse_cull_face = true
 shadow_transmittance_bias = 1.691
 shadow_opacity = 0.37
 shadow_blur = 0.897
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.413
+directional_shadow_split_2 = 0.628
+directional_shadow_split_3 = 0.247
+directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.206
-directional_shadow_max_distance = 356.4
+directional_shadow_max_distance = 229.6
 directional_shadow_pancake_size = 16.7
 
-[node name="DirectionalLight3D5" parent="ScreenManager/EnvironmentManager/Lighting2" index="1"]
-transform = Transform3D(0.681998, -0.144557, -0.716925, 0, 0.980271, -0.197657, 0.731354, 0.134802, 0.668543, -14.042, 100, -8.527)
-light_energy = 2.641
-light_indirect_energy = 5.103
-directional_shadow_fade_start = 0.38
-directional_shadow_max_distance = 317.5
-directional_shadow_pancake_size = 34.1
+[node name="NightLighting" type="Node3D" parent="ScreenManager/EnvironmentManager"]
+
+[node name="Orange" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/NightLighting"]
+transform = Transform3D(-0.351598, 0.652837, 0.670957, -0.568413, 0.420603, -0.707107, -0.743832, -0.629997, 0.223198, -3.573, 100, 0.653)
+visible = false
+light_color = Color(0.190715, 0.143657, 0.309424, 1)
+light_energy = 1.995
+light_indirect_energy = 0.626
+light_volumetric_fog_energy = 3.8
+shadow_enabled = true
+shadow_bias = 0.357
+shadow_normal_bias = 5.718
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 1.691
+shadow_opacity = 0.37
+shadow_blur = 1.751
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.413
+directional_shadow_split_2 = 0.628
+directional_shadow_split_3 = 0.247
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.206
+directional_shadow_max_distance = 229.6
+directional_shadow_pancake_size = 16.7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="ScreenManager/EnvironmentManager"]
-environment = ExtResource("5_pvwm4")
+environment = ExtResource("9_gv18e")
 
 [node name="RocksBg" parent="ScreenManager/EnvironmentManager" instance=ExtResource("5_0asay")]
 
@@ -67,6 +193,7 @@ offset_bottom = 40.0
 layout_mode = 1
 
 [node name="GUIPanel2D" parent="ScreenManager/UIManager" instance=ExtResource("2_thtg6")]
+visible = false
 layout_mode = 1
 mouse_filter = 2
 
@@ -79,8 +206,6 @@ platform_wall_layers = 2
 [node name="PictureFrame" parent="." instance=ExtResource("5_pu7cx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
 
+[connection signal="body_exited" from="ScreenManager/SceneManager/WorldLimits/BoundaryBox" to="ScreenManager/SceneManager/WorldLimits/BoundaryBox" method="OnBodyExited"]
 [connection signal="HideItem" from="Player" to="PictureFrame" method="HideMesh"]
 [connection signal="ShowItem" from="Player" to="PictureFrame" method="ShowMesh"]
-
-[editable path="ScreenManager/EnvironmentManager/Lighting2"]
-[editable path="PictureFrame"]

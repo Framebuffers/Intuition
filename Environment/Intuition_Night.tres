@@ -1,0 +1,45 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cjcoqjlj6w46x"]
+
+[ext_resource type="Shader" path="res://starry_sky.gdshader" id="1_8qfdq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5llc6"]
+shader = ExtResource("1_8qfdq")
+shader_parameter/sky_color = Color(0.0547231, 0.0816669, 0.159636, 1)
+shader_parameter/star_base_color = Color(0.8, 1, 0.3, 1)
+shader_parameter/star_hue_offset = 0.544
+shader_parameter/star_intensity = 0.1
+shader_parameter/layer_scale = 2.188
+shader_parameter/layer_scale_step = 19.375
+shader_parameter/layers_count = 3
+
+[sub_resource type="Sky" id="Sky_vdnub"]
+sky_material = SubResource("ShaderMaterial_5llc6")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_vdnub")
+ambient_light_color = Color(0.0333354, 0.09772, 0.254556, 0.729412)
+ambient_light_sky_contribution = 0.2
+ambient_light_energy = 1.25
+reflected_light_source = 2
+tonemap_exposure = 0.85
+ssr_fade_in = 0.713524
+fog_enabled = true
+fog_light_color = Color(0.0530045, 2.44865e-05, 0.220244, 1)
+fog_light_energy = 4.72
+fog_density = 0.011
+fog_sky_affect = 0.335
+fog_height = 1.8
+fog_height_density = 0.5
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.056
+volumetric_fog_albedo = Color(0.143127, 0.0628804, 0.248383, 1)
+volumetric_fog_emission_energy = 328.98
+volumetric_fog_gi_inject = 1.71
+volumetric_fog_anisotropy = -0.01
+volumetric_fog_length = 24.5
+volumetric_fog_detail_spread = 1.36604
+volumetric_fog_ambient_inject = 1.37
+volumetric_fog_sky_affect = 0.696
+volumetric_fog_temporal_reprojection_amount = 0.886
+adjustment_enabled = true
