@@ -8,6 +8,11 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+warnings/check_angle_interpolation_type_conflicting=false
+
 [application]
 
 config/name="Intuition"
@@ -18,6 +23,11 @@ config/icon="res://icon.svg"
 [dotnet]
 
 project/assembly_name="Intuition"
+
+[global_group]
+
+Spawners="Points to spawn objects from."
+Rocks=""
 
 [input]
 

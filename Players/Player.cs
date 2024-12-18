@@ -248,8 +248,7 @@ public sealed partial class Player : StairsCharacter
 	{
 		HandlePause();
 		ClampCamera();
-
-
+		HandleTimestop();
 	}
 
 	private void ShootProjectile()
