@@ -80,4 +80,3 @@ void fragment(){
 	}
 	ALBEDO = final_color;
 }
-

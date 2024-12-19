@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=18 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://Players/Player.cs" id="1_5petg"]
-[ext_resource type="Shader" path="res://Shader/psx_camera_shader.gdshader" id="2_n6d4a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -150,25 +149,6 @@ _data = {
 "RESET": SubResource("Animation_j8cx7"),
 "crouch": SubResource("Animation_5ec5e")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkv3f"]
-render_priority = 1
-shader = ExtResource("2_n6d4a")
-shader_parameter/enable_fog = true
-shader_parameter/fog_color = Color(0.941176, 0.831373, 0.635294, 1)
-shader_parameter/noise_color = Color(0.288627, 0.271554, 0.261308, 1)
-shader_parameter/fog_distance = 83.252
-shader_parameter/fog_fade_range = 260.0
-shader_parameter/enable_noise = true
-shader_parameter/noise_time_fac = 3.482
-shader_parameter/enable_color_limitation = true
-shader_parameter/color_levels = 64
-shader_parameter/enable_dithering = true
-shader_parameter/dither_strength = 0.218
-
-[sub_resource type="QuadMesh" id="QuadMesh_tbiar"]
-material = SubResource("ShaderMaterial_xkv3f")
-size = Vector2(2, 2)
 
 [sub_resource type="Animation" id="Animation_gh776"]
 resource_name = "RESET"
@@ -402,18 +382,24 @@ _data = {
 radius = 0.2
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.270291, 0)
-collision_mask = 126
-floor_max_angle = 1.0472
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.471679, 0)
+collision_mask = 511
+floor_block_on_wall = false
+platform_floor_layers = 4294967042
+platform_wall_layers = 4
+safe_margin = 0.2
 script = ExtResource("1_5petg")
+_stepHeight = 0.1
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_jw1de")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_uy03j")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CrouchAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -427,16 +413,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 transform = Transform3D(1, 0, 0, 0, 0.999391, -0.0348995, 0, 0.0348995, 0.999391, 0, 0, 0)
 current = true
 
-[node name="ShaderSurface" type="MeshInstance3D" parent="Head/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0328197, -0.939834)
-visible = false
-mesh = SubResource("QuadMesh_tbiar")
-
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {
 "": SubResource("AnimationLibrary_o0unb")
 }
-blend_times = [&"walk", &"RESET", 0.5, &"RESET", &"walk", 0.5, &"RESET", &"RESET", 0.5]
+blend_times = [&"RESET", &"RESET", 0.5, &"RESET", &"walk", 0.5, &"walk", &"RESET", 0.5]
 
 [node name="JumpAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {
@@ -445,7 +426,7 @@ libraries = {
 speed_scale = 4.0
 
 [node name="CrouchCeilingDetection" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36798, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 shape = SubResource("SphereShape3D_k4wwl")
 target_position = Vector3(0, 0, 0)
 collision_mask = 4

@@ -70,7 +70,7 @@ public partial class Main : Node3D
 		$"Spawners: {spawners.Count()}. Selected: {randLocation} at {spawners.ElementAt(randLocation).GlobalPosition}".ToConsole();
 		// debug
 
-		Player.GlobalPosition = spawners.ElementAt(randLocation).GlobalPosition;
+		// Player.GlobalPosition = spawners.ElementAt(randLocation).GlobalPosition;
 
 		// choose starting point, environment and randomise lighting.
 		// choose environment based on time of day
@@ -94,6 +94,8 @@ public partial class Main : Node3D
 		// GameEnvironment = (EnvironmentMode)randEnv;
 		EnvironmentManager.LoadEnvironment(GD.RandRange(0, 6), GD.RandRange(0, 1));
 		$"Environment number: {GameEnvironment}, EnvironmentResource: {WorldEnvironment.Environment.ResourcePath}".ToConsole();
+
+
 
 
 		// randomise time until game mode changes
@@ -130,8 +132,9 @@ public partial class Main : Node3D
 		if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Keycode == Key.K)
 		{
 			// EnvironmentManager.TimeToChangeLightingMode = 5.o;
-			EnvironmentManager.LoadEnvironment(GD.RandRange(0, 6), GD.RandRange(0, 1));
-			$"Environment number: {GameEnvironment}, EnvironmentResource: {WorldEnvironment.Environment.ResourcePath}".ToConsole();
+			// EnvironmentManager.LoadEnvironment(GD.RandRange(0, 6), GD.RandRange(0, 1));
+			// $"Environment number: {GameEnvironment}, EnvironmentResource: {WorldEnvironment.Environment.ResourcePath}".ToConsole();
+			Player.EnableTimestop = true;
 
 		}
 

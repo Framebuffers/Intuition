@@ -1,43 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://c8aolptgi6jrj"]
-
-[ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
-[ext_resource type="PackedScene" uid="uid://c6q5tucmpnnvc" path="res://Scenarios/terrain_textured.tscn" id="2_imfiy"]
-[ext_resource type="PackedScene" uid="uid://b2mf0blfos800" path="res://UserInterface/Reticle.tscn" id="2_jtwl3"]
-[ext_resource type="PackedScene" uid="uid://d1rcod6nig2gj" path="res://UserInterface/GUIPanel2D.tscn" id="2_thtg6"]
-[ext_resource type="PackedScene" uid="uid://baxodtnr2hrms" path="res://Players/NPC/NPC.tscn" id="3_5xvgt"]
-[ext_resource type="PackedScene" uid="uid://dib2omijmp43" path="res://Meshes/Terrain/Bridge_Collision.tscn" id="3_lw1gl"]
-[ext_resource type="PackedScene" uid="uid://vawqbhei30ls" path="res://Objects/car.tscn" id="4_l528o"]
-[ext_resource type="PackedScene" uid="uid://er1d52s1ogds" path="res://Meshes/Rocks/Rocks_BG.tscn" id="5_0asay"]
-[ext_resource type="PackedScene" uid="uid://dkvkuq6hhntl3" path="res://Items/ProjectileBase.tscn" id="5_e8uu2"]
-[ext_resource type="Script" path="res://OriginPoints/Spawner.cs" id="5_nb23g"]
-[ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
-[ext_resource type="PackedScene" uid="uid://bbo4etd3k77xt" path="res://Gameplay/Spawner_Player.tscn" id="6_tp7cu"]
-[ext_resource type="Script" path="res://Scenarios/WorldLimits.cs" id="7_7ihqv"]
-[ext_resource type="Script" path="res://Environment/EnvironmentManager.cs" id="8_tybcl"]
-[ext_resource type="Environment" uid="uid://cjcoqjlj6w46x" path="res://Environment/Intuition_Night.tres" id="12_f1nnh"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_nb88w"]
-top_radius = 0.0
-bottom_radius = 0.095
-height = 0.3
-
-[sub_resource type="Curve3D" id="Curve3D_dw1dp"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -249.954, 0, -105.059, 0, 0, 0, 0, 0, 0, 35.1516, 0, -105.089, 0, 0, 0, 0, 0, 0, 35.1313, 0, 149.947, 0, 0, 0, 0, 0, 0, -249.959, 0, 149.905, 0, 0, 0, 0, 0, 0, -249.954, 0, -105.059),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dyjsr"]
-size = Vector3(626, 162, 362)
-
-[sub_resource type="Curve3D" id="Curve3D_en1kx"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.0464011, 0, -5.95258, 0, 0, 0, 0, 0, 0, 3.83663, 0, -10.1518, 0, 0, 0, 0, 0, 0, 9.45381, 0, -9.06112, 0, 0, 0, 0, 0, 0, 11.4171, 0, -4.12564, 0, 0, 0, 0, 0, 0, 16.1344, 0, -8.05221, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
+[gd_scene load_steps=63 format=4 uid="uid://jgta4rnlc73b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wovx"]
 
@@ -593,507 +554,276 @@ top_radius = 0.44
 bottom_radius = 3.765
 height = 100.0
 
-[node name="Main" type="Node3D"]
-script = ExtResource("1_dksua")
-
-[node name="PlayerManager" type="Node3D" parent="."]
-
-[node name="ScreenManager" type="Node" parent="."]
-
-[node name="SceneManager" type="Node3D" parent="ScreenManager"]
-
-[node name="Terrain" parent="ScreenManager/SceneManager" instance=ExtResource("2_imfiy")]
-
-[node name="BackgroundItems" type="Node3D" parent="ScreenManager/SceneManager"]
-
-[node name="RocksBg" parent="ScreenManager/SceneManager/BackgroundItems" instance=ExtResource("5_0asay")]
-
-[node name="BridgeCollision" parent="ScreenManager/SceneManager/BackgroundItems" instance=ExtResource("3_lw1gl")]
-
-[node name="NPC" type="Node3D" parent="ScreenManager/SceneManager"]
-
-[node name="NPC" parent="ScreenManager/SceneManager/NPC" groups=["NPC"] instance=ExtResource("3_5xvgt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12487, -0.0133398, -7.21709)
-collision_mask = 494
-PathToFollow = NodePath("../../NPCPaths/Path3D/PathFollow3D")
-
-[node name="OriginPoints" type="Node3D" parent="ScreenManager/SceneManager"]
-
-[node name="Spawner_Rocks" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
-transform = Transform3D(-0.22325, 0, 0.974761, 0, 1, 0, -0.974761, 0, -0.22325, 0, 1.11903, -10.8698)
-script = ExtResource("5_nb23g")
-Projectile = ExtResource("5_e8uu2")
-
-[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks"]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
-mesh = SubResource("CylinderMesh_nb88w")
-
-[node name="Spawner_Player" parent="ScreenManager/SceneManager/OriginPoints" instance=ExtResource("6_tp7cu")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -46, 12.0199, 28)
-
-[node name="Spawner_Player2" parent="ScreenManager/SceneManager/OriginPoints" instance=ExtResource("6_tp7cu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 5.77145, 52)
-
-[node name="Spawner_Player3" parent="ScreenManager/SceneManager/OriginPoints" instance=ExtResource("6_tp7cu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101, 19.0358, 26)
-
-[node name="Spawner_Car" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7, -25)
-script = ExtResource("5_nb23g")
-Projectile = ExtResource("4_l528o")
-
-[node name="WorldLimits" type="Node3D" parent="ScreenManager/SceneManager"]
-
-[node name="Path3D" type="Path3D" parent="ScreenManager/SceneManager/WorldLimits"]
-curve = SubResource("Curve3D_dw1dp")
-
-[node name="BoundaryBox" type="Area3D" parent="ScreenManager/SceneManager/WorldLimits"]
-collision_layer = 512
-collision_mask = 17
-script = ExtResource("7_7ihqv")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreenManager/SceneManager/WorldLimits/BoundaryBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278, 38, 82)
-shape = SubResource("BoxShape3D_dyjsr")
-debug_color = Color(0, 0.6, 0.7, 0.42)
-
-[node name="NPCPaths" type="Node3D" parent="ScreenManager/SceneManager"]
-
-[node name="Path3D" type="Path3D" parent="ScreenManager/SceneManager/NPCPaths"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.063178, 0)
-curve = SubResource("Curve3D_en1kx")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="ScreenManager/SceneManager/NPCPaths/Path3D"]
-transform = Transform3D(-0.999956, 0, 0.00779478, 0, 1, 0, -0.00779478, 0, -0.999956, 0, 0, 0)
-use_model_front = true
-
-[node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
-script = ExtResource("8_tybcl")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager"]
-transform = Transform3D(0.476232, 0.876579, 0.0693743, -0.0266946, -0.0644466, 0.997564, 0.878915, -0.476923, -0.00729153, -80, 60, -8)
-visible = false
-layers = 4
-light_energy = 0.5
-light_indirect_energy = 1.28
-light_volumetric_fog_energy = 11.825
-shadow_enabled = true
-shadow_transmittance_bias = -0.34
-directional_shadow_mode = 0
-directional_shadow_split_1 = 0.005
-directional_shadow_split_3 = 0.507
-directional_shadow_fade_start = 0.735
-sky_mode = 2
-
-[node name="Editor" type="Node3D" parent="ScreenManager/EnvironmentManager"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/Editor"]
-transform = Transform3D(1, 0, 0, 0, 0.492424, 0.870356, 0, -0.870356, 0.492424, -55, 87, 0)
-visible = false
-layers = 4
-light_energy = 0.737
-light_indirect_energy = 1.205
-light_volumetric_fog_energy = 11.822
-light_angular_distance = 23.63
-light_cull_mask = 4294967291
-sky_mode = 2
-
-[node name="AlertLighting" type="Node3D" parent="ScreenManager/EnvironmentManager"]
-
-[node name="Red1" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/AlertLighting"]
-transform = Transform3D(1, 3.0571e-14, 1.74846e-07, 0, 1, -1.74846e-07, -1.74846e-07, 1.74846e-07, 1, -2.042, 100, -8.527)
-visible = false
-layers = 4
-light_color = Color(0.857036, 0, 0.0940544, 1)
-light_energy = 3.432
-light_indirect_energy = 3.425
-light_volumetric_fog_energy = 6.392
-light_angular_distance = 75.27
-shadow_enabled = true
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = 7.024
-shadow_opacity = 0.63
-shadow_blur = 10.0
-directional_shadow_mode = 1
-directional_shadow_split_1 = 0.669
-directional_shadow_split_2 = 0.433
-directional_shadow_split_3 = 0.247
-directional_shadow_blend_splits = true
-directional_shadow_fade_start = 0.338
-directional_shadow_max_distance = 25.4
-directional_shadow_pancake_size = 11.4
-
-[node name="Red2" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/AlertLighting"]
-transform = Transform3D(1, 3.0571e-14, 1.74846e-07, 0, 1, -1.74846e-07, -1.74846e-07, 1.74846e-07, 1, 0, 11, 0)
-visible = false
-layers = 4
-light_color = Color(0.529215, 0, 0.13363, 1)
-light_energy = 3.005
-light_indirect_energy = 2.756
-light_volumetric_fog_energy = 14.83
-light_angular_distance = 78.1
-light_cull_mask = 4294967291
-directional_shadow_split_1 = 0.185
-directional_shadow_fade_start = 0.666
-directional_shadow_max_distance = 21.5
-directional_shadow_pancake_size = 18.4
-sky_mode = 2
-
-[node name="DayLighting" type="Node3D" parent="ScreenManager/EnvironmentManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-
-[node name="Daylight_Orange" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/DayLighting"]
-transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, -3.573, 100, 0.653)
-visible = false
-layers = 4
-light_energy = 6.925
-light_indirect_energy = 0.85
-light_volumetric_fog_energy = 15.182
-light_bake_mode = 1
-light_cull_mask = 4294967291
-shadow_bias = 1.564
-shadow_normal_bias = 4.353
-shadow_transmittance_bias = -2.479
-shadow_blur = 10.0
-
-[node name="NightLighting" type="Node3D" parent="ScreenManager/EnvironmentManager"]
-
-[node name="Orange" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/NightLighting"]
-transform = Transform3D(-4.37114e-08, -0.546102, -0.837719, 0, -0.837718, 0.546102, -1, 2.38709e-08, 3.66179e-08, -3.573, 100, 0.653)
-layers = 4
-light_color = Color(0.190715, 0.143657, 0.309424, 1)
-light_energy = 0.1
-light_indirect_energy = 7.646
-light_volumetric_fog_energy = 4.645
-light_angular_distance = 90.0
-shadow_enabled = true
-shadow_bias = 0.0
-shadow_transmittance_bias = 1.94
-directional_shadow_mode = 0
-directional_shadow_split_1 = 0.413
-directional_shadow_split_2 = 0.628
-directional_shadow_split_3 = 0.247
-directional_shadow_blend_splits = true
-directional_shadow_fade_start = 0.0
-directional_shadow_max_distance = 260.6
-directional_shadow_pancake_size = 16.7
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="ScreenManager/EnvironmentManager"]
-environment = ExtResource("12_f1nnh")
-
-[node name="UIManager" type="Control" parent="ScreenManager"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Reticle" parent="ScreenManager/UIManager" instance=ExtResource("2_jtwl3")]
-layout_mode = 1
-
-[node name="GUIPanel2D" parent="ScreenManager/UIManager" instance=ExtResource("2_thtg6")]
-visible = false
-layout_mode = 1
-mouse_filter = 2
-
-[node name="Player" parent="." instance=ExtResource("2_3t204")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.092472, -6)
-platform_floor_layers = 4294967044
-platform_wall_layers = 2
-
-[node name="PictureFrame" parent="." instance=ExtResource("5_pu7cx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
+[node name="Lighthouse" type="Node3D"]
 
 [node name="Lighthouse" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.8764, 16.3592, 29.7)
 
-[node name="Lighthouse" type="Node3D" parent="Lighthouse"]
-
-[node name="Node" type="Node3D" parent="Lighthouse/Lighthouse"]
+[node name="Node" type="Node3D" parent="Lighthouse"]
 transform = Transform3D(1, 0, 0, 0, 4.48966e-11, 1, 0, -1, 4.48966e-11, 0, 0, 0)
 
-[node name="Active View" type="Node3D" parent="Lighthouse/Lighthouse/Node"]
+[node name="Active View" type="Node3D" parent="Lighthouse/Node"]
 transform = Transform3D(0.928077, -0.120194, 0.352458, 0.372389, 0.29955, -0.878406, 0, 0.946479, 0.322764, 12.3073, -21.7059, 24.5958)
 
-[node name="Node2" type="Node3D" parent="Lighthouse/Lighthouse/Node"]
+[node name="Node2" type="Node3D" parent="Lighthouse/Node"]
 transform = Transform3D(0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, -7.75, -5, 0)
 
-[node name="Node3" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node3" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.11, 295.276, 127.953)
 
-[node name="3DGeom-1" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node3"]
+[node name="3DGeom-1" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node3"]
 layers = 4
 mesh = SubResource("ArrayMesh_3qlhq")
 skeleton = NodePath("")
 
-[node name="Node4" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node4" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.4252, 0, 0)
 
-[node name="Node5" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2/Node4"]
+[node name="Node5" type="Node3D" parent="Lighthouse/Node/Node2/Node4"]
 
-[node name="3DGeom-2" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node4/Node5"]
+[node name="3DGeom-2" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node4/Node5"]
 layers = 4
 mesh = SubResource("ArrayMesh_ri4fk")
 skeleton = NodePath("")
 
-[node name="Node6" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2/Node4/Node5"]
+[node name="Node6" type="Node3D" parent="Lighthouse/Node/Node2/Node4/Node5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.84252)
 
-[node name="3DGeom-3" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node4/Node5/Node6"]
+[node name="3DGeom-3" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node4/Node5/Node6"]
 layers = 4
 mesh = SubResource("ArrayMesh_j1gaa")
 skeleton = NodePath("")
 
-[node name="Node7" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2/Node4"]
+[node name="Node7" type="Node3D" parent="Lighthouse/Node/Node2/Node4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.84252)
 
-[node name="3DGeom-4" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node4/Node7"]
+[node name="3DGeom-4" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node4/Node7"]
 layers = 4
 mesh = SubResource("ArrayMesh_5fjrs")
 skeleton = NodePath("")
 
-[node name="Node8" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node8" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 196.85, 200.787, 521.654)
 
-[node name="3DGeom-5" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node8"]
+[node name="3DGeom-5" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node8"]
 layers = 4
 mesh = SubResource("ArrayMesh_wqdod")
 skeleton = NodePath("")
 
-[node name="Node9" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node9" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 196.85, 374.016, 521.654)
 
-[node name="3DGeom-6" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node9"]
+[node name="3DGeom-6" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node9"]
 layers = 4
 mesh = SubResource("ArrayMesh_av04e")
 skeleton = NodePath("")
 
-[node name="Node10" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node10" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 265.748, 157.48, 659.449)
 
-[node name="3DGeom-7" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node10"]
+[node name="3DGeom-7" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node10"]
 layers = 4
 mesh = SubResource("ArrayMesh_152iq")
 skeleton = NodePath("")
 
-[node name="Node11" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node11" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 196.85, 200.787, 265.748)
 
-[node name="3DGeom-8" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node11"]
+[node name="3DGeom-8" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node11"]
 layers = 4
 mesh = SubResource("ArrayMesh_jud0i")
 skeleton = NodePath("")
 
-[node name="Node12" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node12" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 472.441, 295.276, 501.969)
 
-[node name="3DGeom-9" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node12"]
+[node name="3DGeom-9" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node12"]
 layers = 4
 mesh = SubResource("ArrayMesh_qiols")
 skeleton = NodePath("")
 
-[node name="Node13" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node13" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.11, 295.276, 639.764)
 
-[node name="3DGeom-10" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node13"]
+[node name="3DGeom-10" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node13"]
 layers = 4
 mesh = SubResource("ArrayMesh_8m3i0")
 skeleton = NodePath("")
 
-[node name="Node14" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node14" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 196.85, 374.016, 9.84252)
 
-[node name="3DGeom-11" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node14"]
+[node name="3DGeom-11" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node14"]
 layers = 4
 mesh = SubResource("ArrayMesh_forin")
 skeleton = NodePath("")
 
-[node name="Node15" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node15" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 393.701, 295.276, 246.063)
 
-[node name="3DGeom-12" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node15"]
+[node name="3DGeom-12" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node15"]
 layers = 4
 mesh = SubResource("ArrayMesh_vmaar")
 skeleton = NodePath("")
 
-[node name="Node16" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node16" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.4252, 0, 0)
 
-[node name="3DGeom-13" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node16"]
+[node name="3DGeom-13" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node16"]
 layers = 4
 mesh = SubResource("ArrayMesh_j7l3e")
 skeleton = NodePath("")
 
-[node name="Node17" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node17" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.11, 295.276, 383.858)
 
-[node name="3DGeom-14" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node17"]
+[node name="3DGeom-14" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node17"]
 layers = 4
 mesh = SubResource("ArrayMesh_7fnpl")
 skeleton = NodePath("")
 
-[node name="Node18" type="Node3D" parent="Lighthouse/Lighthouse/Node/Node2"]
+[node name="Node18" type="Node3D" parent="Lighthouse/Node/Node2"]
 transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 196.85, 374.016, 265.748)
 
-[node name="3DGeom-15" type="MeshInstance3D" parent="Lighthouse/Lighthouse/Node/Node2/Node18"]
+[node name="3DGeom-15" type="MeshInstance3D" parent="Lighthouse/Node/Node2/Node18"]
 layers = 4
 mesh = SubResource("ArrayMesh_v4qh1")
 skeleton = NodePath("")
 
-[node name="Walls" type="StaticBody3D" parent="Lighthouse"]
+[node name="Walls" type="StaticBody3D" parent="."]
 collision_layer = 6
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Lighthouse/Walls"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4511, 9, -0.0112548)
 shape = SubResource("BoxShape3D_tr3po")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Lighthouse/Walls"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289368, 8.9628, -4.76538)
 shape = SubResource("BoxShape3D_71oet")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Lighthouse/Walls"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.99155, 9, -1.31152)
 shape = SubResource("BoxShape3D_g6ycv")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Lighthouse/Walls"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.73271, 9, 2.17261)
 shape = SubResource("BoxShape3D_jv4v0")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Lighthouse/Walls"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50043, 10.9299, 3.4553)
 shape = SubResource("BoxShape3D_0ktm0")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Lighthouse/Walls"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01129, 9.02881, 4.76798)
 shape = SubResource("BoxShape3D_xc4uq")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Lighthouse/Walls"]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0178223, 21.7645, -0.00109863)
 shape = SubResource("BoxShape3D_gftvu")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Lighthouse/Walls"]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 17.5, -2.4)
 shape = SubResource("BoxShape3D_vw4pb")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="Floors" type="StaticBody3D" parent="Lighthouse"]
+[node name="Floors" type="StaticBody3D" parent="."]
 collision_layer = 4
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212463, -0.20444, -0.0134277)
 shape = SubResource("BoxShape3D_byu21")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(0.829038, 0.559193, 0, -0.559193, 0.829038, 0, 0, 0, 1, 0.0569854, 1.66322, -3.621)
 shape = SubResource("BoxShape3D_gwtkn")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.845, 3.53, -1.275)
 shape = SubResource("BoxShape3D_hh6gc")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35697, 6.5, -1.27)
 shape = SubResource("BoxShape3D_hh6gc")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(0.843391, -0.5373, 0, 0.5373, 0.843391, 0, 0, 0, 1, -0.382295, 4.93081, 0.808358)
 shape = SubResource("BoxShape3D_gwtkn")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82626, 9.949, -1.275)
 shape = SubResource("BoxShape3D_hh6gc")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.38, 13.003, -1.3)
 shape = SubResource("BoxShape3D_hh6gc")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(0.85264, -0.522499, 0, 0.522499, 0.85264, 0, 0, 0, 1, -0.48916, 11.3744, 0.939)
 shape = SubResource("BoxShape3D_gwtkn")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(0.829038, 0.559193, 0, -0.559193, 0.829038, 0, 0, 0, 1, -0.141, 14.787, -3.566)
 shape = SubResource("BoxShape3D_gwtkn")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 16.5168, 1.02782)
 shape = SubResource("BoxShape3D_6hptk")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71933, 16.4682, -1.325)
 shape = SubResource("BoxShape3D_n5o8p")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, -6.05, -0.036, 1.247)
 shape = SubResource("BoxShape3D_k4gid")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.542, 0.069, 3.728)
 shape = SubResource("BoxShape3D_cwxtv")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="Lighthouse/Floors"]
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Floors"]
 transform = Transform3D(0.829038, 0.559193, 0, -0.559193, 0.829038, 0, 0, 0, 1, -0.0526765, 8.18698, -3.621)
 shape = SubResource("BoxShape3D_gwtkn")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Lighthouse"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.8, 0)
 mesh = SubResource("SphereMesh_o2l4g")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Lighthouse/MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(7.45058e-08, 1, 0, -1, 7.45058e-08, 0, 0, 0, 1, -50, 0, 0)
 layers = 4
 mesh = SubResource("CylinderMesh_pwihh")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lighthouse/MeshInstance3D/MeshInstance3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62939e-06, -51.4221, 0)
-layers = 4
-light_energy = 0.1
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 16.0
-light_size = 0.598
-light_specular = 1.05
-shadow_enabled = true
-shadow_bias = 2.661
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = 3.512
-shadow_blur = 10.0
-omni_range = 105.573
-omni_attenuation = -1.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lighthouse/MeshInstance3D/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
-layers = 4
-light_energy = 8.024
+light_energy = 4.122
 light_indirect_energy = 2.171
-light_volumetric_fog_energy = 16.0
-light_size = 0.366
-light_specular = 2.061
-light_cull_mask = 4294967291
-shadow_enabled = true
-omni_range = 18.692
-omni_shadow_mode = 0
+light_size = 1.13
+light_specular = 1.05
+omni_range = 76.0
+omni_attenuation = -3.51
 
-[connection signal="body_exited" from="ScreenManager/SceneManager/WorldLimits/BoundaryBox" to="ScreenManager/SceneManager/WorldLimits/BoundaryBox" method="OnBodyExited"]
-[connection signal="HideItem" from="Player" to="PictureFrame" method="HideMesh"]
-[connection signal="ShowItem" from="Player" to="PictureFrame" method="ShowMesh"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+light_energy = 9.78

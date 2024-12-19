@@ -1,36 +1,27 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://bc26x2hrxdjcm"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bc26x2hrxdjcm"]
 
-[ext_resource type="Shader" path="res://stylized_sky.gdshader" id="1_77kxa"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3qnct"]
+sky_curve = 0.289781
+sky_energy_multiplier = 26.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rt2co"]
-shader = ExtResource("1_77kxa")
-shader_parameter/clouds_samples = 8
-shader_parameter/shadow_sample = 3
-shader_parameter/clouds_density = 0.2
-shader_parameter/clouds_scale = 1.1
-shader_parameter/clouds_smoothness = 0.05
-shader_parameter/clouds_light_color = Color(0.120739, 0.264016, 0.3431, 1)
-shader_parameter/clouds_shadow_intensity = 3.5
-shader_parameter/high_clouds_density = 0.0
-shader_parameter/top_color = Color(1, 1, 1, 1)
-shader_parameter/bottom_color = Color(1, 1, 1, 1)
-shader_parameter/sun_scatter = Color(1, 1, 1, 1)
-shader_parameter/astro_tint = null
-shader_parameter/astro_scale = 7.0
-shader_parameter/astro_intensity = 1.0
-shader_parameter/stars_intensity = 5.0
-shader_parameter/shooting_stars_intensity = 1.0
-shader_parameter/shooting_star_tint = null
-
-[sub_resource type="Sky" id="Sky_ngrts"]
-sky_material = SubResource("ShaderMaterial_rt2co")
+[sub_resource type="Sky" id="Sky_u67wj"]
+sky_material = SubResource("ProceduralSkyMaterial_3qnct")
 
 [resource]
 background_mode = 2
-background_energy_multiplier = 0.01
-sky = SubResource("Sky_ngrts")
+background_energy_multiplier = 3.11
+sky = SubResource("Sky_u67wj")
 ambient_light_source = 3
-ambient_light_color = Color(0.498953, 0.705745, 0.832473, 1)
-ambient_light_sky_contribution = 0.13
-volumetric_fog_enabled = true
+ambient_light_color = Color(0.394299, 0.61325, 0.744801, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 4.7
+tonemap_mode = 6
+tonemap_exposure = 0.1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.727415, 0.822852, 0.961554, 1)
+fog_light_energy = 7.25
+fog_density = 1.0
+fog_aerial_perspective = 0.16
 volumetric_fog_emission = Color(0.36434, 0.690231, 0.820043, 1)
+volumetric_fog_temporal_reprojection_enabled = false

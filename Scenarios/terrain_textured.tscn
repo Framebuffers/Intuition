@@ -1,14 +1,47 @@
-[gd_scene load_steps=115 format=3 uid="uid://c6q5tucmpnnvc"]
+[gd_scene load_steps=117 format=3 uid="uid://c6q5tucmpnnvc"]
 
 [ext_resource type="PackedScene" uid="uid://uvyw7c6yarkv" path="res://Meshes/Terrain/Terrain.glb" id="1_xq2wf"]
+[ext_resource type="Shader" path="res://Shader/absorption_water.gdshader" id="2_on165"]
+[ext_resource type="PackedScene" uid="uid://ccrpsngjw0ak" path="res://Meshes/Rocks/Rocks.tscn" id="3_uaxq0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01vqn"]
 albedo_color = Color(0.611765, 0.607843, 0.478431, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67lak"]
-transparency = 1
-depth_draw_mode = 1
-albedo_color = Color(0.141515, 0.165405, 0.225135, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xx8wn"]
+render_priority = -1
+shader = ExtResource("2_on165")
+shader_parameter/absorption_color = Color(1, 0.35, 0, 1)
+shader_parameter/fresnel_radius = 2.0
+shader_parameter/fresnel_color = Color(1.38376e-07, 0.132347, 0.17731, 1)
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.55
+shader_parameter/depth_distance = 6.0
+shader_parameter/beers_law = 0.0
+shader_parameter/displacement_strength = 0.3
+shader_parameter/displacement_scroll_speed = 0.1
+shader_parameter/displacement_scroll_offset = Vector2(0.015, 0.3)
+shader_parameter/displacement_scale_offset = 0.5
+shader_parameter/displacement_scale = Vector2(0.04, 0.04)
+shader_parameter/edge_thickness = 0.19
+shader_parameter/edge_speed = 0.775
+shader_parameter/edge_noise_scale = Vector2(2.425, 0.4)
+shader_parameter/influence_size = 4.0
+shader_parameter/player_wave_frequenzy = 20.0
+shader_parameter/player_wave_speed = 5.0
+shader_parameter/caustic_size = 0.5
+shader_parameter/caustic_range = 40.0
+shader_parameter/caustic_strength = 0.08
+shader_parameter/ssr_mix_strength = 0.1
+shader_parameter/ssr_travel = 140.0
+shader_parameter/ssr_resolution_near = 2.0
+shader_parameter/ssr_resolution_far = 5.0
+shader_parameter/ssr_tolerance = 0.95
+shader_parameter/refraction_strength = 1.25
+shader_parameter/normal_map_strength = 1.0
+shader_parameter/scroll_speed = 0.3
+shader_parameter/scroll_offset = Vector2(0.1, -0.3)
+shader_parameter/scale_offset = 0.5
+shader_parameter/normal_map_scale = Vector2(0.1, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddrey"]
 albedo_color = Color(0.25098, 0.34902, 0.321569, 1)
@@ -358,7 +391,7 @@ metadata/_edit_lock_ = true
 surface_material_override/0 = SubResource("StandardMaterial3D_01vqn")
 
 [node name="3DGeom-2" parent="Node/Node2" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_67lak")
+surface_material_override/0 = SubResource("ShaderMaterial_xx8wn")
 
 [node name="3DGeom-3" parent="Node/Node2" index="2"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ddrey")
@@ -369,6 +402,7 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer1_Seabed" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.9279, -5.9216, 33.6491)
 shape = SubResource("BoxShape3D_u6wak")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Layer2_Sea" type="StaticBody3D" parent="." index="2"]
 collision_layer = 4
@@ -376,6 +410,7 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer2_Sea" index="0"]
 transform = Transform3D(0.907836, 0, -0.419325, 0, 1, 0, 0.419325, 0, 0.907836, -81.936, -9.27014, 13.0707)
 shape = SubResource("BoxShape3D_vlh5o")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Layer3_Island" type="StaticBody3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.359884, 0)
@@ -384,18 +419,22 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer3_Island" index="0"]
 transform = Transform3D(0.909961, 0, 0.414693, 0, 1, 0, -0.414693, 0, 0.909961, -2.1248, -2.464, -8.81871)
 shape = SubResource("BoxShape3D_57vnu")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer3_Island" index="1"]
 transform = Transform3D(0.979925, 0, 0.199368, 0, 1, 0, -0.199368, 0, 0.979925, 3.18994, -5.69308, -16.418)
 shape = SubResource("BoxShape3D_vpd2l")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer3_Island" index="2"]
 transform = Transform3D(0.891007, 0, 0.453991, 0, 1, 0, -0.453991, 0, 0.891007, -10.7646, -8.76251, -17.14)
 shape = SubResource("BoxShape3D_ikd4j")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer3_Island" index="3"]
 transform = Transform3D(0.891006, 0, 0.45399, 0, 1, 0, -0.45399, 0, 0.891006, 21.4109, -11.8202, 42.9645)
 shape = SubResource("BoxShape3D_xckyd")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Layer3_Hill" type="StaticBody3D" parent="." index="4"]
 collision_layer = 4
@@ -403,50 +442,62 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer3_Hill" index="0"]
 transform = Transform3D(0.848048, 0, 0.529919, 0, 1, 0, -0.529919, 0, 0.848048, -37.0184, -7.2669, 5.76992)
 shape = SubResource("BoxShape3D_bg03r")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer3_Hill" index="1"]
 transform = Transform3D(0.856456, 0, 0.516219, 0, 1, 0, -0.516219, 0, 0.856456, -0.960963, -2.441, 77.9107)
 shape = SubResource("BoxShape3D_np4tk")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer3_Hill" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, -12.7056, -33.5)
 shape = SubResource("BoxShape3D_5jleu")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer3_Hill" index="3"]
 transform = Transform3D(0.998993, 0, -0.0448574, 0, 1, 0, 0.0448574, 0, 0.998993, -64.6505, -6.62154, 71.415)
 shape = SubResource("BoxShape3D_8g5nt")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer3_Hill" index="4"]
 transform = Transform3D(0.989935, 0, -0.141523, 0, 1, 0, 0.141523, 0, 0.989935, -67.1341, -2.86519, 97.3807)
 shape = SubResource("BoxShape3D_bejjv")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer3_Hill" index="5"]
 transform = Transform3D(0.99883, 0, -0.0483617, 0, 1, 0, 0.0483617, 0, 0.99883, -65.365, -3.75232, 99.7022)
 shape = SubResource("BoxShape3D_e055m")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer3_Hill" index="6"]
 transform = Transform3D(0.770157, 0, 0.637854, 0, 1, 0, -0.637854, 0, 0.770157, -20.7584, -7.04115, 89.4314)
 shape = SubResource("BoxShape3D_w8abf")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Layer3_Hill" index="7"]
 transform = Transform3D(0.917865, 0, 0.396892, 0, 1, 0, -0.396892, 0, 0.917865, -14.0435, -5.59528, 71.6502)
 shape = SubResource("BoxShape3D_6xqya")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Layer3_Hill" index="8"]
 transform = Transform3D(0.977131, 0, -0.212638, 0, 1, 0, 0.212638, 0, 0.977131, -68.0412, -1.93152, 98.644)
 shape = SubResource("BoxShape3D_bvg5l")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Layer3_Hill" index="9"]
 transform = Transform3D(0.993896, 0, -0.110324, 0, 1, 0, 0.110324, 0, 0.993896, -144.935, -15.263, 74.0994)
 shape = SubResource("BoxShape3D_jeg07")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="Layer3_Hill" index="10"]
 transform = Transform3D(0.999165, 0, -0.0408642, 0, 1, 0, 0.0408642, 0, 0.999165, -150.627, -8.63143, 86.7834)
 shape = SubResource("BoxShape3D_ts6mx")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="Layer3_Hill" index="11"]
 transform = Transform3D(0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, 0.809017, -26.2441, -1.73895, 19.7526)
 shape = SubResource("BoxShape3D_30h1h")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Layer4_Island" type="StaticBody3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24261, 0)
@@ -455,30 +506,37 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer4_Island" index="0"]
 transform = Transform3D(0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, 0.809017, -5.5512, -6.28628, -13.0271)
 shape = SubResource("BoxShape3D_hny0c")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer4_Island" index="1"]
 transform = Transform3D(0.978148, 0, -0.207912, 0, 1, 0, 0.207912, 0, 0.978148, -14.9647, -8.53102, -33.5131)
 shape = SubResource("BoxShape3D_wktjl")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer4_Island" index="2"]
 transform = Transform3D(0.945519, 0, 0.325568, 0, 1, 0, -0.325568, 0, 0.945519, -8.05269, 0.417542, -30.3372)
 shape = SubResource("BoxShape3D_54ryi")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer4_Island" index="3"]
 transform = Transform3D(0.878817, 0, 0.477159, 0, 1, 0, -0.477159, 0, 0.878817, 7.52334, 0.405487, 18.3107)
 shape = SubResource("BoxShape3D_o22on")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer4_Island" index="4"]
 transform = Transform3D(0.91706, 0, 0.398749, 0, 1, 0, -0.398749, 0, 0.91706, 6.25112, -4.45135, 10.9958)
 shape = SubResource("BoxShape3D_2vyby")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer4_Island" index="5"]
 transform = Transform3D(0.996917, 0, 0.0784591, 0, 1, 0, -0.0784591, 0, 0.996917, 5.07618, 0.402893, 2.1787)
 shape = SubResource("BoxShape3D_du6n4")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer4_Island" index="6"]
 transform = Transform3D(0.930418, 0, 0.366501, 0, 1, 0, -0.366501, 0, 0.930418, 12.7549, 0.391174, 22.655)
 shape = SubResource("BoxShape3D_xt1tg")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Layer4_Hill" type="StaticBody3D" parent="." index="6"]
 collision_layer = 4
@@ -486,62 +544,77 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer4_Hill" index="0"]
 transform = Transform3D(0.871787, 0, 0.489885, 0, 1, 0, -0.489885, 0, 0.871787, -62.0187, -4.78938, 21.7418)
 shape = SubResource("BoxShape3D_ponoe")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer4_Hill" index="1"]
 transform = Transform3D(0.979297, 0, -0.202428, 0, 1, 0, 0.202428, 0, 0.979297, -73.8639, -5.65591, 58.9341)
 shape = SubResource("BoxShape3D_dnmqw")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer4_Hill" index="2"]
 transform = Transform3D(0.75276, 0, 0.658295, 0, 1, 0, -0.658295, 0, 0.75276, -45.8333, -6.60791, 80.9355)
 shape = SubResource("BoxShape3D_tytci")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer4_Hill" index="3"]
 transform = Transform3D(0.550991, 0, -0.834511, 0, 1, 0, 0.834511, 0, 0.550991, -19.4044, -2.57539, 68.4808)
 shape = SubResource("BoxShape3D_ncaqv")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer4_Hill" index="4"]
 transform = Transform3D(0.967334, 0, 0.253505, 0, 1, 0, -0.253505, 0, 0.967334, -22.3637, -2.61638, 74.0912)
 shape = SubResource("BoxShape3D_gi1wj")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer4_Hill" index="5"]
 transform = Transform3D(0.684343, 0, 0.72916, 0, 1, 0, -0.72916, 0, 0.684343, -9.2738, -1.81125, 71.214)
 shape = SubResource("BoxShape3D_6nuxi")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer4_Hill" index="6"]
 transform = Transform3D(0.969458, 0, 0.245257, 0, 1, 0, -0.245257, 0, 0.969458, -60.291, 1.28976, -42.8014)
 shape = SubResource("BoxShape3D_s4ku0")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Layer4_Hill" index="7"]
 transform = Transform3D(0.998368, 0, 0.057111, 0, 1, 0, -0.057111, 0, 0.998368, -54.8413, -6.31856, -43.8282)
 shape = SubResource("BoxShape3D_41uje")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Layer4_Hill" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.14, -2.66438, -0.0515518)
 shape = SubResource("BoxShape3D_y26ux")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Layer4_Hill" index="9"]
 transform = Transform3D(0.861142, 0, -0.508365, 0, 1, 0, 0.508365, 0, 0.861142, -197.405, -3.48877, 64.2064)
 shape = SubResource("BoxShape3D_f6xr2")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="Layer4_Hill" index="10"]
 transform = Transform3D(0.99061, 0, -0.136718, 0, 1, 0, 0.136718, 0, 0.99061, -146.562, -2.9077, 71.1806)
 shape = SubResource("BoxShape3D_4vhtk")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="Layer4_Hill" index="11"]
 transform = Transform3D(0.970296, 0, -0.241922, 0, 1, 0, 0.241922, 0, 0.970296, -181.835, -4.00127, 67.4458)
 shape = SubResource("BoxShape3D_rahgw")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D13" type="CollisionShape3D" parent="Layer4_Hill" index="12"]
 transform = Transform3D(0.993664, 0, -0.112388, 0, 1, 0, 0.112388, 0, 0.993664, -163.187, 1.14204, 73.2864)
 shape = SubResource("BoxShape3D_482rj")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D14" type="CollisionShape3D" parent="Layer4_Hill" index="13"]
 transform = Transform3D(0.998532, 0.0016093, 0.0541342, -0.000648862, 0.999842, -0.0177547, -0.0541543, 0.0176935, 0.998376, -137.615, 1.63137, 78.672)
 shape = SubResource("BoxShape3D_iuvkn")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D15" type="CollisionShape3D" parent="Layer4_Hill" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.844, -6.87357, -1.44906)
 shape = SubResource("BoxShape3D_efq4n")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Layer5_Hill" type="StaticBody3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.96, 0, 29.5304)
@@ -550,42 +623,52 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer5_Hill" index="0"]
 transform = Transform3D(0.87759, 0, 0.479412, 0, 1, 0, -0.479412, 0, 0.87759, 62.2509, 3.14555, 0.121475)
 shape = SubResource("BoxShape3D_vt43g")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer5_Hill" index="1"]
 transform = Transform3D(0.985076, 0, -0.172118, 0, 1, 0, 0.172118, 0, 0.985076, 27.2314, 1.31995, 24.1928)
 shape = SubResource("BoxShape3D_3qtvo")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer5_Hill" index="2"]
 transform = Transform3D(0.953228, 0, 0.302253, 0, 1, 0, -0.302253, 0, 0.953228, 63.3619, 3.14886, 32.8604)
 shape = SubResource("BoxShape3D_qg0rt")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer5_Hill" index="3"]
 transform = Transform3D(0.98907, 0, -0.147447, 0, 1, 0, 0.147447, 0, 0.98907, -14.9893, 3.01697, 21.4482)
 shape = SubResource("BoxShape3D_wk034")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer5_Hill" index="4"]
 transform = Transform3D(0.999991, 0, 0.00420623, 0, 1, 0, -0.00420623, 0, 0.999991, -52.1862, 3.17554, 0.28841)
 shape = SubResource("BoxShape3D_gg0pn")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer5_Hill" index="5"]
 transform = Transform3D(0.993455, 0, 0.114226, 0, 1, 0, -0.114226, 0, 0.993455, -4.8179, -3.08938, -31.173)
 shape = SubResource("BoxShape3D_4vv8j")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer5_Hill" index="6"]
 transform = Transform3D(0.822601, 0, -0.568619, 0, 1, 0, 0.568619, 0, 0.822601, 29.756, 3.34552, -52.4666)
 shape = SubResource("BoxShape3D_yf0ey")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Layer5_Hill" index="7"]
 transform = Transform3D(0.991273, 0, 0.131824, 0, 1, 0, -0.131824, 0, 0.991273, 2.7768, 3.02652, -44.6245)
 shape = SubResource("BoxShape3D_dw3n7")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Layer5_Hill" index="8"]
 transform = Transform3D(0.933261, 0, 0.359199, 0, 1, 0, -0.359199, 0, 0.933261, -50.2297, 2.17422, -38.242)
 shape = SubResource("BoxShape3D_ng6f2")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Layer5_Hill" index="9"]
 transform = Transform3D(0.999754, -0.0161261, 0.0152342, 0.0161243, 0.99987, 0.0002457, -0.0152361, 0, 0.999884, -43.2047, 3.64924, 3.40399)
 shape = SubResource("BoxShape3D_0fmsc")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Layer6_Hill" type="StaticBody3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133.94, 9.22239, -11.1146)
@@ -594,50 +677,62 @@ collision_layer = 4
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="Layer6_Hill" index="0"]
 transform = Transform3D(0.996635, 0, 0.0819733, 0, 1, 0, -0.0819733, 0, 0.996635, 21.2758, -0.0329285, 14.6968)
 shape = SubResource("BoxShape3D_pjwlt")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer6_Hill" index="1"]
 transform = Transform3D(0.987554, 0, 0.157279, 0, 1, 0, -0.157279, 0, 0.987554, -17.0719, -1.74707, 34.9645)
 shape = SubResource("BoxShape3D_av46r")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer6_Hill" index="2"]
 transform = Transform3D(0.983439, 0, 0.18124, 0, 1, 0, -0.18124, 0, 0.983439, -41.3969, -3.927, 37.5346)
 shape = SubResource("BoxShape3D_vgour")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer6_Hill" index="3"]
 transform = Transform3D(0.972027, 0, 0.234871, 0, 1, 0, -0.234871, 0, 0.972027, -44.7758, -2.85602, 37.0142)
 shape = SubResource("BoxShape3D_x7c7t")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer6_Hill" index="4"]
 transform = Transform3D(0.970156, 0, 0.242481, 0, 1, 0, -0.242481, 0, 0.970156, -50.9546, -9.23726, 38.289)
 shape = SubResource("BoxShape3D_r7ni0")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer6_Hill" index="5"]
 transform = Transform3D(0.986005, 0, 0.166717, 0, 1, 0, -0.166717, 0, 0.986005, -30.446, -3.4873, 40.5312)
 shape = SubResource("BoxShape3D_8qdje")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer6_Hill" index="6"]
 transform = Transform3D(0.99168, 0, 0.128726, 0, 1, 0, -0.128726, 0, 0.99168, 7.18146, -2.59058, 62.7461)
 shape = SubResource("BoxShape3D_1a8fh")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer6_Hill" index="7"]
 transform = Transform3D(0.987172, 0, -0.159657, 0, 1, 0, 0.159657, 0, 0.987172, -45.2542, -1.59106, 60.9486)
 shape = SubResource("BoxShape3D_mg4o8")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Layer6_Hill" index="8"]
 transform = Transform3D(0.900273, 0, -0.435325, 0, 1, 0, 0.435325, 0, 0.900273, 24.8387, -1.57275, 66.229)
 shape = SubResource("BoxShape3D_al8g7")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Layer6_Hill" index="9"]
 transform = Transform3D(0.513451, 0, 0.858119, 0, 1, 0, -0.858119, 0, 0.513451, 23.133, -1.15259, 69.553)
 shape = SubResource("BoxShape3D_kabuw")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Layer6_Hill" index="10"]
 transform = Transform3D(0.986124, 0, -0.166011, 0, 1, 0, 0.166011, 0, 0.986124, 40.3412, -5.10791, 74.7366)
 shape = SubResource("BoxShape3D_upbbp")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="Layer6_Hill" index="11"]
 transform = Transform3D(0.827953, 0, 0.560798, 0, 1, 0, -0.560798, 0, 0.827953, 49.4485, -1.54053, 75.1657)
 shape = SubResource("BoxShape3D_xls72")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Layer7_Hill" type="StaticBody3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112, 13.7155, 0)
@@ -646,90 +741,112 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Layer7_Hill" index="0"]
 transform = Transform3D(0.992895, 0, -0.118993, 0, 1, 0, 0.118993, 0, 0.992895, -13.7175, -5.88254, 10.5302)
 shape = SubResource("BoxShape3D_f1ycs")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Layer7_Hill" index="1"]
 transform = Transform3D(0.958138, 0, 0.286307, 0, 1, 0, -0.286307, 0, 0.958138, -41.3544, -10.7672, 9.02282)
 shape = SubResource("BoxShape3D_12aqe")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Layer7_Hill" index="2"]
 transform = Transform3D(0.525249, 0, -0.850949, 0, 1, 0, 0.850949, 0, 0.525249, -60.8269, -11.7091, 18.1107)
 shape = SubResource("BoxShape3D_qc4h7")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Layer7_Hill" index="3"]
 transform = Transform3D(0.908479, 0, -0.41793, 0, 1, 0, 0.41793, 0, 0.908479, -61.1779, -9.14494, 23.4651)
 shape = SubResource("BoxShape3D_saaau")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Layer7_Hill" index="4"]
 transform = Transform3D(0.999657, 0, -0.0261944, 0, 1, 0, 0.0261944, 0, 0.999657, -75.153, -4.02197, 31.3519)
 shape = SubResource("BoxShape3D_62h6j")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Layer7_Hill" index="5"]
 transform = Transform3D(0.842565, 0, 0.538594, 0, 1, 0, -0.538594, 0, 0.842565, -64.4122, -4.66522, 37.9851)
 shape = SubResource("BoxShape3D_hr6dj")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Layer7_Hill" index="6"]
 transform = Transform3D(0.845728, 0, 0.533615, 0, 1, 0, -0.533615, 0, 0.845728, -70.5604, -4.08369, 42.8619)
 shape = SubResource("BoxShape3D_66r5x")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Layer7_Hill" index="7"]
 transform = Transform3D(0.998162, 0, 0.0605956, 0, 1, 0, -0.0605956, 0, 0.998162, -74.9411, -4.94522, 36.0961)
 shape = SubResource("BoxShape3D_y7i5x")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Layer7_Hill" index="8"]
 transform = Transform3D(0.541474, 0, 0.840718, 0, 1, 0, -0.840718, 0, 0.541474, -71.8996, -4.02551, 50.0456)
 shape = SubResource("BoxShape3D_1x0c8")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Layer7_Hill" index="9"]
 transform = Transform3D(0.877272, 0, -0.479994, 0, 1, 0, 0.479994, 0, 0.877272, -59.5168, -3.39282, 45.5243)
 shape = SubResource("BoxShape3D_npnwu")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="Layer7_Hill" index="10"]
 transform = Transform3D(0.982189, 0, 0.187896, 0, 1, 0, -0.187896, 0, 0.982189, -30.9401, -7.61029, 45.2833)
 shape = SubResource("BoxShape3D_mpjfu")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="Layer7_Hill" index="11"]
 transform = Transform3D(0.995783, 0, -0.0917449, 0, 1, 0, 0.0917449, 0, 0.995783, 29.452, -9.74658, 50.1455)
 shape = SubResource("BoxShape3D_qag84")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D13" type="CollisionShape3D" parent="Layer7_Hill" index="12"]
 transform = Transform3D(0.990435, 0, -0.13798, 0, 1, 0, 0.13798, 0, 0.990435, 30.7068, -8.13498, 49.0175)
 shape = SubResource("BoxShape3D_cms6i")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D14" type="CollisionShape3D" parent="Layer7_Hill" index="13"]
 transform = Transform3D(0.732032, 0, -0.681271, 0, 1, 0, 0.681271, 0, 0.732032, 2.52085, -8.29812, 52.9848)
 shape = SubResource("BoxShape3D_j243w")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D15" type="CollisionShape3D" parent="Layer7_Hill" index="14"]
 transform = Transform3D(0.993803, 0, -0.111157, 0, 1, 0, 0.111157, 0, 0.993803, 22.9976, -5.32159, 59.8584)
 shape = SubResource("BoxShape3D_2asmj")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D16" type="CollisionShape3D" parent="Layer7_Hill" index="15"]
 transform = Transform3D(0.999717, 0, -0.023804, 0, 1, 0, 0.023804, 0, 0.999717, 60.8493, -14.0969, 59.4658)
 shape = SubResource("BoxShape3D_tbhda")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D17" type="CollisionShape3D" parent="Layer7_Hill" index="16"]
 transform = Transform3D(0.994726, 0, -0.102567, 0, 1, 0, 0.102567, 0, 0.994726, 73.1614, -4.99524, 62.1489)
 shape = SubResource("BoxShape3D_v1wbx")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D18" type="CollisionShape3D" parent="Layer7_Hill" index="17"]
 transform = Transform3D(0.815512, 0, 0.57874, 0, 1, 0, -0.57874, 0, 0.815512, 57.704, -6.10266, 43.0516)
 shape = SubResource("BoxShape3D_7bcle")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D19" type="CollisionShape3D" parent="Layer7_Hill" index="18"]
 transform = Transform3D(0.957893, 0, 0.287127, 0, 1, 0, -0.287127, 0, 0.957893, 52.9575, -6.21851, 29.9924)
 shape = SubResource("BoxShape3D_rl7ix")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D20" type="CollisionShape3D" parent="Layer7_Hill" index="19"]
 transform = Transform3D(0.893481, 0, 0.449101, 0, 1, 0, -0.449101, 0, 0.893481, 12.0414, -6.33771, 4.04952)
 shape = SubResource("BoxShape3D_xlkw1")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D21" type="CollisionShape3D" parent="Layer7_Hill" index="20"]
 transform = Transform3D(0.708697, 0, 0.705513, 0, 1, 0, -0.705513, 0, 0.708697, 19.6154, -5.26016, 7.9278)
 shape = SubResource("BoxShape3D_6r4tk")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D22" type="CollisionShape3D" parent="Layer7_Hill" index="21"]
 transform = Transform3D(0.878342, 0, 0.478033, 0, 1, 0, -0.478033, 0, 0.878342, -0.520187, -11.2633, 7.85861)
 shape = SubResource("BoxShape3D_4jbg6")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Level8_Hill" type="StaticBody3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.799, 15.1385, 28.5716)
@@ -738,26 +855,32 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level8_Hill" index="0"]
 transform = Transform3D(0.1726, 0, -0.984992, 0, 1, 0, 0.984992, 0, 0.1726, -0.994751, -3.91962, -4.53526)
 shape = SubResource("BoxShape3D_rag6l")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Level8_Hill" index="1"]
 transform = Transform3D(-0.00879636, 0, -0.999961, 0, 1, 0, 0.999961, 0, -0.00879636, -25.6375, -2.79498, -3.67399)
 shape = SubResource("BoxShape3D_dvw7l")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Level8_Hill" index="2"]
 transform = Transform3D(0.892657, 0, 0.450737, 0, 1, 0, -0.450737, 0, 0.892657, -42.0512, -5.56587, -7.59949)
 shape = SubResource("BoxShape3D_4wwkx")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Level8_Hill" index="3"]
 transform = Transform3D(0.909352, 0, 0.416027, 0, 1, 0, -0.416027, 0, 0.909352, -48.9214, -3.13318, 4.16407)
 shape = SubResource("BoxShape3D_m1au0")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Level8_Hill" index="4"]
 transform = Transform3D(0.900782, 0, -0.434272, 0, 1, 0, 0.434272, 0, 0.900782, -51.7568, -3.45493, 3.00212)
 shape = SubResource("BoxShape3D_f7uba")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Level8_Hill" index="5"]
 transform = Transform3D(0.942531, 0, -0.33412, 0, 1, 0, 0.33412, 0, 0.942531, -54.7967, -2.84521, 14.0767)
 shape = SubResource("BoxShape3D_6mfkj")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Level9_Hill" type="StaticBody3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97, 14, 26)
@@ -766,46 +889,57 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level9_Hill" index="0"]
 transform = Transform3D(0.997495, 0, 0.0707315, 0, 1, 0, -0.0707315, 0, 0.997495, -19.1774, -4.17188, -3.48118)
 shape = SubResource("BoxShape3D_82w1g")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Level9_Hill" index="1"]
 transform = Transform3D(0.989584, 0, 0.143959, 0, 1, 0, -0.143959, 0, 0.989584, -4.80281, 0, -4.39874)
 shape = SubResource("BoxShape3D_60osm")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Level9_Hill" index="2"]
 transform = Transform3D(0.994449, 0, -0.105223, 0, 1, 0, 0.105223, 0, 0.994449, -35.7269, -0.128326, 4.62863)
 shape = SubResource("BoxShape3D_i0t7t")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Level9_Hill" index="3"]
 transform = Transform3D(0.968631, 0, 0.248504, 0, 1, 0, -0.248504, 0, 0.968631, -67.6095, -1.80035, -0.21166)
 shape = SubResource("BoxShape3D_nbstf")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Level9_Hill" index="4"]
 transform = Transform3D(0.91453, 0, -0.404519, 0, 1, 0, 0.404519, 0, 0.91453, -16.5129, -1.52246, 8.49706)
 shape = SubResource("BoxShape3D_7n6e5")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Level9_Hill" index="5"]
 transform = Transform3D(0.997862, 0, -0.0653509, 0, 1, 0, 0.0653509, 0, 0.997862, 15.3277, 0, 10.0865)
 shape = SubResource("BoxShape3D_lrwmn")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Level9_Hill" index="6"]
 transform = Transform3D(0.988236, 0, -0.152934, 0, 1, 0, 0.152934, 0, 0.988236, 9.99747, 0, 22.7033)
 shape = SubResource("BoxShape3D_w3jpy")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Level9_Hill" index="7"]
 transform = Transform3D(0.997196, 0, 0.0748396, 0, 1, 0, -0.0748396, 0, 0.997196, 24.7056, -3.08896, 23.4685)
 shape = SubResource("BoxShape3D_8eqnd")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Level9_Hill" index="8"]
 transform = Transform3D(0.951557, 0, 0.307473, 0, 1, 0, -0.307473, 0, 0.951557, 20.4732, 0, 8.92486)
 shape = SubResource("BoxShape3D_5o2ra")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Level9_Hill" index="9"]
 transform = Transform3D(0.983261, 0, 0.182201, 0, 1, 0, -0.182201, 0, 0.983261, 19.6198, 0.0391235, -10.5104)
 shape = SubResource("BoxShape3D_4px8d")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="Level9_Hill" index="10"]
 transform = Transform3D(0.782239, 0, 0.622979, 0, 1, 0, -0.622979, 0, 0.782239, 10.9277, 0, -14.821)
 shape = SubResource("BoxShape3D_sy5ho")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Level10_Hill" type="StaticBody3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.047, 15.4162, 32.3245)
@@ -814,35 +948,50 @@ collision_layer = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level10_Hill" index="0"]
 transform = Transform3D(0.98843, 0, -0.151675, 0, 1, 0, 0.151675, 0, 0.98843, 6.04217, 0.294006, -3.43613)
 shape = SubResource("BoxShape3D_s4r4s")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Level10_Hill" index="1"]
 transform = Transform3D(0.936145, 0, 0.351613, 0, 1, 0, -0.351613, 0, 0.936145, 10.1523, 0.334702, -3.18538)
 shape = SubResource("BoxShape3D_hasi5")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Level10_Hill" index="2"]
 transform = Transform3D(0.757041, 0, 0.653368, 0, 1, 0, -0.653368, 0, 0.757041, 11.2341, 0.247036, -7.58089)
 shape = SubResource("BoxShape3D_kfl3h")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Level10_Hill" index="3"]
 transform = Transform3D(0.964539, 0, 0.26394, 0, 1, 0, -0.26394, 0, 0.964539, 4.42722, -0.579346, -4.98847)
 shape = SubResource("BoxShape3D_7wf0r")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Level10_Hill" index="4"]
 transform = Transform3D(0.793545, 0, -0.608512, 0, 1, 0, 0.608512, 0, 0.793545, -9.04572, -0.12793, -1.43641)
 shape = SubResource("BoxShape3D_or7aj")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Level10_Hill" index="5"]
 transform = Transform3D(0.983499, 0, -0.180914, 0, 1, 0, 0.180914, 0, 0.983499, -14.7594, -2.0368, -7.85565)
 shape = SubResource("BoxShape3D_7pscx")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Level10_Hill" index="6"]
 transform = Transform3D(0.955562, 0, -0.294791, 0, 1, 0, 0.294791, 0, 0.955562, 9.41451, -1.58936, 8.6955)
 shape = SubResource("BoxShape3D_ot6ni")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Level10_Hill" index="7"]
 transform = Transform3D(0.956182, 0, -0.292772, 0, 1, 0, 0.292772, 0, 0.956182, 12.1953, 0.337463, 4.0886)
 shape = SubResource("BoxShape3D_mxvii")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Level10_Hill" index="8"]
 transform = Transform3D(0.996302, 0, -0.0859211, 0, 1, 0, 0.0859211, 0, 0.996302, 20.4737, -0.218658, 8.16863)
 shape = SubResource("BoxShape3D_ka51u")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="Rocks" parent="." index="13" instance=ExtResource("3_uaxq0")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 11.0661, -2.34599, 51.2534)
+
+[node name="Rocks2" parent="." index="14" instance=ExtResource("3_uaxq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2699, -1.53985, 48.3389)
