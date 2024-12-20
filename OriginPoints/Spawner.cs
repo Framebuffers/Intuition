@@ -2,25 +2,33 @@ using Godot;
 using Intuition.Extensions;
 using Intuition.Gameplay;
 using System;
-namespace Intuition.OriginPoints;
-public partial class Spawner : Marker3D
+namespace Intuition.OriginPoints
 {
-	[Export] public PackedScene Projectile { get; set; }
-	[Export] public int ForceApplied { get; set; } = 10;
-
-	public void ShootProjectile()
+	/// <summary>
+	/// Loads a <see cref="PackedScene"/>, and, when <see cref="ShootProjectile()"/> is called, it instantiates the scene and shoots it applying the set <see cref="ForceApplied"/>.
+	/// </summary>
+	public partial class Spawner : Marker3D
 	{
-		RigidBody3D r = (RigidBody3D)Projectile.Instantiate();
-		AddChild(r);
-		r.ShootFrom(this, 10);
-	}
+		[Export] public PackedScene Projectile { get; set; }
+		[Export] public int ForceApplied { get; set; } = 10;
 
-	public override void _UnhandledInput(InputEvent @event)
-	{
-		if (@event is InputEventMouseButton i)
+		public void ShootProjectile()
 		{
-			if (i.ButtonIndex == MouseButton.Left)
-				ShootProjectile();
+			RigidBody3D r = (RigidBody3D)Projectile.Instantiate();
+			AddChild(r);
+			r.ShootFrom(this, 10);
 		}
+
+		public override void _UnhandledInput(InputEvent @event)
+		{
+			if (@event is InputEventMouseButton i)
+			{
+				if (i.ButtonIndex == MouseButton.Left)
+					ShootProjectile();
+			}
+		}
+
+
 	}
 }
+

@@ -1,64 +1,67 @@
 using Godot;
 
-namespace Intuition.UserInterface;
-public partial class TextPanel : Godot.PanelContainer
+namespace Intuition.UserInterface
 {
-  public VBoxContainer BoxContainer { get => GetNode<VBoxContainer>("MarginContainer/VBoxContainer"); }
-
-  public void AddProperty(string title, string value, int order)
+  public partial class TextPanel : Godot.PanelContainer
   {
-    if (BoxContainer is VBoxContainer)
+    public VBoxContainer BoxContainer { get => GetNode<VBoxContainer>("MarginContainer/VBoxContainer"); }
+
+    public void AddProperty(string title, string value, int order)
     {
-      Node target = BoxContainer.FindChild(title, true, false);
-      if (target == null)
+      if (BoxContainer is VBoxContainer)
+      {
+        Node target = BoxContainer.FindChild(title, true, false);
+        if (target == null)
+        {
+          Label label = new();
+          label.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+          BoxContainer.AddChild(label);
+          label.Name = title;
+          label.Text = $"{title}: {value}";
+        }
+        else if (Visible)
+        {
+          Label label = (Label)target;
+          label.Text = $"{title}: {value}";
+          BoxContainer.MoveChild(target, order);
+        }
+      }
+    }
+
+    public void AddProperty(string text)
+    {
+      if (BoxContainer is VBoxContainer)
       {
         Label label = new();
         label.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         BoxContainer.AddChild(label);
-        label.Name = title;
-        label.Text = $"{title}: {value}";
-      }
-      else if (Visible)
-      {
-        Label label = (Label)target;
-        label.Text = $"{title}: {value}";
-        BoxContainer.MoveChild(target, order);
+        label.Text = text;
+
       }
     }
-  }
 
-  public void AddProperty(string text)
-  {
-    if (BoxContainer is VBoxContainer)
+    public override void _Ready()
     {
-      Label label = new();
-      label.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-      BoxContainer.AddChild(label);
-      label.Text = text;
-
+      MarginContainer container = GetNode<MarginContainer>("MarginContainer");
+      Vector2 screenSize = GetViewport().GetWindow().Size;
+      Vector2 targetSize = new(screenSize.X / 3, container.Size.Y);
+      container.CustomMinimumSize = targetSize;
+      container.AnchorRight = 1.0f;
+      container.AnchorBottom = 1.0f;
+      container.OffsetRight = -targetSize.X;
+      container.OffsetBottom = -targetSize.Y;
     }
-  }
 
-  public override void _Ready()
-  {
-    MarginContainer container = GetNode<MarginContainer>("MarginContainer");
-    Vector2 screenSize = GetViewport().GetWindow().Size;
-    Vector2 targetSize = new(screenSize.X / 3, container.Size.Y);
-    container.CustomMinimumSize = targetSize;
-    container.AnchorRight = 1.0f;
-    container.AnchorBottom = 1.0f;
-    container.OffsetRight = -targetSize.X;
-    container.OffsetBottom = -targetSize.Y;
-  }
-
-  public void RemoveProperties()
-  {
-    if (BoxContainer.GetType() == typeof(VBoxContainer))
+    public void RemoveProperties()
     {
-      foreach (var children in BoxContainer.GetChildren())
+      if (BoxContainer.GetType() == typeof(VBoxContainer))
       {
-        children.Free();
+        foreach (var children in BoxContainer.GetChildren())
+        {
+          children.Free();
+        }
       }
     }
   }
 }
+

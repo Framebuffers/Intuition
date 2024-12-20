@@ -1,0 +1,12 @@
+using Godot;
+namespace Intuition.Objects
+{
+    public partial class RocksRigidBody : RigidBody3D
+    {
+        public override void _EnterTree()
+        {
+            MeshInstance3D mesh = GetNode<MeshInstance3D>("MeshInstance3D");
+
+        }
+    }
+}

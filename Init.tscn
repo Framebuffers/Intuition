@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://vawqbhei30ls" path="res://Objects/car.tscn" id="4_l528o"]
 [ext_resource type="PackedScene" uid="uid://er1d52s1ogds" path="res://Meshes/Rocks/Rocks_BG.tscn" id="5_0asay"]
 [ext_resource type="PackedScene" uid="uid://b6mr86b87urxw" path="res://Scenarios/House.tscn" id="5_d6bj8"]
-[ext_resource type="PackedScene" uid="uid://dkvkuq6hhntl3" path="res://Items/ProjectileBase.tscn" id="5_e8uu2"]
 [ext_resource type="Script" path="res://OriginPoints/Spawner.cs" id="5_nb23g"]
 [ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
 [ext_resource type="PackedScene" uid="uid://b2rfddy0recgw" path="res://Scenarios/Trees.tscn" id="6_4cqsu"]
 [ext_resource type="PackedScene" uid="uid://bbo4etd3k77xt" path="res://Gameplay/Spawner_Player.tscn" id="6_tp7cu"]
 [ext_resource type="Script" path="res://Scenarios/WorldLimits.cs" id="7_7ihqv"]
 [ext_resource type="Script" path="res://Environment/EnvironmentManager.cs" id="8_tybcl"]
+[ext_resource type="PackedScene" uid="uid://ghub0t4t5hu3" path="res://Objects/RocksRigidBody.tscn" id="9_x33bw"]
 [ext_resource type="Environment" uid="uid://bg5b5gfmbfen1" path="res://Environment/Intuition_Day_1.tres" id="14_pbcrb"]
 [ext_resource type="PackedScene" uid="uid://2o4qecq54qe2" path="res://Scenarios/Shed.tscn" id="19_x4qtl"]
 
@@ -628,9 +628,9 @@ PathToFollow = NodePath("../../NPCPaths/Path3D/PathFollow3D")
 [node name="OriginPoints" type="Node3D" parent="ScreenManager/SceneManager"]
 
 [node name="Spawner_Rocks" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
-transform = Transform3D(-0.847122, 0, 0.531399, 0, 1, 0, -0.531399, 0, -0.847122, -1.28233, 2.11903, -5.8698)
+transform = Transform3D(-0.847122, 0, 0.531399, 0, 1, 0, -0.531399, 0, -0.847122, 3.71767, 7.11903, 13.1302)
 script = ExtResource("5_nb23g")
-Projectile = ExtResource("5_e8uu2")
+Projectile = ExtResource("9_x33bw")
 
 [node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
