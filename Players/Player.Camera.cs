@@ -5,7 +5,7 @@ using Godot;
 public sealed partial class Player : StairsCharacter
 {
   private Camera3D Camera;
-  private MeshInstance3D ShaderSurface;
+  // private MeshInstance3D ShaderSurface;
 
   // TODO: Clean up the camera clamping code.
   [ExportGroup("Camera Limits")]
@@ -15,7 +15,7 @@ public sealed partial class Player : StairsCharacter
   private void InitCamera()
   {
     Camera = GetNode<Camera3D>("Head/Camera");
-    ShaderSurface = GetNode<MeshInstance3D>("Head/Camera/ShaderSurface");
+    // ShaderSurface = GetNode<MeshInstance3D>("Head/Camera/ShaderSurface");
     Input.MouseMode = Input.MouseModeEnum.Captured;
 
     // Set the camera rotation to whatever initial_facing_direction is, as long as it's not Vector3.zero

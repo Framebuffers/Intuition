@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://c8aolptgi6jrj"]
+[gd_scene load_steps=86 format=4 uid="uid://c8aolptgi6jrj"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
@@ -9,13 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://dib2omijmp43" path="res://Meshes/Terrain/Bridge_Collision.tscn" id="3_lw1gl"]
 [ext_resource type="PackedScene" uid="uid://vawqbhei30ls" path="res://Objects/car.tscn" id="4_l528o"]
 [ext_resource type="PackedScene" uid="uid://er1d52s1ogds" path="res://Meshes/Rocks/Rocks_BG.tscn" id="5_0asay"]
+[ext_resource type="PackedScene" uid="uid://b6mr86b87urxw" path="res://Scenarios/House.tscn" id="5_d6bj8"]
 [ext_resource type="PackedScene" uid="uid://dkvkuq6hhntl3" path="res://Items/ProjectileBase.tscn" id="5_e8uu2"]
 [ext_resource type="Script" path="res://OriginPoints/Spawner.cs" id="5_nb23g"]
 [ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
+[ext_resource type="PackedScene" uid="uid://b2rfddy0recgw" path="res://Scenarios/Trees.tscn" id="6_4cqsu"]
 [ext_resource type="PackedScene" uid="uid://bbo4etd3k77xt" path="res://Gameplay/Spawner_Player.tscn" id="6_tp7cu"]
 [ext_resource type="Script" path="res://Scenarios/WorldLimits.cs" id="7_7ihqv"]
 [ext_resource type="Script" path="res://Environment/EnvironmentManager.cs" id="8_tybcl"]
-[ext_resource type="Environment" uid="uid://cjcoqjlj6w46x" path="res://Environment/Intuition_Night.tres" id="12_f1nnh"]
+[ext_resource type="Environment" uid="uid://bg5b5gfmbfen1" path="res://Environment/Intuition_Day_1.tres" id="14_pbcrb"]
+[ext_resource type="PackedScene" uid="uid://2o4qecq54qe2" path="res://Scenarios/Shed.tscn" id="19_x4qtl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nb88w"]
 top_radius = 0.0
@@ -610,17 +613,22 @@ script = ExtResource("1_dksua")
 
 [node name="BridgeCollision" parent="ScreenManager/SceneManager/BackgroundItems" instance=ExtResource("3_lw1gl")]
 
+[node name="Meshes" parent="ScreenManager/SceneManager/BackgroundItems" instance=ExtResource("5_d6bj8")]
+transform = Transform3D(-0.361478, 0, 0.932381, 0, 1, 0, -0.932381, 0, -0.361478, -6.71788, 0.344481, -29.4983)
+
+[node name="Trees" parent="ScreenManager/SceneManager/BackgroundItems" instance=ExtResource("6_4cqsu")]
+
 [node name="NPC" type="Node3D" parent="ScreenManager/SceneManager"]
 
 [node name="NPC" parent="ScreenManager/SceneManager/NPC" groups=["NPC"] instance=ExtResource("3_5xvgt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12487, -0.0133398, -7.21709)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12487, -0.0133398, 8.78291)
 collision_mask = 494
 PathToFollow = NodePath("../../NPCPaths/Path3D/PathFollow3D")
 
 [node name="OriginPoints" type="Node3D" parent="ScreenManager/SceneManager"]
 
 [node name="Spawner_Rocks" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
-transform = Transform3D(-0.22325, 0, 0.974761, 0, 1, 0, -0.974761, 0, -0.22325, 0, 1.11903, -10.8698)
+transform = Transform3D(-0.847122, 0, 0.531399, 0, 1, 0, -0.531399, 0, -0.847122, -1.28233, 2.11903, -5.8698)
 script = ExtResource("5_nb23g")
 Projectile = ExtResource("5_e8uu2")
 
@@ -664,7 +672,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.063178, 0)
 curve = SubResource("Curve3D_en1kx")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ScreenManager/SceneManager/NPCPaths/Path3D"]
-transform = Transform3D(-0.999956, 0, 0.00779478, 0, 1, 0, -0.00779478, 0, -0.999956, 0, 0, 0)
+transform = Transform3D(-0.999954, 0, 0.00779477, 0, 1, 0, -0.00779477, 0, -0.999954, 0, 0, 0)
 use_model_front = true
 
 [node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
@@ -744,7 +752,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [node name="Daylight_Orange" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/DayLighting"]
 transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, -3.573, 100, 0.653)
-visible = false
 layers = 4
 light_energy = 6.925
 light_indirect_energy = 0.85
@@ -779,7 +786,7 @@ directional_shadow_max_distance = 260.6
 directional_shadow_pancake_size = 16.7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="ScreenManager/EnvironmentManager"]
-environment = ExtResource("12_f1nnh")
+environment = ExtResource("14_pbcrb")
 
 [node name="UIManager" type="Control" parent="ScreenManager"]
 layout_mode = 3
@@ -804,7 +811,7 @@ platform_wall_layers = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
 
 [node name="Lighthouse" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.8764, 16.3592, 29.7)
+transform = Transform3D(-0.782609, 0, -0.622514, 0, 1, 0, 0.622514, 0, -0.782609, -83.8764, 16.3592, 29.7)
 
 [node name="Lighthouse" type="Node3D" parent="Lighthouse"]
 
@@ -1066,33 +1073,40 @@ layers = 4
 mesh = SubResource("CylinderMesh_pwihh")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighthouse/MeshInstance3D/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62939e-06, -51.4221, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 layers = 4
-light_energy = 0.1
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 16.0
-light_size = 0.598
-light_specular = 1.05
+light_energy = 2.0
+light_volumetric_fog_energy = 0.5
+light_size = 1.0
+light_specular = 6.318
 shadow_enabled = true
-shadow_bias = 2.661
+shadow_bias = 0.0
 shadow_normal_bias = 0.0
-shadow_transmittance_bias = 3.512
+shadow_transmittance_bias = 7.804
+shadow_opacity = 0.44
 shadow_blur = 10.0
-omni_range = 105.573
-omni_attenuation = -1.0
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+distance_fade_shadow = 25.0
+distance_fade_length = 1500.0
+omni_range = 4096.0
+omni_attenuation = -0.2
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lighthouse/MeshInstance3D/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
 layers = 4
-light_energy = 8.024
-light_indirect_energy = 2.171
-light_volumetric_fog_energy = 16.0
-light_size = 0.366
+light_energy = 8.804
+light_volumetric_fog_energy = 13.854
+light_size = 0.525
 light_specular = 2.061
 light_cull_mask = 4294967291
 shadow_enabled = true
-omni_range = 18.692
+omni_range = 4096.0
+omni_attenuation = 1.5
 omni_shadow_mode = 0
+
+[node name="Shed" parent="." instance=ExtResource("19_x4qtl")]
+transform = Transform3D(-0.335238, 0, 0.942134, 0, 1, 0, -0.942134, 0, -0.335238, 2, -0.368893, -2)
 
 [connection signal="body_exited" from="ScreenManager/SceneManager/WorldLimits/BoundaryBox" to="ScreenManager/SceneManager/WorldLimits/BoundaryBox" method="OnBodyExited"]
 [connection signal="HideItem" from="Player" to="PictureFrame" method="HideMesh"]

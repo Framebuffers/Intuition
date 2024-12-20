@@ -7,7 +7,7 @@ namespace Intuition.Camera
     public sealed partial class Player : StairsCharacter
     {
         [Signal] public delegate void PlayerCollisionEventHandler(RigidBody3D source);
-        public bool EnableTimestop = false;
+        public bool EnableTimestop = true;
         private void HandleTimestop()
         {
             if (EnableTimestop)

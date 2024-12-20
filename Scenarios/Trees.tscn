@@ -1,0 +1,168 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2rfddy0recgw"]
+
+[ext_resource type="PackedScene" uid="uid://brimttmxn85ms" path="res://Meshes/Trees/Tree_Collision.tscn" id="1_jusci"]
+
+[node name="Trees" type="Node3D"]
+
+[node name="RocksBg" parent="." instance_placeholder="res://Meshes/Rocks/Rocks_BG.tscn"]
+
+[node name="Bundle1" type="Node3D" parent="."]
+
+[node name="TreeCollision" parent="Bundle1" instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.97614, 3.05699, 64.6454)
+
+[node name="TreeCollision2" parent="Bundle1" instance=ExtResource("1_jusci")]
+transform = Transform3D(0.591443, 0, 0.461189, 0, 0.75, 0, -0.461189, 0, 0.591443, -4.88166, 3.05699, 61.198)
+
+[node name="TreeCollision3" parent="Bundle1" instance=ExtResource("1_jusci")]
+transform = Transform3D(0.759737, 0, 0.650231, 0, 1, 0, -0.650231, 0, 0.759737, -12.4715, 3.05699, 57.3244)
+
+[node name="TreeCollision4" parent="Bundle1" instance=ExtResource("1_jusci")]
+transform = Transform3D(1.02259, 0, 1.49346, 0, 1.81, 0, -1.49346, 0, 1.02259, -9.84735, 3.05699, 58.5872)
+
+[node name="TreeCollision5" parent="Bundle1" instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3822, 3.32865, 69.8825)
+
+[node name="TreeCollision6" parent="Bundle1" instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.9963, 3.71779, 77.2299)
+
+[node name="TreeCollision7" parent="Bundle1" instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1954, 6.79111, 60.6672)
+
+[node name="TreeCollision8" parent="Bundle1" instance=ExtResource("1_jusci")]
+transform = Transform3D(2.95, 0, 0, 0, 2.95, 0, 0, 0, 2.95, -15.0678, 3.27202, 50.5349)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297976, 0)
+
+[node name="TreeCollision11" parent="Node3D" instance=ExtResource("1_jusci")]
+transform = Transform3D(2.49824, 0, 0.485609, 0, 2.545, 0, -0.485609, 0, 2.49824, -32.1721, 3.27202, 23.0476)
+
+[node name="TreeCollision12" parent="Node3D" instance=ExtResource("1_jusci")]
+transform = Transform3D(1.28593, 0, 0.24996, 0, 1.31, 0, -0.24996, 0, 1.28593, -31.3606, 3.27202, 32.9732)
+
+[node name="TreeCollision13" parent="Node3D" instance=ExtResource("1_jusci")]
+transform = Transform3D(0.981627, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.981627, -37.2254, 3.27202, 17.8031)
+
+[node name="TreeCollision" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.2869, 2.87797, 8.99936)
+
+[node name="TreeCollision2" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.51, 0, 0, 0, 1.51, 0, 0, 0, 1.51, -44.5432, 2.87797, -0.133913)
+
+[node name="TreeCollision3" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.37, 0, 0, 0, 1.37, 0, 0, 0, 1.37, -49.6747, 2.87797, -9.98553)
+
+[node name="TreeCollision4" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.515, 0, 0, 0, 1.515, 0, 0, 0, 1.515, -33.6132, 3.27202, 12.6527)
+
+[node name="TreeCollision5" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(2.335, 0, 0, 0, 2.335, 0, 0, 0, 2.335, -48.3594, 6.79773, 68.7413)
+
+[node name="TreeCollision6" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.2523, 6.7173, 71.2875)
+
+[node name="TreeCollision7" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.1584, 6.7911, 22.6735)
+
+[node name="TreeCollision8" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.4727, 2.87797, -3.34494)
+
+[node name="TreeCollision9" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(2.12, 0, 0, 0, 2.12, 0, 0, 0, 2.12, -40.0302, 2.87797, 3.96789)
+
+[node name="TreeCollision10" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.7239, 6.7911, 17.7805)
+
+[node name="TreeCollision11" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(3.14, 0, 0, 0, 3.14, 0, 0, 0, 3.14, -52.4707, 2.87797, -17.8365)
+
+[node name="TreeCollision12" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.097, 6.91256, -23.1085)
+
+[node name="TreeCollision13" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.1578, 2.78919, -25.2192)
+
+[node name="TreeCollision14" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.785, 0, 0, 0, 1.785, 0, 0, 0, 1.785, -66.7418, 3.31444, -29.0427)
+
+[node name="TreeCollision15" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.725, 0, 0, 0, 1.725, 0, 0, 0, 1.725, -62.6133, 3.31444, -24.0494)
+
+[node name="TreeCollision16" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.3701, 6.95497, -26.138)
+
+[node name="TreeCollision17" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(3.345, 0, 0, 0, 3.345, 0, 0, 0, 3.345, -140.209, 3.12303, -39.1227)
+
+[node name="TreeCollision18" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(2.91, 0, 0, 0, 2.91, 0, 0, 0, 2.91, -118.821, 3.00088, -42.0197)
+
+[node name="TreeCollision19" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(3.14, 0, 0, 0, 3.14, 0, 0, 0, 3.14, -189.657, 6.32111, -9.72671)
+
+[node name="TreeCollision20" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.251, 11.7888, 6.16635)
+
+[node name="TreeCollision21" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(2.02, 0, 0, 0, 2.02, 0, 0, 0, 2.02, -170.753, 11.7888, 7.82736)
+
+[node name="TreeCollision22" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.4535, 11.3093, -6.28603)
+
+[node name="TreeCollision23" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(2.23, 0, 0, 0, 2.23, 0, 0, 0, 2.23, -9.59822, 2.94299, 79.0932)
+
+[node name="TreeCollision24" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.59, 0, 0, 0, 1.59, 0, 0, 0, 1.59, -39.7799, 3.7602, 93.7332)
+
+[node name="TreeCollision25" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.715, 0, 0, 0, 1.715, 0, 0, 0, 1.715, -34.0842, 3.28971, 94.6983)
+
+[node name="TreeCollision26" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2122, 3.28971, 89.0117)
+
+[node name="TreeCollision27" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(2.95, 0, 0, 0, 2.95, 0, 0, 0, 2.95, -26.7275, 3.28971, 88.2091)
+
+[node name="TreeCollision28" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8127, 3.28971, 86.0252)
+
+[node name="TreeCollision29" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.396, 3.33213, 97.877)
+
+[node name="TreeCollision30" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.525, 0, 0, 0, 1.525, 0, 0, 0, 1.525, 5.30969, 0.0631799, 0.0627441)
+
+[node name="TreeCollision31" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77539, 0.110777, 4.5643)
+
+[node name="TreeCollision32" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.475, 0, 0, 0, 1.475, 0, 0, 0, 1.475, -0.119716, 0.0683622, 10.2878)
+
+[node name="TreeCollision33" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20685, 0.063178, 5.82623)
+
+[node name="TreeCollision34" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.665, 0, 0, 0, 1.665, 0, 0, 0, 1.665, 19.042, -0.841963, 0.20566)
+
+[node name="TreeCollision35" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.28, 0, 0, 0, 1.28, 0, 0, 0, 1.28, 17.4229, -1.51008, -8.25987)
+
+[node name="TreeCollision36" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -1.8282, 0.0924716, -19.7132)
+
+[node name="TreeCollision37" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.08502, 0.0924716, -10.8996)
+
+[node name="TreeCollision38" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.79, 0, 0, 0, 1.79, 0, 0, 0, 1.79, 9.80249, -0.841963, -32.7136)
+
+[node name="TreeCollision39" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.715, 0, 0, 0, 1.715, 0, 0, 0, 1.715, 13.1381, 0.0683603, 31.1115)
+
+[node name="TreeCollision40" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3274, -0.967033, 48.1973)
+
+[node name="TreeCollision41" parent="." instance=ExtResource("1_jusci")]
+transform = Transform3D(1.88, 0, 0, 0, 1.88, 0, 0, 0, 1.88, 26.7626, -1.40469, 35.8462)

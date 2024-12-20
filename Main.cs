@@ -134,7 +134,7 @@ public partial class Main : Node3D
 			// EnvironmentManager.TimeToChangeLightingMode = 5.o;
 			// EnvironmentManager.LoadEnvironment(GD.RandRange(0, 6), GD.RandRange(0, 1));
 			// $"Environment number: {GameEnvironment}, EnvironmentResource: {WorldEnvironment.Environment.ResourcePath}".ToConsole();
-			Player.EnableTimestop = true;
+			// Player.EnableTimestop = true;
 
 		}
 
