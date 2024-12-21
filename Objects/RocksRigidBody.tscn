@@ -7,6 +7,12 @@ radius = 0.6
 height = 1.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6srl"]
+transparency = 4
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0.847059)
+emission_enabled = true
+emission_energy_multiplier = 4.11
+emission_operator = 1
 
 [sub_resource type="SphereMesh" id="SphereMesh_xe75q"]
 material = SubResource("StandardMaterial3D_k6srl")
@@ -36,5 +42,22 @@ priority = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_3veae")
 debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502473, 0)
+light_color = Color(1, 0.315733, 0.158704, 1)
+light_energy = 2.2
+light_indirect_energy = 7.385
+light_volumetric_fog_energy = 9.503
+light_size = 0.295
+light_specular = 1.936
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 0.0
+shadow_reverse_cull_face = true
+shadow_opacity = 0.45
+shadow_blur = 0.744
+omni_range = 3.066
+omni_attenuation = -3.324
 
 [connection signal="body_entered" from="Area3D" to="." method="OnHit"]
