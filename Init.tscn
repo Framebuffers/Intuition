@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://Scenarios/WorldLimits.cs" id="7_7ihqv"]
 [ext_resource type="Script" path="res://Environment/EnvironmentManager.cs" id="8_tybcl"]
 [ext_resource type="PackedScene" uid="uid://ghub0t4t5hu3" path="res://Objects/RocksRigidBody.tscn" id="9_x33bw"]
-[ext_resource type="Environment" uid="uid://bg5b5gfmbfen1" path="res://Environment/Intuition_Day_1.tres" id="14_pbcrb"]
+[ext_resource type="Environment" uid="uid://bbmrse3rqp21h" path="res://Environment/Intuition_Fog.tres" id="14_2iml3"]
 [ext_resource type="PackedScene" uid="uid://2o4qecq54qe2" path="res://Scenarios/Shed.tscn" id="19_x4qtl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nb88w"]
@@ -612,6 +612,7 @@ script = ExtResource("1_dksua")
 [node name="RocksBg" parent="ScreenManager/SceneManager/BackgroundItems" instance=ExtResource("5_0asay")]
 
 [node name="BridgeCollision" parent="ScreenManager/SceneManager/BackgroundItems" instance=ExtResource("3_lw1gl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
 
 [node name="Meshes" parent="ScreenManager/SceneManager/BackgroundItems" instance=ExtResource("5_d6bj8")]
 transform = Transform3D(-0.361478, 0, 0.932381, 0, 1, 0, -0.932381, 0, -0.361478, -6.71788, 0.344481, -29.4983)
@@ -628,7 +629,7 @@ PathToFollow = NodePath("../../NPCPaths/Path3D/PathFollow3D")
 [node name="OriginPoints" type="Node3D" parent="ScreenManager/SceneManager"]
 
 [node name="Spawner_Rocks" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
-transform = Transform3D(-0.847122, 0, 0.531399, 0, 1, 0, -0.531399, 0, -0.847122, 3.71767, 7.11903, 13.1302)
+transform = Transform3D(-0.847122, 0, 0.531399, 0, 1, 0, -0.531399, 0, -0.847122, 1.71767, 5.11903, 13.1302)
 script = ExtResource("5_nb23g")
 Projectile = ExtResource("9_x33bw")
 
@@ -672,7 +673,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.063178, 0)
 curve = SubResource("Curve3D_en1kx")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ScreenManager/SceneManager/NPCPaths/Path3D"]
-transform = Transform3D(-0.999954, 0, 0.00779477, 0, 1, 0, -0.00779477, 0, -0.999954, 0, 0, 0)
+transform = Transform3D(-0.999952, 0, 0.00779475, 0, 1, 0, -0.00779475, 0, -0.999952, 0, 0, 0)
 use_model_front = true
 
 [node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
@@ -686,6 +687,7 @@ light_energy = 0.5
 light_indirect_energy = 1.28
 light_volumetric_fog_energy = 11.825
 shadow_enabled = true
+shadow_reverse_cull_face = true
 shadow_transmittance_bias = -0.34
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.005
@@ -719,6 +721,7 @@ light_volumetric_fog_energy = 6.392
 light_angular_distance = 75.27
 shadow_enabled = true
 shadow_normal_bias = 0.0
+shadow_reverse_cull_face = true
 shadow_transmittance_bias = 7.024
 shadow_opacity = 0.63
 shadow_blur = 10.0
@@ -741,6 +744,8 @@ light_indirect_energy = 2.756
 light_volumetric_fog_energy = 14.83
 light_angular_distance = 78.1
 light_cull_mask = 4294967291
+shadow_enabled = true
+shadow_reverse_cull_face = true
 directional_shadow_split_1 = 0.185
 directional_shadow_fade_start = 0.666
 directional_shadow_max_distance = 21.5
@@ -752,21 +757,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [node name="Daylight_Orange" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/DayLighting"]
 transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, -3.573, 100, 0.653)
+visible = false
 layers = 4
-light_energy = 6.925
+light_energy = 2.86
 light_indirect_energy = 0.85
 light_volumetric_fog_energy = 15.182
 light_bake_mode = 1
 light_cull_mask = 4294967291
-shadow_bias = 1.564
-shadow_normal_bias = 4.353
-shadow_transmittance_bias = -2.479
-shadow_blur = 10.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
 
 [node name="NightLighting" type="Node3D" parent="ScreenManager/EnvironmentManager"]
 
 [node name="Orange" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/NightLighting"]
 transform = Transform3D(-4.37114e-08, -0.546102, -0.837719, 0, -0.837718, 0.546102, -1, 2.38709e-08, 3.66179e-08, -3.573, 100, 0.653)
+visible = false
 layers = 4
 light_color = Color(0.190715, 0.143657, 0.309424, 1)
 light_energy = 0.1
@@ -775,6 +780,7 @@ light_volumetric_fog_energy = 4.645
 light_angular_distance = 90.0
 shadow_enabled = true
 shadow_bias = 0.0
+shadow_reverse_cull_face = true
 shadow_transmittance_bias = 1.94
 directional_shadow_mode = 0
 directional_shadow_split_1 = 0.413
@@ -786,7 +792,7 @@ directional_shadow_max_distance = 260.6
 directional_shadow_pancake_size = 16.7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="ScreenManager/EnvironmentManager"]
-environment = ExtResource("14_pbcrb")
+environment = ExtResource("14_2iml3")
 
 [node name="UIManager" type="Control" parent="ScreenManager"]
 layout_mode = 3
@@ -806,12 +812,16 @@ mouse_filter = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.092472, -6)
 platform_floor_layers = 4294967044
 platform_wall_layers = 2
+baseSpeed = 8.0
+sprintSpeed = 16.0
+crouchSpeed = 3.0
 
 [node name="PictureFrame" parent="." instance=ExtResource("5_pu7cx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
 
 [node name="Lighthouse" type="Node3D" parent="."]
 transform = Transform3D(-0.782609, 0, -0.622514, 0, 1, 0, 0.622514, 0, -0.782609, -83.8764, 16.3592, 29.7)
+visible = false
 
 [node name="Lighthouse" type="Node3D" parent="Lighthouse"]
 
@@ -1082,6 +1092,7 @@ light_specular = 6.318
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_normal_bias = 0.0
+shadow_reverse_cull_face = true
 shadow_transmittance_bias = 7.804
 shadow_opacity = 0.44
 shadow_blur = 10.0
@@ -1101,6 +1112,7 @@ light_size = 0.525
 light_specular = 2.061
 light_cull_mask = 4294967291
 shadow_enabled = true
+shadow_reverse_cull_face = true
 omni_range = 4096.0
 omni_attenuation = 1.5
 omni_shadow_mode = 0

@@ -13,7 +13,7 @@ radius = 0.12
 height = 1.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uq8tf"]
-radius = 0.260007
+radius = 0.452668
 
 [sub_resource type="Animation" id="Animation_j8cx7"]
 resource_name = "RESET"

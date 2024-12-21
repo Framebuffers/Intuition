@@ -2,6 +2,7 @@ namespace Intuition.Camera
 {
   using Godot;
   using Intuition.Extensions;
+  using Intuition.Objects;
 
   public sealed partial class Player : StairsCharacter
   {
@@ -76,6 +77,8 @@ namespace Intuition.Camera
         itemDetected = false;
       }
     }
+
+
   }
 }
 

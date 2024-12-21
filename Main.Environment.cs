@@ -8,7 +8,7 @@ namespace Intuition
     {
         public WorldEnvironment WorldEnvironment => GetNode<WorldEnvironment>("/root/Main/ScreenManager/EnvironmentManager/WorldEnvironment");
         public EnvironmentMode GameEnvironment { get; set; }
-        public EnvironmentManager EnvironmentManager => GetNode<EnvironmentManager>("ScreenManager/EnvironmentManager");
+        public EnvironmentManager EnvironmentManager => GetNode<EnvironmentManager>("/root/Main/ScreenManager/EnvironmentManager");
 
         private void LoadRandomEnvironment()
         {

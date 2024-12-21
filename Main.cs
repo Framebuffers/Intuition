@@ -46,11 +46,13 @@ namespace Intuition
 		public override void _Ready()
 		{
 			// randomise time until game mode changes. default = 30s
-			EnvironmentManager.TimeToChangeLightingMode = GD.Randi() % 30;
+			LoadRandomEnvironment();
+			// EnvironmentManager.TimeToChangeLightingMode = GD.Randi() % 30;
+			// $"Environment number: {GameEnvironment}, EnvironmentResource: {WorldEnvironment.Environment.ResourcePath}".ToConsole();
 
 			// randomise a number for intensity. this will modulate the force on which elements will fall/move towards the player.
-			Intensity = GD.Randi() % 10.0f;
-
+			// Intensity = GD.Randi() % 10.0f;
+			// LoadRandomEnvironment();
 			// shake playing field
 
 

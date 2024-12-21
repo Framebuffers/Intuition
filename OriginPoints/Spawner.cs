@@ -1,6 +1,7 @@
 using Godot;
 using Intuition.Extensions;
 using Intuition.Gameplay;
+using Intuition.Objects;
 using System;
 namespace Intuition.OriginPoints
 {

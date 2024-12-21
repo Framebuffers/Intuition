@@ -7,5 +7,12 @@ namespace Intuition.Camera
     {
         public Main MainLoop => GetNode<Main>("/root/Main");
 
+        private void OnCollision()
+        {
+            // if (CeilingDetection.IsColliding())
+            {
+                // $"Colliding with {CeilingDetection.Get}"
+            }
+        }
     }
 }
