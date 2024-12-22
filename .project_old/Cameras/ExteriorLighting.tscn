@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c8q8pw4pbvj80"]
+
+[node name="Lighting" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.365677, 0.340999, -0.433013, -0.207516, 0.877176, -0.25, -0.907313, -0.338057, -3.57255, 4.80747, 0.653262)
+light_color = Color(0.85098, 0.533333, 0.113725, 1)
+light_energy = 13.307
+light_indirect_energy = 10.026
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 2.31
+shadow_enabled = true
+shadow_normal_bias = 7.641
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 7.024
+shadow_blur = 2.231
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.413
+directional_shadow_split_2 = 0.628
+directional_shadow_split_3 = 0.247
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.167
+directional_shadow_max_distance = 12.5
+
+[node name="DirectionalLight3D5" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.333807, 0.942641, 0, -0.942641, -0.333807, -14.0424, 5.65548, -8.52664)
+light_color = Color(0.160784, 0.0627451, 0, 1)
+light_volumetric_fog_energy = 7.835
+shadow_enabled = true
+shadow_normal_bias = 7.641
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 7.024
+shadow_blur = 2.231
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.669
+directional_shadow_split_2 = 0.433
+directional_shadow_split_3 = 0.247
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.29
+directional_shadow_max_distance = 800.0

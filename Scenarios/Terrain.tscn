@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlk8a2i82bmk3"]
-
-[ext_resource type="PackedScene" uid="uid://uvyw7c6yarkv" path="res://Meshes/Terrain/Terrain.glb" id="1_ewb50"]
-
-[node name="Terrain" type="Node3D"]
-
-[node name="Terrain" parent="." instance=ExtResource("1_ewb50")]

@@ -1,0 +1,62 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cjcoqjlj6w46x"]
+
+[ext_resource type="Shader" path="res://starry_sky.gdshader" id="1_8qfdq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5llc6"]
+shader = ExtResource("1_8qfdq")
+shader_parameter/sky_color = Color(0.0547231, 0.0816669, 0.159636, 1)
+shader_parameter/star_base_color = Color(0.8, 1, 0.3, 1)
+shader_parameter/star_hue_offset = 0.624
+shader_parameter/star_intensity = 0.075
+shader_parameter/star_twinkle_speed = 0.8
+shader_parameter/star_twinkle_intensity = 0.2
+shader_parameter/layer_scale = 2.763
+shader_parameter/layer_scale_step = 19.55
+shader_parameter/layers_count = 7
+
+[sub_resource type="Sky" id="Sky_vdnub"]
+sky_material = SubResource("ShaderMaterial_5llc6")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 2.45
+sky = SubResource("Sky_vdnub")
+ambient_light_source = 3
+ambient_light_color = Color(0.270328, 0.168034, 0.701608, 1)
+ambient_light_sky_contribution = 0.5
+ambient_light_energy = 1.35
+reflected_light_source = 2
+tonemap_mode = 6
+tonemap_exposure = 1.5
+ssr_fade_in = 0.713524
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.0
+glow_strength = 0.5
+glow_mix = 0.12
+glow_bloom = 1.0
+glow_hdr_threshold = 2.65
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 98.64
+fog_enabled = true
+fog_light_color = Color(0.0530045, 2.44865e-05, 0.220244, 1)
+fog_light_energy = 2.81
+fog_sun_scatter = 0.4
+fog_density = 0.5
+fog_aerial_perspective = 0.515
+fog_sky_affect = 0.675
+fog_height = -3.05
+fog_height_density = -1.0
+fog_depth_curve = 4.43828
+fog_depth_begin = 640.0
+fog_depth_end = 640.0
+volumetric_fog_density = 0.1245
+volumetric_fog_albedo = Color(0.0589686, 6.58369e-05, 0.177381, 1)
+volumetric_fog_emission_energy = 19.28
+volumetric_fog_gi_inject = 2.3
+volumetric_fog_anisotropy = 0.1
+volumetric_fog_length = 0.01
+volumetric_fog_detail_spread = 1.36604
+volumetric_fog_ambient_inject = 1.1
+volumetric_fog_temporal_reprojection_enabled = false
+volumetric_fog_temporal_reprojection_amount = 0.867

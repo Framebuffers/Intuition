@@ -1,0 +1,66 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bg5b5gfmbfen1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c7gcr"]
+sky_top_color = Color(0.85098, 0.533333, 0.137255, 1)
+sky_horizon_color = Color(0.94902, 0.682353, 0.447059, 1)
+sky_curve = 2.163
+sky_energy_multiplier = 52.65
+ground_bottom_color = Color(0, 0.580889, 0.977487, 1)
+ground_horizon_color = Color(0.133599, 0.375694, 0.467324, 1)
+ground_curve = 1.32514
+ground_energy_multiplier = 27.67
+sun_angle_max = 220.48
+sun_curve = 0.0891906
+energy_multiplier = 0.2
+
+[sub_resource type="Sky" id="Sky_hwjs5"]
+sky_material = SubResource("ProceduralSkyMaterial_c7gcr")
+radiance_size = 0
+
+[resource]
+background_mode = 2
+background_color = Color(0.202723, 0.202723, 0.202723, 1)
+background_energy_multiplier = 1.4
+sky = SubResource("Sky_hwjs5")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.29
+ambient_light_energy = 2.8
+reflected_light_source = 2
+tonemap_mode = 6
+tonemap_exposure = 0.1
+tonemap_white = 2.0
+ssr_fade_in = 2.75687
+ssr_fade_out = 1.86607
+ssao_power = 1.13679
+ssao_detail = 2.33
+glow_enabled = true
+glow_intensity = 0.1
+glow_strength = 1.1
+glow_mix = 0.325
+glow_blend_mode = 4
+glow_hdr_threshold = 4.0
+glow_hdr_scale = 3.26
+glow_hdr_luminance_cap = 123.62
+glow_map_strength = 0.0
+fog_enabled = true
+fog_light_color = Color(0.82097, 0.745528, 0.725164, 1)
+fog_light_energy = 9.12
+fog_sun_scatter = 0.65
+fog_sky_affect = 0.384
+fog_height = -0.75
+fog_height_density = 0.174
+fog_depth_curve = 1.86606
+fog_depth_begin = 32.0
+fog_depth_end = 911.4
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.929944, 0.858658, 0.793717, 1)
+volumetric_fog_emission_energy = 14.25
+volumetric_fog_gi_inject = 2.25
+volumetric_fog_anisotropy = 0.9
+volumetric_fog_length = 1.4
+volumetric_fog_detail_spread = 0.901251
+volumetric_fog_ambient_inject = 3.24
+volumetric_fog_sky_affect = 0.653
+volumetric_fog_temporal_reprojection_amount = 0.823
+adjustment_enabled = true

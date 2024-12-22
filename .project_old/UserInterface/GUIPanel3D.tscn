@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://8e45e6bg5d0e"]
+
+[ext_resource type="Script" path="res://UserInterface/GUIPanel3D.cs" id="1_ojmde"]
+[ext_resource type="FontFile" uid="uid://cwx3ksi164hm6" path="res://Fonts/ProggyCleanSZNerdFont-Regular.ttf" id="1_pu3vk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jd5wg"]
+font = ExtResource("1_pu3vk")
+font_size = 64
+
+[sub_resource type="QuadMesh" id="QuadMesh_ciecc"]
+size = Vector2(2, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p5h0u"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auc6y"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_p5h0u")
+billboard_keep_scale = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gw0xo"]
+size = Vector3(2, 1, 0.1)
+
+[node name="GUIPanel3D" type="Node3D"]
+process_mode = 3
+top_level = true
+script = ExtResource("1_ojmde")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(560, 360)
+render_target_update_mode = 4
+
+[node name="GUI" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 560.0
+offset_bottom = 360.0
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="SubViewport/GUI"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/GUI/Panel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 319.0
+offset_bottom = -20.0
+grow_vertical = 2
+theme_override_constants/separation = 13
+
+[node name="Label" type="Label" parent="SubViewport/GUI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Test"
+label_settings = SubResource("LabelSettings_jd5wg")
+
+[node name="Quad" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_ciecc")
+surface_material_override/0 = SubResource("StandardMaterial3D_auc6y")
+
+[node name="Area3D" type="Area3D" parent="Quad"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D"]
+shape = SubResource("BoxShape3D_gw0xo")

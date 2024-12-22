@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://k4x8jg6lvydm"]
+
+[ext_resource type="Script" path="res://Intuition.cs" id="1_qqm61"]
+
+[node name="Intuition" type="Node"]
+script = ExtResource("1_qqm61")
+
+[node name="Scene" type="Node" parent="."]
+
+[node name="Spawners" type="Node" parent="."]
+
+[node name="Player" type="Node" parent="."]
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="Assets" type="Node" parent="."]
+
+[node name="Trees" type="Node" parent="Assets"]
+
+[node name="Rocks" type="Node" parent="Assets"]

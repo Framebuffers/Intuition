@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpnqm13k1wdik"]
+
+[ext_resource type="ArrayMesh" uid="uid://boybfkqd76s2w" path="res://Meshes/OBJ/L1+L2.obj" id="1_ffk0c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bj1fv"]
+size = Vector3(20.2963, 0.981552, 10.8784)
+
+[node name="House" type="Node3D"]
+
+[node name="L1+l2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08132, 0, -0.107761)
+mesh = ExtResource("1_ffk0c")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38101, -0.0264053, -4.93921)
+shape = SubResource("BoxShape3D_bj1fv")
+debug_color = Color(0, 0.6, 0.7, 0.42)
