@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=18 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://Players/Player.cs" id="1_5petg"]
 
@@ -12,8 +12,9 @@ material = SubResource("StandardMaterial3D_kp17n")
 radius = 0.12
 height = 1.5
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_uq8tf"]
-radius = 0.452668
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k1pi4"]
+radius = 0.314246
+height = 2.30599
 
 [sub_resource type="Animation" id="Animation_j8cx7"]
 resource_name = "RESET"
@@ -380,9 +381,6 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 radius = 0.2
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_l87qn"]
-radius = 0.1747
-
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.471679, 0)
 collision_mask = 511
@@ -400,9 +398,11 @@ visible = false
 mesh = SubResource("CapsuleMesh_jw1de")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("SphereShape3D_uq8tf")
+shape = SubResource("CapsuleShape3D_k1pi4")
 debug_color = Color(0, 0.6, 0.7, 0.42)
+debug_fill = true
 
 [node name="CrouchAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -434,8 +434,3 @@ shape = SubResource("SphereShape3D_k4wwl")
 target_position = Vector3(0, 0, 0)
 collision_mask = 4
 collide_with_areas = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775905, 0)
-shape = SubResource("CylinderShape3D_l87qn")
-debug_color = Color(0, 0.6, 0.7, 0.42)

@@ -131,7 +131,7 @@ textures/default_filters/use_nearest_mipmap_filter=true
 textures/default_filters/anisotropic_filtering_level=0
 scaling_3d/mode=3
 scaling_3d/scale=0.666
-scaling_3d/fsr_sharpness=0.0
+scaling_3d/fsr_sharpness=1.0
 textures/decals/filter=0
 textures/light_projectors/filter=0
 

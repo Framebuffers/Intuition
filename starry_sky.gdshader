@@ -3,7 +3,7 @@ shader_type sky;
 // Comment this if you don't want to use star twinke. However, if you do want to keep it,
 // I suggest you to set the sky process mode to High-Quality Incremental or Real-Time,
 // as star twinkling may greatly impact performance.
-//#define USE_TWINKLE
+#define USE_TWINKLE
 
 group_uniforms sky;
 uniform vec3 sky_color: source_color = vec3(0.03, 0.05, 0.11);

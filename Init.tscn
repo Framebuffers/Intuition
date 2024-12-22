@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://c8aolptgi6jrj"]
+[gd_scene load_steps=93 format=4 uid="uid://c8aolptgi6jrj"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dib2omijmp43" path="res://Meshes/Terrain/Bridge_Collision.tscn" id="3_lw1gl"]
 [ext_resource type="PackedScene" uid="uid://vawqbhei30ls" path="res://Objects/car.tscn" id="4_l528o"]
 [ext_resource type="PackedScene" uid="uid://er1d52s1ogds" path="res://Meshes/Rocks/Rocks_BG.tscn" id="5_0asay"]
-[ext_resource type="PackedScene" uid="uid://b6mr86b87urxw" path="res://Scenarios/House.tscn" id="5_d6bj8"]
 [ext_resource type="Script" path="res://OriginPoints/Spawner.cs" id="5_nb23g"]
 [ext_resource type="PackedScene" uid="uid://1qragn5ovf62" path="res://Items/PictureFrame.tscn" id="5_pu7cx"]
 [ext_resource type="PackedScene" uid="uid://brimttmxn85ms" path="res://Meshes/Trees/Tree_Collision.tscn" id="6_fp4mq"]
@@ -17,8 +16,11 @@
 [ext_resource type="Script" path="res://Scenarios/WorldLimits.cs" id="7_7ihqv"]
 [ext_resource type="Script" path="res://Environment/EnvironmentManager.cs" id="8_tybcl"]
 [ext_resource type="PackedScene" uid="uid://ghub0t4t5hu3" path="res://Objects/RocksRigidBody.tscn" id="9_x33bw"]
-[ext_resource type="Environment" uid="uid://bbmrse3rqp21h" path="res://Environment/Intuition_Fog.tres" id="14_2iml3"]
+[ext_resource type="PackedScene" uid="uid://xqe0p47v0ibw" path="res://Meshes/Boat/Boat.glb" id="13_ssaxs"]
+[ext_resource type="Environment" uid="uid://dp6s2mqmdxa14" path="res://Environment/Intuition_Day_3.tres" id="14_fpghs"]
+[ext_resource type="Script" path="res://Objects/Lighthouse.cs" id="19_kbxr5"]
 [ext_resource type="PackedScene" uid="uid://2o4qecq54qe2" path="res://Scenarios/Shed.tscn" id="19_x4qtl"]
+[ext_resource type="PackedScene" uid="uid://uy77m4fc6fdo" path="res://Scenarios/TestHouseScene.tscn" id="20_nns37"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nb88w"]
 top_radius = 0.0
@@ -596,6 +598,22 @@ top_radius = 0.44
 bottom_radius = 3.765
 height = 100.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wv8b3"]
+size = Vector3(390, 1, 390)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mei64"]
+size = Vector3(3, 0.2, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jqbww"]
+size = Vector3(3, 0.2, 1.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ainf1"]
+flip_faces = true
+size = Vector2(3, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_876mv"]
+size = Vector3(3, 30, 0.1)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_dksua")
 
@@ -615,43 +633,36 @@ script = ExtResource("1_dksua")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 metadata/_edit_group_ = true
 
-[node name="Meshes" parent="ScreenManager/SceneManager/BackgroundItems" instance=ExtResource("5_d6bj8")]
-transform = Transform3D(-0.361478, 0, 0.932381, 0, 1, 0, -0.932381, 0, -0.361478, -86.7179, 0.344481, 85.5017)
-visible = false
-
 [node name="Trees" type="Node3D" parent="ScreenManager/SceneManager/BackgroundItems"]
-
-[node name="RocksBg" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance_placeholder="res://Meshes/Rocks/Rocks_BG.tscn"]
-visible = false
 
 [node name="Bundle1" type="Node3D" parent="ScreenManager/SceneManager/BackgroundItems/Trees"]
 
 [node name="TreeCollision" parent="ScreenManager/SceneManager/BackgroundItems/Trees/Bundle1" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.97614, 3.05699, 64.6454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.97614, 3.09038, 64.6454)
 
 [node name="TreeCollision2" parent="ScreenManager/SceneManager/BackgroundItems/Trees/Bundle1" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(0.591443, 0, 0.461189, 0, 0.75, 0, -0.461189, 0, 0.591443, -4.88166, 3.05699, 61.198)
+transform = Transform3D(0.591443, 0, 0.461189, 0, 0.75, 0, -0.461189, 0, 0.591443, -4.88166, 3.09331, 61.198)
 
 [node name="TreeCollision3" parent="ScreenManager/SceneManager/BackgroundItems/Trees/Bundle1" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(0.759737, 0, 0.650231, 0, 1, 0, -0.650231, 0, 0.759737, -12.4715, 3.05699, 57.3244)
+transform = Transform3D(0.759737, 0, 0.650231, 0, 1, 0, -0.650231, 0, 0.759737, -12.4715, 3.03375, 57.3244)
 
 [node name="TreeCollision4" parent="ScreenManager/SceneManager/BackgroundItems/Trees/Bundle1" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.02259, 0, 1.49346, 0, 1.81, 0, -1.49346, 0, 1.02259, -9.84735, 3.05699, 58.5872)
+transform = Transform3D(1.02259, 0, 1.49346, 0, 1.81, 0, -1.49346, 0, 1.02259, -9.84735, 2.89737, 58.5872)
 
 [node name="TreeCollision5" parent="ScreenManager/SceneManager/BackgroundItems/Trees/Bundle1" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3822, 3.32865, 69.8825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3822, 3.05315, 69.8825)
 
 [node name="TreeCollision6" parent="ScreenManager/SceneManager/BackgroundItems/Trees/Bundle1" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.9963, 3.71779, 77.2299)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.9963, 3.47951, 77.2299)
 
 [node name="TreeCollision7" parent="ScreenManager/SceneManager/BackgroundItems/Trees/Bundle1" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1954, 6.79111, 60.6672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1954, 6.55945, 60.6672)
 
 [node name="TreeCollision8" parent="ScreenManager/SceneManager/BackgroundItems/Trees/Bundle1" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(2.95, 0, 0, 0, 2.95, 0, 0, 0, 2.95, -15.0678, 3.27202, 50.5349)
+transform = Transform3D(2.95, 0, 0, 0, 2.95, 0, 0, 0, 2.95, -15.0678, 2.56911, 50.5349)
 
 [node name="Node3D" type="Node3D" parent="ScreenManager/SceneManager/BackgroundItems/Trees"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297976, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.238275, 0)
 
 [node name="TreeCollision11" parent="ScreenManager/SceneManager/BackgroundItems/Trees/Node3D" instance=ExtResource("6_fp4mq")]
 transform = Transform3D(2.49824, 0, 0.485609, 0, 2.545, 0, -0.485609, 0, 2.49824, -32.1721, 3.27202, 23.0476)
@@ -663,127 +674,127 @@ transform = Transform3D(1.28593, 0, 0.24996, 0, 1.31, 0, -0.24996, 0, 1.28593, -
 transform = Transform3D(0.981627, 0, 0.190809, 0, 1, 0, -0.190809, 0, 0.981627, -37.2254, 3.27202, 17.8031)
 
 [node name="TreeCollision" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.2869, 2.87797, 8.99936)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.2869, 3.03375, 8.99936)
 
 [node name="TreeCollision2" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.51, 0, 0, 0, 1.51, 0, 0, 0, 1.51, -44.5432, 2.87797, -0.133913)
+transform = Transform3D(1.51, 0, 0, 0, 1.51, 0, 0, 0, 1.51, -44.5432, 2.91223, -0.133913)
 
 [node name="TreeCollision3" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.37, 0, 0, 0, 1.37, 0, 0, 0, 1.37, -49.6747, 2.87797, -9.98553)
+transform = Transform3D(1.37, 0, 0, 0, 1.37, 0, 0, 0, 1.37, -49.6747, 2.94558, -9.98553)
 
 [node name="TreeCollision4" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.515, 0, 0, 0, 1.515, 0, 0, 0, 1.515, -33.6132, 3.27202, 12.6527)
+transform = Transform3D(1.515, 0, 0, 0, 1.515, 0, 0, 0, 1.515, -33.6132, 2.91103, 12.6527)
 
 [node name="TreeCollision5" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(2.335, 0, 0, 0, 2.335, 0, 0, 0, 2.335, -66.3594, 5.89677, 71.7413)
+transform = Transform3D(2.335, 0, 0, 0, 2.335, 0, 0, 0, 2.335, -66.3594, 6.24135, 71.7413)
 
 [node name="TreeCollision6" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.2523, 6.7173, 71.2875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.2523, 6.47903, 72.2875)
 
 [node name="TreeCollision7" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.1584, 6.7911, 22.6735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.1584, 6.55283, 22.6735)
 
 [node name="TreeCollision8" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.4727, 2.87797, -3.34494)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.4727, 3.03375, -3.34494)
 
 [node name="TreeCollision9" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(2.12, 0, 0, 0, 2.12, 0, 0, 0, 2.12, -40.0302, 2.87797, 3.96789)
+transform = Transform3D(2.12, 0, 0, 0, 2.12, 0, 0, 0, 2.12, -40.0302, 2.76688, 3.96789)
 
 [node name="TreeCollision10" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.7239, 6.7911, 17.7805)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.7239, 6.55283, 17.7805)
 
 [node name="TreeCollision11" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(3.14, 0, 0, 0, 3.14, 0, 0, 0, 3.14, -52.4707, 2.87797, -17.8365)
+transform = Transform3D(3.14, 0, 0, 0, 3.14, 0, 0, 0, 3.14, -52.4707, 2.52384, -17.8365)
 
 [node name="TreeCollision12" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.097, 6.91256, -23.1085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.097, 6.67428, -23.1085)
 
 [node name="TreeCollision13" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.1578, 2.78919, -25.2192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.1578, 3.03375, -25.2192)
 
 [node name="TreeCollision14" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.785, 0, 0, 0, 1.785, 0, 0, 0, 1.785, -66.7418, 3.31444, -29.0427)
+transform = Transform3D(1.785, 0, 0, 0, 1.785, 0, 0, 0, 1.785, -66.7418, 2.8467, -29.0427)
 
 [node name="TreeCollision15" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.725, 0, 0, 0, 1.725, 0, 0, 0, 1.725, -62.6133, 3.31444, -24.0494)
+transform = Transform3D(1.725, 0, 0, 0, 1.725, 0, 0, 0, 1.725, -62.6133, 2.861, -24.0494)
 
 [node name="TreeCollision16" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.3701, 6.95497, -26.138)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.3701, 6.67428, -26.138)
 
 [node name="TreeCollision17" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(3.345, 0, 0, 0, 3.345, 0, 0, 0, 3.345, -140.209, 3.12303, -39.1227)
+transform = Transform3D(3.345, 0, 0, 0, 3.345, 0, 0, 0, 3.345, -140.209, 2.28359, -39.1227)
 
 [node name="TreeCollision18" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(2.91, 0, 0, 0, 2.91, 0, 0, 0, 2.91, -118.821, 3.00088, -42.0197)
+transform = Transform3D(2.91, 0, 0, 0, 2.91, 0, 0, 0, 2.91, -118.821, 2.38724, -42.0197)
 
 [node name="TreeCollision19" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(3.14, 0, 0, 0, 3.14, 0, 0, 0, 3.14, -189.657, 6.32111, -9.72671)
+transform = Transform3D(3.14, 0, 0, 0, 3.14, 0, 0, 0, 3.14, -189.657, 6.10289, -9.72671)
 
 [node name="TreeCollision20" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.251, 11.7888, 6.16635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.251, 11.5505, 6.16635)
 
 [node name="TreeCollision21" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(2.02, 0, 0, 0, 2.02, 0, 0, 0, 2.02, -170.753, 11.7888, 7.82736)
+transform = Transform3D(2.02, 0, 0, 0, 2.02, 0, 0, 0, 2.02, -170.753, 11.3075, 7.82736)
 
 [node name="TreeCollision22" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.4535, 11.3093, -6.28603)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.4535, 11.3028, -6.28603)
 
 [node name="TreeCollision23" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(2.23, 0, 0, 0, 2.23, 0, 0, 0, 2.23, -9.59822, 2.94299, 79.0932)
+transform = Transform3D(2.23, 0, 0, 0, 2.23, 0, 0, 0, 2.23, -9.59822, 2.7973, 79.0932)
 
 [node name="TreeCollision24" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.59, 0, 0, 0, 1.59, 0, 0, 0, 1.59, -39.7799, 3.7602, 93.7332)
+transform = Transform3D(1.59, 0, 0, 0, 1.59, 0, 0, 0, 1.59, -39.7799, 3.33893, 93.7332)
 
 [node name="TreeCollision25" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.715, 0, 0, 0, 1.715, 0, 0, 0, 1.715, -34.0842, 3.28971, 94.6983)
+transform = Transform3D(1.715, 0, 0, 0, 1.715, 0, 0, 0, 1.715, -34.0842, 3.30915, 94.6983)
 
 [node name="TreeCollision26" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2122, 3.28971, 89.0117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2122, 3.47951, 89.0117)
 
 [node name="TreeCollision27" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(2.95, 0, 0, 0, 2.95, 0, 0, 0, 2.95, -26.7275, 3.28971, 88.2091)
+transform = Transform3D(2.95, 0, 0, 0, 2.95, 0, 0, 0, 2.95, -26.7275, 3.01488, 88.2091)
 
 [node name="TreeCollision28" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8127, 3.28971, 86.0252)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8127, 3.47951, 86.0252)
 
 [node name="TreeCollision29" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.396, 3.33213, 97.877)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.396, 3.47951, 97.877)
 
 [node name="TreeCollision30" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70969, 0.0631799, -0.809061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70969, -0.175097, 9.3504)
 
 [node name="TreeCollision31" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77539, -0.991968, 3.92775)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77539, -0.169913, 3.92775)
 
 [node name="TreeCollision32" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.475, 0, 0, 0, 1.475, 0, 0, 0, 1.475, -0.119716, -1.16841, 10.7065)
+transform = Transform3D(1.475, 0, 0, 0, 1.475, 0, 0, 0, 1.475, -0.119716, -1.19342, 10.7065)
 
 [node name="TreeCollision33" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20685, 0.063178, 5.82623)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20685, -0.175097, 5.82623)
 
 [node name="TreeCollision34" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.665, 0, 0, 0, 1.665, 0, 0, 0, 1.665, 19.042, -0.841963, 0.20566)
+transform = Transform3D(1.665, 0, 0, 0, 1.665, 0, 0, 0, 1.665, 19.042, -1.23869, 0.20566)
 
 [node name="TreeCollision35" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.28, 0, 0, 0, 1.28, 0, 0, 0, 1.28, 17.4229, -1.51008, -8.25987)
+transform = Transform3D(1.28, 0, 0, 0, 1.28, 0, 0, 0, 1.28, 17.4229, -1.14696, -8.25987)
 
 [node name="TreeCollision36" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -1.8282, 0.0924716, -19.3132)
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -1.8282, -0.229199, -19.3132)
 
 [node name="TreeCollision37" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.02306, 0.0924716, -16.9103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.02306, -0.145803, -16.9103)
 
 [node name="TreeCollision38" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.79, 0, 0, 0, 1.79, 0, 0, 0, 1.79, 9.80249, -0.841963, -32.7136)
+transform = Transform3D(1.79, 0, 0, 0, 1.79, 0, 0, 0, 1.79, 9.80249, -1.26848, -32.7136)
 
 [node name="TreeCollision39" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.715, 0, 0, 0, 1.715, 0, 0, 0, 1.715, 13.1381, 0.0683603, 31.1115)
+transform = Transform3D(1.715, 0, 0, 0, 1.715, 0, 0, 0, 1.715, 13.1381, -0.340279, 31.1115)
 
 [node name="TreeCollision40" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3274, -0.967033, 48.1973)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3274, -1.20531, 48.1973)
 
 [node name="TreeCollision41" parent="ScreenManager/SceneManager/BackgroundItems/Trees" instance=ExtResource("6_fp4mq")]
-transform = Transform3D(1.88, 0, 0, 0, 1.88, 0, 0, 0, 1.88, 26.7626, -1.40469, 35.8462)
+transform = Transform3D(1.88, 0, 0, 0, 1.88, 0, 0, 0, 1.88, 26.7626, -1.41499, 35.8462)
 
 [node name="NPC" type="Node3D" parent="ScreenManager/SceneManager"]
 visible = false
@@ -841,8 +852,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.063178, 0)
 curve = SubResource("Curve3D_en1kx")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ScreenManager/SceneManager/NPCPaths/Path3D"]
-transform = Transform3D(-0.999951, 0, 0.00779474, 0, 1, 0, -0.00779474, 0, -0.999951, 0, 0, 0)
+transform = Transform3D(-0.999948, 0, 0.00779472, 0, 1, 0, -0.00779472, 0, -0.999948, 0, 0, 0)
 use_model_front = true
+
+[node name="Boat" parent="ScreenManager/SceneManager" instance=ExtResource("13_ssaxs")]
+transform = Transform3D(-2.18361, 0, -2.05715, 0, 3, 0, 2.05715, 0, -2.18361, 19.5391, -0.791999, -12.2022)
 
 [node name="EnvironmentManager" type="Node3D" parent="ScreenManager"]
 script = ExtResource("8_tybcl")
@@ -883,7 +897,7 @@ transform = Transform3D(1, 3.0571e-14, 1.74846e-07, 0, 1, -1.74846e-07, -1.74846
 visible = false
 layers = 4
 light_color = Color(0.857036, 0, 0.0940544, 1)
-light_energy = 3.432
+light_energy = 4.022
 light_indirect_energy = 3.425
 light_volumetric_fog_energy = 6.392
 light_angular_distance = 75.27
@@ -903,37 +917,35 @@ directional_shadow_max_distance = 25.4
 directional_shadow_pancake_size = 11.4
 
 [node name="Red2" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/AlertLighting"]
-transform = Transform3D(1, 3.0571e-14, 1.74846e-07, 0, 1, -1.74846e-07, -1.74846e-07, 1.74846e-07, 1, 0, 11, 0)
+transform = Transform3D(1, 3.0571e-14, 1.74846e-07, 0, 1, -1.74846e-07, -1.74846e-07, 1.74846e-07, 1, 0, 100, 0)
 visible = false
 layers = 4
-light_color = Color(0.529215, 0, 0.13363, 1)
-light_energy = 3.005
-light_indirect_energy = 2.756
-light_volumetric_fog_energy = 14.83
-light_angular_distance = 78.1
-light_cull_mask = 4294967291
+light_color = Color(0.922726, 0.000287389, 0.260722, 1)
+light_energy = 16.0
+light_indirect_energy = 5.423
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 90.0
 shadow_enabled = true
 shadow_reverse_cull_face = true
-directional_shadow_split_1 = 0.185
-directional_shadow_fade_start = 0.666
-directional_shadow_max_distance = 21.5
-directional_shadow_pancake_size = 18.4
-sky_mode = 2
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.225
+directional_shadow_fade_start = 0.146
+directional_shadow_max_distance = 8192.0
+sky_mode = 1
 
 [node name="DayLighting" type="Node3D" parent="ScreenManager/EnvironmentManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [node name="Daylight_Orange" type="DirectionalLight3D" parent="ScreenManager/EnvironmentManager/DayLighting"]
 transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, -3.573, 100, 0.653)
-visible = false
 layers = 4
-light_energy = 2.86
-light_indirect_energy = 0.85
-light_volumetric_fog_energy = 15.182
-light_bake_mode = 1
-light_cull_mask = 4294967291
+light_energy = 1.089
+light_volumetric_fog_energy = 3.322
 shadow_enabled = true
 shadow_reverse_cull_face = true
+shadow_blur = 9.974
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.085
 
 [node name="NightLighting" type="Node3D" parent="ScreenManager/EnvironmentManager"]
 
@@ -942,25 +954,26 @@ transform = Transform3D(-4.37114e-08, -0.546102, -0.837719, 0, -0.837718, 0.5461
 visible = false
 layers = 4
 light_color = Color(0.190715, 0.143657, 0.309424, 1)
-light_energy = 0.1
-light_indirect_energy = 7.646
-light_volumetric_fog_energy = 4.645
-light_angular_distance = 90.0
+light_indirect_energy = 7.476
+light_volumetric_fog_energy = 11.209
+light_angular_distance = 37.25
+light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.0
+shadow_normal_bias = 0.0
 shadow_reverse_cull_face = true
 shadow_transmittance_bias = 1.94
 directional_shadow_mode = 0
-directional_shadow_split_1 = 0.413
+directional_shadow_split_1 = 0.375
 directional_shadow_split_2 = 0.628
 directional_shadow_split_3 = 0.247
 directional_shadow_blend_splits = true
 directional_shadow_fade_start = 0.0
-directional_shadow_max_distance = 260.6
-directional_shadow_pancake_size = 16.7
+directional_shadow_max_distance = 9.4
+directional_shadow_pancake_size = 15.3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="ScreenManager/EnvironmentManager"]
-environment = ExtResource("14_2iml3")
+environment = ExtResource("14_fpghs")
 
 [node name="UIManager" type="Control" parent="ScreenManager"]
 layout_mode = 3
@@ -980,16 +993,18 @@ mouse_filter = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.092472, -6)
 platform_floor_layers = 4294967044
 platform_wall_layers = 2
-baseSpeed = 8.0
-sprintSpeed = 16.0
-crouchSpeed = 3.0
+baseSpeed = 5.0
+sprintSpeed = 10.0
+crouchSpeed = 4.0
+_stepHeight = 0.666
 
 [node name="PictureFrame" parent="." instance=ExtResource("5_pu7cx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202425, 1.57605, -2.27005)
+visible = false
 
 [node name="Lighthouse" type="Node3D" parent="."]
-transform = Transform3D(-0.782609, 0, -0.622514, 0, 1, 0, 0.622514, 0, -0.782609, -83.8764, 16.3592, 29.7)
-visible = false
+transform = Transform3D(0.405205, 0, -0.914226, 0, 1, 0, 0.914226, 0, 0.405205, -83.8764, 16.4077, 29.7)
+script = ExtResource("19_kbxr5")
 
 [node name="Lighthouse" type="Node3D" parent="Lighthouse"]
 
@@ -1245,12 +1260,12 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.8, 0)
 mesh = SubResource("SphereMesh_o2l4g")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Lighthouse/MeshInstance3D"]
+[node name="Lights" type="MeshInstance3D" parent="Lighthouse/MeshInstance3D"]
 transform = Transform3D(7.45058e-08, 1, 0, -1, 7.45058e-08, 0, 0, 0, 1, -50, 0, 0)
 layers = 4
 mesh = SubResource("CylinderMesh_pwihh")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lighthouse/MeshInstance3D/MeshInstance3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighthouse/MeshInstance3D/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 layers = 4
 light_energy = 2.0
@@ -1268,10 +1283,10 @@ distance_fade_enabled = true
 distance_fade_begin = 10.0
 distance_fade_shadow = 25.0
 distance_fade_length = 1500.0
-omni_range = 4096.0
-omni_attenuation = -0.2
+omni_range = 150.099
+omni_attenuation = -0.575
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lighthouse/MeshInstance3D/MeshInstance3D"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lighthouse/MeshInstance3D/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
 layers = 4
 light_energy = 8.804
@@ -1282,11 +1297,50 @@ light_cull_mask = 4294967291
 shadow_enabled = true
 shadow_reverse_cull_face = true
 omni_range = 4096.0
-omni_attenuation = 1.5
+omni_attenuation = -0.1
 omni_shadow_mode = 0
 
 [node name="Shed" parent="." instance=ExtResource("19_x4qtl")]
-transform = Transform3D(-0.335238, 0, 0.942134, 0, 1, 0, -0.942134, 0, -0.335238, 2, -0.368893, -2)
+transform = Transform3D(-0.350763, 0, 0.936465, 0, 1, 0, -0.936465, 0, -0.350763, 2.63598, -0.368893, -5.98575)
+visible = false
+
+[node name="TestHouseScene" parent="." instance=ExtResource("20_nns37")]
+transform = Transform3D(0.909345, 0, 0.416043, 0, 1, 0, -0.416043, 0, 0.909345, -174.005, 7.15, -27.371)
+metadata/_edit_group_ = true
+
+[node name="GameplayElements" type="Node" parent="."]
+
+[node name="Area3D" type="Area3D" parent="GameplayElements"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameplayElements/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
+shape = SubResource("BoxShape3D_wv8b3")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GameplayElements/Area3D"]
+
+[node name="Test" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -2.292)
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Test/StaticBody3D"]
+shape = SubResource("BoxShape3D_mei64")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Test/StaticBody3D"]
+mesh = SubResource("BoxMesh_jqbww")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.25, -1.6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Test/StaticBody3D2"]
+mesh = SubResource("QuadMesh_ainf1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Test/StaticBody3D2"]
+shape = SubResource("BoxShape3D_876mv")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [connection signal="body_exited" from="ScreenManager/SceneManager/WorldLimits/BoundaryBox" to="ScreenManager/SceneManager/WorldLimits/BoundaryBox" method="OnBodyExited"]
 [connection signal="HideItem" from="Player" to="PictureFrame" method="HideMesh"]
