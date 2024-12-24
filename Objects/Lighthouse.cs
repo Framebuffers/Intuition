@@ -6,7 +6,10 @@ public partial class Lighthouse : Node3D
 	private MeshInstance3D Lights => GetNode<MeshInstance3D>("MeshInstance3D");
 	private Tween LightTween { get; set; }
 	public float Duration { get; set; } = 10.0f;
-
+	public void OnCompletion()
+	{
+		ActivateLight();
+	}
 	public void ActivateLight()
 	{
 		LightTween = Lights.CreateTween();
@@ -23,6 +26,6 @@ public partial class Lighthouse : Node3D
 
 	public override void _Ready()
 	{
-		ActivateLight();
+		// ActivateLight();
 	}
 }

@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Objects/RocksRigidBody.cs" id="1_svs0m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m5cxg"]
-radius = 0.6
-height = 1.2
+radius = 2.55394
+height = 5.89516
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6srl"]
 transparency = 4
@@ -16,12 +16,12 @@ emission_operator = 1
 
 [sub_resource type="SphereMesh" id="SphereMesh_xe75q"]
 material = SubResource("StandardMaterial3D_k6srl")
-radius = 0.587
-height = 0.865
+radius = 3.0
+height = 6.0
 radial_segments = 4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3veae"]
-radius = 0.7
+radius = 3.14644
 
 [node name="Rocks" type="RigidBody3D"]
 collision_layer = 16
@@ -57,7 +57,7 @@ shadow_normal_bias = 0.0
 shadow_reverse_cull_face = true
 shadow_opacity = 0.45
 shadow_blur = 0.744
-omni_range = 3.066
+omni_range = 4.05417
 omni_attenuation = -3.324
 
 [connection signal="body_entered" from="Area3D" to="." method="OnHit"]

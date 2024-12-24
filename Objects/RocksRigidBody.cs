@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Godot;
 using Intuition.Camera;
 using Intuition.Extensions;
@@ -8,8 +9,16 @@ public partial class RocksRigidBody : RigidBody3D
 
     private void OnHit(Node body)
     {
-        // if (body is Player)
-        $"Player hit: {body.Name}".ToConsole();
-        EmitSignal(SignalName.Death);
+
+        if (body is Player)
+            EmitSignal(SignalName.Death);
+        OnGround();
+    }
+
+    private void OnGround()
+    {
+        SceneTreeTimer t = GetTree().CreateTimer(15f);
+        // t.
+        t.Timeout += QueueFree;
     }
 }

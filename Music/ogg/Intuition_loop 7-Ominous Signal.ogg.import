@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7xi0cgkiv6r1"
+path="res://.godot/imported/Intuition_loop 7-Ominous Signal.ogg-ca6f7ded63caad182a9170e76005848c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/ogg/Intuition_loop 7-Ominous Signal.ogg"
+dest_files=["res://.godot/imported/Intuition_loop 7-Ominous Signal.ogg-ca6f7ded63caad182a9170e76005848c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

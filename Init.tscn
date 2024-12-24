@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=4 uid="uid://c8aolptgi6jrj"]
+[gd_scene load_steps=91 format=4 uid="uid://c8aolptgi6jrj"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_dksua"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://Players/Player.tscn" id="2_3t204"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Objects/Lighthouse.cs" id="19_kbxr5"]
 [ext_resource type="PackedScene" uid="uid://2o4qecq54qe2" path="res://Scenarios/Shed.tscn" id="19_x4qtl"]
 [ext_resource type="PackedScene" uid="uid://uy77m4fc6fdo" path="res://Scenarios/TestHouseScene.tscn" id="20_nns37"]
+[ext_resource type="AudioStream" uid="uid://c7jbk7erpio7m" path="res://Music/ogg/Intuition_loop.ogg" id="22_gkshh"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nb88w"]
 top_radius = 0.0
@@ -601,21 +602,21 @@ height = 100.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_wv8b3"]
 size = Vector3(390, 1, 390)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mei64"]
-size = Vector3(3, 0.2, 1.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jqbww"]
-size = Vector3(3, 0.2, 1.5)
-
-[sub_resource type="QuadMesh" id="QuadMesh_ainf1"]
-flip_faces = true
-size = Vector2(3, 30)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_876mv"]
-size = Vector3(3, 30, 0.1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_fpj0p"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_dksua")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -548.0
+offset_top = 16.0
+offset_right = 548.0
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "Time freezes when you don't move. Try to get to the top and turn on the lighthouse. WASD to move, Space to jump, Ctrl to run, Shift to crouch."
 
 [node name="PlayerManager" type="Node3D" parent="."]
 
@@ -829,6 +830,87 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7, -25)
 script = ExtResource("5_nb23g")
 Projectile = ExtResource("4_l528o")
 
+[node name="Spawner_Rocks2" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.877983, 0, -0.478692, 0, 1, 0, 0.478692, 0, -0.877983, -23.3753, 10.0676, 23.2138)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("9_x33bw")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks2"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
+[node name="Spawner_Rocks7" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.877983, 0, -0.478692, 0, 1, 0, 0.478692, 0, -0.877983, 9.55147, 15.5684, 16.9637)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("9_x33bw")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks7"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
+[node name="Spawner_Rocks8" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.877983, 0, -0.478692, 0, 1, 0, 0.478692, 0, -0.877983, 5.27975, 21.7906, -21.188)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("9_x33bw")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks8"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
+[node name="Spawner_Rocks9" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.877983, 0, -0.478692, 0, 1, 0, 0.478692, 0, -0.877983, -102.265, 21.7906, -21.188)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("9_x33bw")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks9"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
+[node name="Spawner_Rocks10" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.877983, 0, -0.478692, 0, 1, 0, 0.478692, 0, -0.877983, -156.232, 30.3173, 24.2466)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("9_x33bw")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks10"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
+[node name="Spawner_Rocks3" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.847122, 0, 0.531399, 0, 1, 0, -0.531399, 0, -0.847122, -8.93555, 16.1883, 60.7536)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("9_x33bw")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks3"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
+[node name="Spawner_Rocks4" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.847122, 0, 0.531399, 0, 1, 0, -0.531399, 0, -0.847122, -75.9729, 20.8883, 75.3079)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("9_x33bw")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks4"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
+[node name="Spawner_Rocks5" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.847122, 0, 0.531399, 0, 1, 0, -0.531399, 0, -0.847122, -173.845, 25.2068, 52.1428)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("9_x33bw")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks5"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
+[node name="Spawner_Rocks6" type="Marker3D" parent="ScreenManager/SceneManager/OriginPoints" groups=["Spawners"]]
+transform = Transform3D(-0.847122, 0, 0.531399, 0, 1, 0, -0.531399, 0, -0.847122, -83.0642, 32.0723, -17.3812)
+script = ExtResource("5_nb23g")
+Projectile = ExtResource("9_x33bw")
+
+[node name="DebugMesh" type="MeshInstance3D" parent="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks6"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nb88w")
+
 [node name="WorldLimits" type="Node3D" parent="ScreenManager/SceneManager"]
 
 [node name="Path3D" type="Path3D" parent="ScreenManager/SceneManager/WorldLimits"]
@@ -852,7 +934,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.063178, 0)
 curve = SubResource("Curve3D_en1kx")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="ScreenManager/SceneManager/NPCPaths/Path3D"]
-transform = Transform3D(-0.999948, 0, 0.00779472, 0, 1, 0, -0.00779472, 0, -0.999948, 0, 0, 0)
+transform = Transform3D(-0.999947, 0, 0.00779471, 0, 1, 0, -0.00779471, 0, -0.999947, 0, 0, 0)
 use_model_front = true
 
 [node name="Boat" parent="ScreenManager/SceneManager" instance=ExtResource("13_ssaxs")]
@@ -1258,6 +1340,7 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Lighthouse"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.8, 0)
+visible = false
 mesh = SubResource("SphereMesh_o2l4g")
 
 [node name="Lights" type="MeshInstance3D" parent="Lighthouse/MeshInstance3D"]
@@ -1301,8 +1384,7 @@ omni_attenuation = -0.1
 omni_shadow_mode = 0
 
 [node name="Shed" parent="." instance=ExtResource("19_x4qtl")]
-transform = Transform3D(-0.350763, 0, 0.936465, 0, 1, 0, -0.936465, 0, -0.350763, 2.63598, -0.368893, -5.98575)
-visible = false
+transform = Transform3D(-0.350763, 0, 0.936465, 0, 1, 0, -0.936465, 0, -0.350763, 4.15175, -0.368893, -2.5567)
 
 [node name="TestHouseScene" parent="." instance=ExtResource("20_nns37")]
 transform = Transform3D(0.909345, 0, 0.416043, 0, 1, 0, -0.416043, 0, 0.909345, -174.005, 7.15, -27.371)
@@ -1319,29 +1401,25 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GameplayElements/Area3D"]
 
-[node name="Test" type="Node3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Test"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -2.292)
-collision_layer = 16
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Test/StaticBody3D"]
-shape = SubResource("BoxShape3D_mei64")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.0312, 34.0777, 28.4145)
+shape = SubResource("SphereShape3D_fpj0p")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Test/StaticBody3D"]
-mesh = SubResource("BoxMesh_jqbww")
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("22_gkshh")
+volume_db = -7.0
+autoplay = true
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="Test"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.25, -1.6)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Test/StaticBody3D2"]
-mesh = SubResource("QuadMesh_ainf1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Test/StaticBody3D2"]
-shape = SubResource("BoxShape3D_876mv")
-debug_color = Color(0, 0.6, 0.7, 0.42)
-
+[connection signal="StartGame" from="." to="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks" method="StartShootingAtPlayer"]
+[connection signal="StartGame" from="." to="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks2" method="StartShootingAtPlayer"]
+[connection signal="StartGame" from="." to="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks3" method="StartShootingAtPlayer"]
+[connection signal="StartGame" from="." to="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks4" method="StartShootingAtPlayer"]
+[connection signal="StartGame" from="." to="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks5" method="StartShootingAtPlayer"]
+[connection signal="StartGame" from="." to="ScreenManager/SceneManager/OriginPoints/Spawner_Rocks6" method="_on_main_start_game"]
 [connection signal="body_exited" from="ScreenManager/SceneManager/WorldLimits/BoundaryBox" to="ScreenManager/SceneManager/WorldLimits/BoundaryBox" method="OnBodyExited"]
 [connection signal="HideItem" from="Player" to="PictureFrame" method="HideMesh"]
 [connection signal="ShowItem" from="Player" to="PictureFrame" method="ShowMesh"]
+[connection signal="body_entered" from="Area3D" to="Lighthouse" method="ActivateLight"]

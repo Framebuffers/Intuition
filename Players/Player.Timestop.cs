@@ -15,6 +15,7 @@ namespace Intuition.Camera
                 this.ProcessMode = ProcessModeEnum.Always;
                 GetTree().Paused = true;
 
+
                 if (Input.IsAnythingPressed())
                 {
                     GetTree().Paused = false;

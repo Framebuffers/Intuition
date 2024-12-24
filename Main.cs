@@ -11,6 +11,8 @@ using Intuition.Gameplay;
 using Intuition.Camera;
 using Intuition.Environment;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 // ****************************************************************************
 // Intuition
@@ -38,15 +40,26 @@ namespace Intuition
 {
 	public partial class Main : Node3D
 	{
+		[Signal] public delegate void StartGameEventHandler();
 		public GameMode GameplayMode { get; set; } = GameMode.NotStarted;
-		public Node3D OriginPoints => GetNode<Node3D>("ScreenManager/SceneManager/OriginPoints");
-		public Player Player => GetNode<Player>("Player");
+		public Node3D OriginPoints => GetNode<Node3D>("/root/Main/ScreenManager/SceneManager/OriginPoints");
+		public Player Player => GetNode<Player>("/root/Main/Player");
 		private float Intensity { get; set; } = 5.0f;
+		private float _seed;
+		private Stopwatch _time;
+
+		// public async Task Randomize()
+		// {
+		// 	await ToSignal(GetTree().CreateTimer(GD.RandRange(30f, 60f)), SceneTreeTimer.SignalName.Timeout);
+		// 	EmitSignal(SignalName.StartGame);
+		// }
 
 		public override void _Ready()
 		{
+			Player.EnableTimestop = false;
 			// randomise time until game mode changes. default = 30s
 			LoadRandomEnvironment();
+			Start();
 			// EnvironmentManager.TimeToChangeLightingMode = GD.Randi() % 30;
 			// $"Environment number: {GameEnvironment}, EnvironmentResource: {WorldEnvironment.Environment.ResourcePath}".ToConsole();
 
@@ -79,21 +92,43 @@ namespace Intuition
 			// player gets rated based on saved npc's
 		}
 
-		public override void _Process(double delta) { }
-
-		public override void _UnhandledKeyInput(InputEvent @event)
+		private void Start()
 		{
-			if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Keycode == Key.K)
-			{
+			$"Time stop".ToConsole();
+			EmitSignal(SignalName.StartGame);
+			EnvironmentManager.OnSwitchingState();
+			Player.EnableTimestop = true;
+			EnvironmentManager.LoadEnvironmentDayAlert();
+		}
 
-			}
 
-			if (@event is InputEventKey eventKey2 && eventKey2.Pressed && eventKey2.Keycode == Key.L)
-			{
 
-			}
+
+		public override void _Process(double delta)
+		{
+
+			// // $"Elapsed time {_time.Elapsed.Seconds}".ToConsole();
+			// if (_time.Elapsed.Seconds == _seed)
+			// {
+			// 	_time.Stop();
+
+			// }
 
 		}
+
+		// public override void _UnhandledKeyInput(InputEvent @event)
+		// {
+		// 	if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Keycode == Key.K)
+		// 	{
+
+		// 	}
+
+		// 	if (@event is InputEventKey eventKey2 && eventKey2.Pressed && eventKey2.Keycode == Key.L)
+		// 	{
+
+		// 	}
+
+		// }
 	}
 }
 

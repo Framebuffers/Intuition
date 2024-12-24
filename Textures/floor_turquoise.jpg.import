@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dufep5ay8ru8g"
-path.s3tc="res://.godot/imported/floor_turquoise.jpg-e80e69edf393d3022a623667386d7a0d.s3tc.ctex"
-path.etc2="res://.godot/imported/floor_turquoise.jpg-e80e69edf393d3022a623667386d7a0d.etc2.ctex"
+path.s3tc="res://.godot/imported/floor_turquoise.jpg-ca3e6de03732aa93981374067fc9e414.s3tc.ctex"
+path.etc2="res://.godot/imported/floor_turquoise.jpg-ca3e6de03732aa93981374067fc9e414.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/floor_turquoise.jpg"
-dest_files=["res://.godot/imported/floor_turquoise.jpg-e80e69edf393d3022a623667386d7a0d.s3tc.ctex", "res://.godot/imported/floor_turquoise.jpg-e80e69edf393d3022a623667386d7a0d.etc2.ctex"]
+source_file="res://Textures/floor_turquoise.jpg"
+dest_files=["res://.godot/imported/floor_turquoise.jpg-ca3e6de03732aa93981374067fc9e414.s3tc.ctex", "res://.godot/imported/floor_turquoise.jpg-ca3e6de03732aa93981374067fc9e414.etc2.ctex"]
 
 [params]
 

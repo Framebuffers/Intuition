@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://liatt4a0oygt"
+path="res://.godot/imported/Intuition_loop 5-Riser Arcade.ogg-b7cd990c3a25ccd0951ae93af0732d27.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/ogg/Intuition_loop 5-Riser Arcade.ogg"
+dest_files=["res://.godot/imported/Intuition_loop 5-Riser Arcade.ogg-b7cd990c3a25ccd0951ae93af0732d27.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://heh7kye1bmiv"
+path="res://.godot/imported/Intuition_loop 1-Gentle Pulse Pad.ogg-da5bb41fb4dff4b8cef88478461b1141.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/ogg/Intuition_loop 1-Gentle Pulse Pad.ogg"
+dest_files=["res://.godot/imported/Intuition_loop 1-Gentle Pulse Pad.ogg-da5bb41fb4dff4b8cef88478461b1141.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
